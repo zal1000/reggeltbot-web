@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "zal-ng-my-app",
+    "public": "dist/my-app",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

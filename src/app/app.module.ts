@@ -5,15 +5,38 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { CountComponent } from './count/count.component';
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+const config = {
+  apiKey: "AIzaSyAt2Z0NaWwdWYjY_aekfmXlrxVABYsymaM",
+  authDomain: "zal1000.firebaseapp.com",
+  databaseURL: "https://zal1000.firebaseio.com",
+  projectId: "zal1000",
+  storageBucket: "zal1000.appspot.com",
+  messagingSenderId: "512279358183",
+  appId: "1:512279358183:web:15b9bc444ad56583541042",
+  measurementId: "G-V30XXF400W"
+
+};
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CountComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    AngularFireModule.initializeApp(config),
+    AngularFirestoreModule, // firestore
+    AngularFireAuthModule, // auth
+    AngularFireStorageModule // storage
   ],
   providers: [],
   bootstrap: [AppComponent]
