@@ -21,6 +21,10 @@
     background-color: white;
   }
 
+  #user_profile_picture {
+    border-radius: 50%; 
+  }
+
   .navbar-icons {
     height: 40px;
     margin: 0 16px;
@@ -65,8 +69,7 @@
 
   .toolbar img {
     margin: 0 16px;
-  }
-
+  } 
   .toolbar #github-logo {
     height: 40px;
     margin: 0 16px;
