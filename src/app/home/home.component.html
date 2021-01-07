@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="condition; else elseBlock" style="padding-top: 60px;">
     <h2>Thanks for visiting our bots page!</h2>
     <h1>We hope our bot can satisfy your requirements!</h1>
     <br>
@@ -6,7 +6,7 @@
     <h1>Create a channel called "morning"</h1>
     <h1>The bot will delete every message expect for morning</h1>
 </div>
-<div>
+<div #elseBlock style="padding-top: 60px;">
     <h2>Köszönjük, hogy meglátogatta a bot oldalát!</h2>
     <h1>Reméljük, hogy a bot ki tudja elégíteni az ön igényeit!</h1>
     <br>
