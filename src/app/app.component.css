@@ -8,7 +8,7 @@
   }
 
   #nav-elements a {
-    font-size: 25px;
+    font-size: 15px;
     color: white;
     padding: 14px 16px;
     margin: 10px;
@@ -21,6 +21,14 @@
     background-color: white;
   }
 
+  .navbar-icons {
+    height: 40px;
+    margin: 0 16px;
+  }
+
+  .navbar-icons:hover {
+    opacity: 0.8;
+  }
   h1,
   h2,
   h3,
@@ -43,12 +51,16 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 80px;
+    height: 60px;
     display: flex;
     align-items: center;
     background-color: #1976d2;
     color: white;
     font-weight: 600;
+  }
+
+  .RouterLinkActive {
+    color: black;
   }
 
   .toolbar img {

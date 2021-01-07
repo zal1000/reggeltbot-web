@@ -11,6 +11,9 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { ConsoleComponent } from './console/console.component';
+import { HomeComponent } from './home/home.component';
 
 const config = {
   apiKey: "AIzaSyAt2Z0NaWwdWYjY_aekfmXlrxVABYsymaM",
@@ -28,6 +31,9 @@ const config = {
   declarations: [
     AppComponent,
     CountComponent,
+    LeaderboardComponent,
+    ConsoleComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
