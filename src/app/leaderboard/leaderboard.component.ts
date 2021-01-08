@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeaderboardComponent implements OnInit {
 
+  leaderboarddocs = 
+    {
+      asd: "asdf",
+      asd2: "asdfg"
+    }
+
   constructor() { }
 
   ngOnInit(): void {

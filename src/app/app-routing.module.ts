@@ -8,7 +8,7 @@ import { ConsoleComponent } from './console/console.component';
 
 const routes: Routes = [
   { path: '', component:HomeComponent },
-  { path: 'count', component: CountComponent },
+  { path: 'count/:dcId', component: CountComponent },
   { path: 'leaderboard', component: LeaderboardComponent },
   { path: 'console', component: ConsoleComponent},
 ];

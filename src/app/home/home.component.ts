@@ -7,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  hun = true;
+  eng = false;
+
+  langEng() {
+    this.hun = false;
+    this.eng = true;
+  }  
+  langHun() {
+    this.hun = true;
+    this.eng = false;
+  }
+
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

@@ -1,6 +1,13 @@
 <br>
 <br>
-<div class="text"  style="padding-top: 10px;">
+<br>
+<button *ngIf="hun" (click)="langEng()">
+    Eng
+</button>
+<button *ngIf="eng" style="height: 128px; width: 255px; border-radius: 0px; background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Flag_of_Hungary.svg/255px-Flag_of_Hungary.svg.png); background-size: cover;" (click)="langHun()">
+    Hun
+</button>
+<div class="text" *ngIf="eng" style="padding-top: 10px;">
     <h1>Thanks for visiting our bots page!</h1>
     <h2>We hope our bot can satisfy your requirements!</h2>
     <br>
@@ -8,7 +15,7 @@
     <h2>Create a channel called "morning"</h2>
     <h2>The bot will delete every message expect for morning</h2>
 </div>
-<div class="text"  style="padding-top: 10px;">
+<div class="text" *ngIf="hun"  style="padding-top: 10px;">
     <h1>Köszönjük, hogy meglátogatta a bot oldalát!</h1>
     <h2>Reméljük, hogy a bot ki tudja elégíteni az ön igényeit!</h2>
     <br>

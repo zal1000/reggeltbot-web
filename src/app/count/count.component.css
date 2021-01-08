@@ -1,0 +1,28 @@
+p {
+    font-size: large;
+    font-weight: 600;
+}
+
+.right {
+    position: sticky;
+    float: right;
+}
+
+.box {
+    background: #FFCA5C; 
+    max-width: 1000px; 
+    margin: 100px auto 16px; 
+    padding: 32px 24px 16px; 
+    border-radius: 3px;
+    padding-bottom: 100px;
+}
+
+.dcpicture {
+    border-radius: 50%; 
+    margin-top: 20px;
+    float: right;
+}
+
+.spawn-box {
+    display: inline-block;
+}

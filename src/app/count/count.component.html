@@ -1,3 +1,10 @@
 <br>
 <br>
-<p>count works!</p>
+<br>
+<div id="count" class="box" *ngIf="!noid">
+    <span class="spawn-box"><p>Ennyiszer köszöntél be: </p><p class="yellow"> {{ reggeltcount }}</p></span>
+    <img class="dcpicture" src="{{ dcpp }}">
+</div>
+<div id="nocount" *ngIf="noid">
+    <p>Please specify userid</p>
+</div>
