@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-leaderboard',
@@ -7,15 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeaderboardComponent implements OnInit {
 
-  leaderboarddocs = 
+  users = [
     {
       asd: "asdf",
-      asd2: "asdfg"
-    }
+      name: "asdfg"
+    },    
+    {
+      asd: "asdfg",
+      name: "asdfgh"
+    },
+  ]
 
-  constructor() { }
+  constructor(private db: AngularFirestore) { }
 
   ngOnInit(): void {
+    const ref = this.db.collection('dcusers', ref => ref.where('reggeltcount', '!=', null).limit(20)).get();
+
+    ref.forEach(doc => {
+      this.users.push();
+    })
   }
 
 }

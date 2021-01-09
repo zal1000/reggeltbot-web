@@ -12,7 +12,6 @@ export class CountComponent implements OnInit {
   reggeltcount = "Loading..." 
   noid = false;
   dcpp = null;
-
   constructor(private db: AngularFirestore, private route: ActivatedRoute) { }
   
 
@@ -26,7 +25,6 @@ export class CountComponent implements OnInit {
       ref.ref.get().then(doc => {
         if(!doc.exists) {
           this.reggeltcount = "err"
-          //asd
         } else {
           const docasd: any = doc;
           console.log(doc.data())
@@ -37,17 +35,4 @@ export class CountComponent implements OnInit {
       })
   }
   }
-/*
-{
-    const docref = this.db.collection('dcusers').doc(this.route.snapshot.params.dcId);
-    docref.ref.get().then(doc => {
-      if(doc.exists) {
-        let doc: any;
-        this.reggeltcount = `${doc.data().reggeltcount}`
-      } else {
-        this.reggeltcount = "Cannot find user"
-      }
-    });
-  }
-*/
 }
