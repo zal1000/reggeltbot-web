@@ -1,6 +1,22 @@
 .text  {
-    text-align: center;
+    background-color: #23272A;
+    color: white;
+    padding-top: 10px;
 }
 .text h1 {
     color: #FFCA5C;
+    text-align: center;
+}
+.text h2 {
+    text-align: center;
+
+}
+
+.pad {
+    padding-top: 80px;
+    background-color: #23272A;
+}
+
+.button {
+    float: right;
 }

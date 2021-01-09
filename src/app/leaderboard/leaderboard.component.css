@@ -1,0 +1,29 @@
+body {
+    background-color: #2C2F33;
+}
+
+.username {
+    float: right;
+    font-size: 20px;
+    padding-right: 20px;
+}
+
+.pp {
+    float: right;
+    width: 50px;
+}
+
+.container {
+    background-color: #2C2F33;
+}
+
+.leaderboard {
+    background-color: #23272A;
+    color: #FFFFFF;
+}
+
+.blank {
+    padding-top: 80px;
+    background-color: #23272A;
+    padding-bottom: 80px;
+}

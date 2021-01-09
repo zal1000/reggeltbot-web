@@ -1,25 +1,26 @@
-<br>
-<br>
-<br>
-<button *ngIf="hun" (click)="langEng()">
-    Eng
-</button>
-<button *ngIf="eng" style="height: 128px; width: 255px; border-radius: 0px; background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Flag_of_Hungary.svg/255px-Flag_of_Hungary.svg.png); background-size: cover;" (click)="langHun()">
-    Hun
-</button>
-<div class="text" *ngIf="eng" style="padding-top: 10px;">
-    <h1>Thanks for visiting our bots page!</h1>
-    <h2>We hope our bot can satisfy your requirements!</h2>
-    <br>
-    <h1>How to use</h1>
-    <h2>Create a channel called "morning"</h2>
-    <h2>The bot will delete every message expect for morning</h2>
-</div>
-<div class="text" *ngIf="hun"  style="padding-top: 10px;">
-    <h1>Köszönjük, hogy meglátogatta a bot oldalát!</h1>
-    <h2>Reméljük, hogy a bot ki tudja elégíteni az ön igényeit!</h2>
-    <br>
-    <h1>Útmutató a használathoz</h1>
-    <h2>Csinálj egy csatornát aminek a neve "reggelt"</h2>
-    <h2>A bot a "reggelt" szón kívül mindent ki fog törölni, és ez azért jó mert lehet pontokat szerezni ami S T O N K S</h2>
+<div class="pad"></div>
+<div class="main">
+    <div class="text" *ngIf="eng">
+        <button class="button hun" (click)="langHun()">
+            Hun
+        </button>
+        <h1>Thanks for visiting our bots page!</h1>
+        <h2>We hope our bot can satisfy your requirements!</h2>
+        <br>
+        <h1>How to use</h1>
+        <h2>Create a channel called "morning"</h2>
+        <h2>The bot will delete every message expect for morning</h2>
+        
+    </div>
+    <div class="text" *ngIf="hun">
+        <button class="button eng" (click)="langEng()">
+            Eng
+        </button>
+        <h1>Ez a reggelt bot oldala</h1>
+        <br>
+        <h1>Útmutató a használathoz</h1>
+        <h2>Ha beveszi a szerverére akkor csináljon egy "reggelt" nevű szobát</h2>
+        <h2>Ebbe a szobába csak azt lehet írni, hogy "reggelt" ezáltal pontokat szerezve</h2>
+        <h2>Ezt a szót 6 óránként lehet beírni így minden nap akár 4 pontot lehet szerezni</h2>
+    </div>
 </div>

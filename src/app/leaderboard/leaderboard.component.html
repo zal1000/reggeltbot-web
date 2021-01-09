@@ -1,4 +1,14 @@
-<div style="margin-top: 60px;" *ngFor="let user of users">
-    <p>{{ user.name }}</p>
-    <p>{{ user.asd }}</p>
+<div class="blank">
+    <div class="leaderboard" *ngFor="let user of users">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col">
+                    <img class="rounded-circle pp" src="{{ user.pp }}">
+                    <p class="username">{{ user.name }}</p>
+                    <p class="reggeltcount">{{ user.reggeltcount }}</p>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

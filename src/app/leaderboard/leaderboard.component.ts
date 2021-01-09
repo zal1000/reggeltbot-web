@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, combineChange } from '@angular/fire/firestore';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-leaderboard',
@@ -8,25 +10,25 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class LeaderboardComponent implements OnInit {
 
-  users = [
-    {
-      asd: "asdf",
-      name: "asdfg"
-    },    
-    {
-      asd: "asdfg",
-      name: "asdfgh"
-    },
-  ]
+  users = null;
 
-  constructor(private db: AngularFirestore) { }
+  constructor(private db: AngularFirestore,   private http: HttpClient) { }
 
   ngOnInit(): void {
-    const ref = this.db.collection('dcusers', ref => ref.where('reggeltcount', '!=', null).limit(20)).get();
-
-    ref.forEach(doc => {
-      this.users.push();
-    })
+    this.getList().subscribe(
+      (response) => {
+        this.users = response;
+      },
+      (error) => {                              //error() callback
+        console.error('Request failed with error')
+      },
+      () => {                                   //complete() callback
+        console.error('Request completed')      //This is actually not needed 
+      })
+  }
+  
+  getList(): Observable<any> {
+    return this.http.get('https://api.zal1000.net/reggeltbot/leaderboard');
   }
 
 }

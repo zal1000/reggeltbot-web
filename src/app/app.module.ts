@@ -14,6 +14,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { ConsoleComponent } from './console/console.component';
 import { HomeComponent } from './home/home.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const config = {
   apiKey: "AIzaSyAt2Z0NaWwdWYjY_aekfmXlrxVABYsymaM",
@@ -42,7 +43,8 @@ const config = {
     AngularFireModule.initializeApp(config),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
-    AngularFireStorageModule // storage
+    AngularFireStorageModule, // storage
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

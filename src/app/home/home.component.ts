@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   hun = true;
-  eng = false;
+  eng = true;
 
   langEng() {
     this.hun = false;
