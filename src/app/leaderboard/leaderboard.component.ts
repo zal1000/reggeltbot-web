@@ -12,7 +12,7 @@ export class LeaderboardComponent implements OnInit {
 
   users = null;
 
-  constructor(private db: AngularFirestore,   private http: HttpClient) { }
+  constructor(private db: AngularFirestore, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.getList().subscribe(
