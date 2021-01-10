@@ -1,12 +1,14 @@
 <div class="blank">
-    <div class="leaderboard" *ngFor="let user of users">
+    <div class="leaderboard">
+        <button (click)="ngOnInit()">Reload</button>
         <div class="container">
-            <div class="row justify-content-md-center">
+            <div class="row justify-content-md-center" *ngFor="let user of users">
                 <div class="col">
                     <img class="rounded-circle pp" src="{{ user.pp }}">
                     <p class="username">{{ user.name }}</p>
                     <p class="reggeltcount">{{ user.reggeltcount }}</p>
                     <br>
+                    <div class="line"></div>
                 </div>
             </div>
         </div>
