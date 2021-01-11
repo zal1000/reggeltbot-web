@@ -7,9 +7,9 @@
 </div>
 <div id="nocount" *ngIf="noid">
     <input ng-model="tag" type="text" >
-    <button style="margin-bottom: 40px;" (click)="getUser()">Search</button>
+    <button class="btn btn-primary" style="margin-bottom: 40px;" (click)="getUser()">Search</button>
     <div *ngFor="let user of dcids">
-        <button (click)="reload()" routerLink="/count/{{ user.id }}">{{ user.tag }}</button>
+        <button class="user-btn" (click)="reload()" routerLink="/count/{{ user.id }}">{{ user.tag }}</button>
         <!--need to add component reload-->
     </div>
 </div>

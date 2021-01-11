@@ -26,3 +26,7 @@ p {
 .spawn-box {
     display: inline-block;
 }
+
+.user-btn {
+    background-color: #FFCA5C;
+}
