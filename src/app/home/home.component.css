@@ -1,3 +1,5 @@
+
+
 .text  {
     background-color: #23272A;
     color: white;
@@ -19,4 +21,41 @@
 
 .button {
     float: right;
+    cursor:pointer;
+    border: none;
+    padding: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-radius: 10px;
+    margin-right: 30px;
+}
+
+.eng {
+    background: url(https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1200px-Flag_of_the_United_Kingdom.svg.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.hun {
+    background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Flag_of_Hungary.svg/255px-Flag_of_Hungary.svg.png) no-repeat;
+    background-size: cover;
+}
+
+h3 {
+    text-align: center;
+    color: rgb(223, 37, 37);
+    font-size: xx-large;
+    font-weight: 600;
+}
+
+.br {
+    margin-bottom: 60px;
+}
+
+.ream {
+    margin-top: 10px;
+    font-size: medium;
+    text-align: center;
+    float: right;
+    margin-right: 30px;
 }

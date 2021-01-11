@@ -5,6 +5,12 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
+ body {
+  background-image: url(https://firebasestorage.googleapis.com/v0/b/zal1000.appspot.com/o/LinkImages%2Fnqb.png?alt=media&token=056436cc-c29f-406f-aefb-357b5b93bf93);
+  background-repeat: repeat;
+}
+
  :root {
     --blue: #007bff;
     --indigo: #6610f2;
