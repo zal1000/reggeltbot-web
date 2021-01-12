@@ -10,7 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-count',
   templateUrl: './count.component.html',
-  styleUrls: ['./count.component.css']
+  styleUrls: ['./count.component.scss']
 })
 export class CountComponent implements OnInit, OnDestroy {
   reggeltcount = "Loading..." 
