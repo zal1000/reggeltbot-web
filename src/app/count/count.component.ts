@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ReactiveFormsModule, Form, FormBuilder } from '@angular/forms';
 import { templateJitUrl } from '@angular/compiler';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-count',
@@ -17,7 +18,7 @@ export class CountComponent implements OnInit, OnDestroy {
   dcpp = "https://ppllabs.com/wp-content/uploads/2018/10/load.gif";
   tag = "";
   loading = true;
-  dcname  = "Loading...";
+  dcname: any  = "Loading...";
   dcids = [
     {
         "id": "noid",
@@ -26,7 +27,7 @@ export class CountComponent implements OnInit, OnDestroy {
         "username": "Loading..."
     }
   ];
-  
+  loadinggif = environment.loadgif;
   mySubscription: any;
   constructor(private db: AngularFirestore, private route: ActivatedRoute, private http: HttpClient, private router: Router,) { }
   
@@ -35,21 +36,24 @@ export class CountComponent implements OnInit, OnDestroy {
     console.log(this.route.snapshot.params.dcId);
     if(!this.route.snapshot.params.dcId) {
       this.reggeltcount = "Error: Please specitfy user";
+      this.dcpp = environment.error
     } else {
       const ref = this.db.collection('dcusers').doc(this.route.snapshot.params.dcId);
       ref.get().toPromise().then((doc: any) => {
         if(!doc.exists) {
-          this.reggeltcount = "err"
+          this.reggeltcount = "Error: Please specitfy user"
+          this.dcname = null;
+          this.dcpp = environment.error
         } else {
           console.log(doc.data())
           this.reggeltcount = `${doc.data().reggeltcount}`
           if(!doc.data().pp) {
-            this.dcpp = "https://firebasestorage.googleapis.com/v0/b/zal1000.appspot.com/o/LinkImages%2Fstonks.png?alt=media&token=92675101-924c-4540-b954-d808cb0dacbb"
+            this.dcpp = environment.loadgif;
           } else {
             this.dcpp = doc.data().pp
           }
           
-          this.dcname = doc.data().username
+          this.dcname = `${doc.data().username} ennyiszer köszönt be:`
         }
       })
     }
