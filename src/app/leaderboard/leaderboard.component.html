@@ -1,8 +1,13 @@
 <div class="blank">
+    <button class="btn btn-outline-light" style="float: right; margin-right: 60px;" (click)="ngOnInit()">Reload</button>
+
     <div class="leaderboard">
-        <button class="btn btn-outline-light" style="float: right; margin-right: 60px;" (click)="ngOnInit()">Reload</button>
         <div class="container">
-            <img *ngIf="loading" class="loading justify-content-md-center" src="{{loadinggif}}">
+            <div *ngIf="loading" class="spinner">
+                <span class="spinner-inner-1"></span>
+                <span class="spinner-inner-2"></span>
+                <span class="spinner-inner-3"></span>
+            </div>
         </div>
         <div *ngIf="!loading" class="container">
             <div class="row justify-content-md-center" *ngFor="let user of users">

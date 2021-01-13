@@ -41,7 +41,7 @@ export class CountComponent implements OnInit, OnDestroy {
       const ref = this.db.collection('dcusers').doc(this.route.snapshot.params.dcId);
       ref.get().toPromise().then((doc: any) => {
         if(!doc.exists) {
-          this.reggeltcount = "Error: Please specitfy user"
+          this.reggeltcount = "Error: User not found"
           this.dcname = null;
           this.dcpp = environment.error
         } else {
@@ -55,6 +55,10 @@ export class CountComponent implements OnInit, OnDestroy {
           
           this.dcname = `${doc.data().username} ennyiszer köszönt be:`
         }
+      }).catch(err => {
+        this.reggeltcount = `Error: ${err.message}`
+        this.dcname = null;
+        this.dcpp = environment.error
       })
     }
   }
