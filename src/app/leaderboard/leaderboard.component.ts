@@ -24,6 +24,7 @@ export class LeaderboardComponent implements OnInit {
     image: environment.error
   }
   notfoundimg = environment.noimg;
+  membercount = 25;
 
   constructor(private db: AngularFirestore, private http: HttpClient, private router: Router,) { }
 
@@ -63,7 +64,7 @@ export class LeaderboardComponent implements OnInit {
   
   getList(): Observable<any> {
     this.loading = true;
-    return this.http.get('https://api.zal1000.net/reggeltbot/leaderboard');
+    return this.http.get(`https://api.zal1000.net/reggeltbot/leaderboard?m=${this.membercount}`);
   }
 
   ngOnDestroy() {
