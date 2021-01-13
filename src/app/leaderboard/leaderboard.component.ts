@@ -16,6 +16,14 @@ export class LeaderboardComponent implements OnInit {
   mySubscription: any;
   loading = true;
   loadinggif = environment.loadgif;
+  error = {
+    status: false,
+    code: 0,
+    message: "Error",
+    full: "Loading...",
+    image: environment.error
+  }
+  notfoundimg = environment.noimg;
 
   constructor(private db: AngularFirestore, private http: HttpClient, private router: Router,) { }
 
@@ -41,6 +49,12 @@ export class LeaderboardComponent implements OnInit {
       },
       (error) => {                              //error() callback
         console.error('Request failed with error')
+        this.loading = false;
+        this.error.status = true;
+        this.error.code = error.code;
+        this.error.message = error.message;
+        this.error.full = error;
+
       },
       () => {                                   //complete() callback
         console.error('Request completed')      //This is actually not needed 

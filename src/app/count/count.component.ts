@@ -44,6 +44,7 @@ export class CountComponent implements OnInit, OnDestroy {
           this.reggeltcount = "Error: User not found"
           this.dcname = null;
           this.dcpp = environment.error
+          this.loading = false;
         } else {
           console.log(doc.data())
           this.reggeltcount = `${doc.data().reggeltcount}`
@@ -51,6 +52,7 @@ export class CountComponent implements OnInit, OnDestroy {
             this.dcpp = environment.loadgif;
           } else {
             this.dcpp = doc.data().pp
+            this.loading = false;
           }
           
           this.dcname = `${doc.data().username} ennyiszer köszönt be:`
@@ -59,11 +61,13 @@ export class CountComponent implements OnInit, OnDestroy {
         this.reggeltcount = `Error: ${err.message}`
         this.dcname = null;
         this.dcpp = environment.error
+        this.loading = false;
       })
     }
   }
 
   countListener(uid: string): Observable<any> {
+    this.loading = true;
     const ref = this.db.collection('dcusers').doc(uid).snapshotChanges();
     return ref;
   }

@@ -1,7 +1,7 @@
 <div class="blank">
     <button class="btn btn-outline-light" style="float: right; margin-right: 60px;" (click)="ngOnInit()">Reload</button>
 
-    <div class="leaderboard">
+    <div *ngIf="!error.status" class="leaderboard">
         <div class="container">
             <div *ngIf="loading" class="spinner">
                 <span class="spinner-inner-1"></span>
@@ -12,7 +12,8 @@
         <div *ngIf="!loading" class="container">
             <div class="row justify-content-md-center" *ngFor="let user of users">
                 <div class="col">
-                    <img class="rounded-circle pp" src="{{ user.pp }}">
+                    <img *ngIf="!user.pp" class="pp" src="{{ notfoundimg }}">
+                    <img *ngIf="user.pp" class="rounded-circle pp" src="{{ user.pp }}">
                     <p class="username">{{ user.name }}</p>
                     <p class="reggeltcount">{{ user.reggeltcount }}</p>
                     <br>
@@ -20,5 +21,9 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div *ngIf="error.status" class="container">
+        <img class="err-img" src="{{ error.image }}">
     </div>
 </div>
