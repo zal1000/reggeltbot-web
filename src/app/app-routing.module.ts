@@ -9,8 +9,8 @@ import { CountsearchComponent  } from './countsearch/countsearch.component'
 
 const routes: Routes = [
   { path: '', component:HomeComponent },
-  { path: 'count/:dcId', component: CountsearchComponent },
-  { path: 'count', component: CountComponent },
+  { path: 'count/:dcId', component: CountComponent },
+  { path: 'count', component: CountsearchComponent },
   { path: 'leaderboard', component: LeaderboardComponent },
   { path: 'console', component: ConsoleComponent},
 ];

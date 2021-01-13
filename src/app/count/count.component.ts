@@ -4,7 +4,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, Form, FormBuilder } from '@angular/forms';
+import { templateJitUrl } from '@angular/compiler';
 
 
 @Component({
@@ -14,9 +15,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export class CountComponent implements OnInit, OnDestroy {
   reggeltcount = "Loading..." 
-  noid = false;
-  dcpp = null;
+  dcpp = "https://ppllabs.com/wp-content/uploads/2018/10/load.gif";
   tag = "";
+  loading = true;
+  dcname  = "Loading...";
   dcids = [
     {
         "id": "noid",
@@ -31,25 +33,54 @@ export class CountComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     console.log(this.route.snapshot.params.dcId);
-    if(this.route.snapshot.params.dcId === "noid") {
+    if(!this.route.snapshot.params.dcId) {
       this.reggeltcount = "Error: Please specitfy user";
-      this.noid = true;
     } else {
-      const ref = this.db.collection('dcusers').doc(`${this.route.snapshot.params.dcId}`);
-      ref.ref.get().then(doc => {
+      const ref = this.db.collection('dcusers').doc(this.route.snapshot.params.dcId);
+      ref.get().toPromise().then((doc: any) => {
+        if(!doc.exists) {
+          this.reggeltcount = "err"
+        } else {
+          console.log(doc.data())
+          this.reggeltcount = `${doc.data().reggeltcount}`
+          if(!doc.data().pp) {
+            this.dcpp = "https://firebasestorage.googleapis.com/v0/b/zal1000.appspot.com/o/LinkImages%2Fstonks.png?alt=media&token=92675101-924c-4540-b954-d808cb0dacbb"
+          } else {
+            this.dcpp = doc.data().pp
+          }
+          
+          this.dcname = doc.data().username
+        }
+      })
+    }
+  }
+
+  countListener(uid: string): Observable<any> {
+    const ref = this.db.collection('dcusers').doc(uid).snapshotChanges();
+    return ref;
+  }
+/*
         if(!doc.exists) {
           this.reggeltcount = "err"
         } else {
           const docasd: any = doc;
           console.log(doc.data())
-          this.noid = false;
+          this.reggeltcount = `${docasd.data().reggeltcount}`
+          this.dcpp = docasd.data().pp
+        }
+
+              const ref = this.db.collection('dcusers').doc(`423925286350880779`).valueChanges();
+      ref.toPromise().then((doc: any) => {
+        if(!doc.exists) {
+          this.reggeltcount = "err"
+        } else {
+          const docasd: any = doc;
+          console.log(doc.data())
           this.reggeltcount = `${docasd.data().reggeltcount}`
           this.dcpp = docasd.data().pp
         }
       })
-  } 
-  }
-
+*/
   getUser() {
     this.getUserByTag(this.tag).subscribe(
       (response) => {
@@ -64,7 +95,6 @@ export class CountComponent implements OnInit, OnDestroy {
     return this.http.post('https://latest---api-zd72hz742a-uc.a.run.app/reggeltbot/users', {
       username: username,
     });
-
   }
 // https://api.zal1000.net
 
