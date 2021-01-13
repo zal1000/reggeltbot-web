@@ -2,6 +2,9 @@
     <div class="leaderboard">
         <button class="btn btn-outline-light" style="float: right; margin-right: 60px;" (click)="ngOnInit()">Reload</button>
         <div class="container">
+            <img *ngIf="loading" class="loading justify-content-md-center" src="{{loadinggif}}">
+        </div>
+        <div *ngIf="!loading" class="container">
             <div class="row justify-content-md-center" *ngFor="let user of users">
                 <div class="col">
                     <img class="rounded-circle pp" src="{{ user.pp }}">

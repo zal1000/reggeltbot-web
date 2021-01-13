@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  loadgif: "https://ppllabs.com/wp-content/uploads/2018/10/load.gif"
 };
 
 /*

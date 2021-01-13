@@ -7,7 +7,6 @@ import { HttpClient } from '@angular/common/http';
 import { ReactiveFormsModule, Form, FormBuilder } from '@angular/forms';
 import { templateJitUrl } from '@angular/compiler';
 
-
 @Component({
   selector: 'app-count',
   templateUrl: './count.component.html',
@@ -26,7 +25,8 @@ export class CountComponent implements OnInit, OnDestroy {
         "pp": "https://cdn.discordapp.com/avatars/423925286350880779/a_2359f5d0b19f0441cad31c91b45b1249.webp",
         "username": "Loading..."
     }
-];
+  ];
+  
   mySubscription: any;
   constructor(private db: AngularFirestore, private route: ActivatedRoute, private http: HttpClient, private router: Router,) { }
   

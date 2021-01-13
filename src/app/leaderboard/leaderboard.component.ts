@@ -3,7 +3,7 @@ import { AngularFirestore, combineChange } from '@angular/fire/firestore';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-leaderboard',
@@ -14,6 +14,8 @@ export class LeaderboardComponent implements OnInit {
 
   users = null;
   mySubscription: any;
+  loading = true;
+  loadinggif = environment.loadgif;
 
   constructor(private db: AngularFirestore, private http: HttpClient, private router: Router,) { }
 
@@ -21,6 +23,21 @@ export class LeaderboardComponent implements OnInit {
     this.getList().subscribe(
       (response) => {
         this.users = response;
+        this.loading = false;
+      },
+      (error) => {                              //error() callback
+        console.error('Request failed with error')
+      },
+      () => {                                   //complete() callback
+        console.error('Request completed')      //This is actually not needed 
+      })
+  }
+
+  reload() {
+    this.getList().subscribe(
+      (response) => {
+        this.users = response;
+        this.loading = false;
       },
       (error) => {                              //error() callback
         console.error('Request failed with error')
@@ -31,6 +48,7 @@ export class LeaderboardComponent implements OnInit {
   }
   
   getList(): Observable<any> {
+    this.loading = true;
     return this.http.get('https://api.zal1000.net/reggeltbot/leaderboard');
   }
 
@@ -40,17 +58,6 @@ export class LeaderboardComponent implements OnInit {
     }
   }
   
-    reload() {
-      this.router.routeReuseStrategy.shouldReuseRoute = function () {
-        return false;
-      };
-      
-      this.mySubscription = this.router.events.subscribe((event) => {
-        if (event instanceof NavigationEnd) {
-          // Trick the Router into believing it's last link wasn't previously loaded
-          this.router.navigated = false;
-        }
-      });
-    }
+
 
 }
