@@ -26,6 +26,8 @@ export class LeaderboardComponent implements OnInit {
   notfoundimg = environment.noimg;
   membercount = 25;
 
+  apiurl = environment.apiurl;
+
   constructor(private db: AngularFirestore, private http: HttpClient, private router: Router,) { }
 
   ngOnInit(): void {
@@ -33,6 +35,8 @@ export class LeaderboardComponent implements OnInit {
       (response) => {
         this.users = response;
         this.loading = false;
+        
+        console.log(response)
       },
       (error) => {                              //error() callback
         console.error('Request failed with error')
@@ -49,7 +53,7 @@ export class LeaderboardComponent implements OnInit {
         this.loading = false;
       },
       (error) => {                              //error() callback
-        console.error('Request failed with error')
+        console.error('Request failed with error', error)
         this.loading = false;
         this.error.status = true;
         this.error.code = error.code;
@@ -64,7 +68,7 @@ export class LeaderboardComponent implements OnInit {
   
   getList(): Observable<any> {
     this.loading = true;
-    return this.http.get(`https://api.zal1000.net/reggeltbot/leaderboard?m=${this.membercount}`);
+    return this.http.get(`${this.apiurl}/reggeltbot/leaderboard?m=${this.membercount}`);
   }
 
   ngOnDestroy() {
