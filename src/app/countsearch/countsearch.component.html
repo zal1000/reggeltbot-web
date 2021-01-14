@@ -1,9 +1,5 @@
-<div class="leaderboard">
-    <div *ngIf="!loading" class="container">
-        <div class="row justify-content-md-center" *ngFor="let user of buttons">
-            <div class="col">
-                <button>{{ user.tag }}</button>
-            </div>
-        </div>
-    </div>
+<div class="padd"></div>
+<div class="search">
+    <input ngModel="name" placeholder="name">
+    <button (click)="getUsers()">Search</button>
 </div>

@@ -4,12 +4,9 @@
  
  @import url("https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css");
 
-
- body {
-  background-image: url(https://firebasestorage.googleapis.com/v0/b/zal1000.appspot.com/o/LinkImages%2Fnqb.png?alt=media&token=056436cc-c29f-406f-aefb-357b5b93bf93);
-  background-repeat: repeat;
+body {
+  background-color: #23272A;
 }
-
 .spinner {
   position: absolute;
   top: calc(50% - #{$size / 2});
@@ -47,3 +44,5 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -5,16 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { CountComponent } from './count/count.component';
+
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { HttpClientModule } from '@angular/common/http';
+
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { ConsoleComponent } from './console/console.component';
 import { HomeComponent } from './home/home.component';
-import { HttpClientModule } from '@angular/common/http';
+import { CountComponent } from './count/count.component';
+import { CountsearchComponent } from './countsearch/countsearch.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 const config = {
   apiKey: "AIzaSyAt2Z0NaWwdWYjY_aekfmXlrxVABYsymaM",
@@ -35,6 +39,7 @@ const config = {
     LeaderboardComponent,
     ConsoleComponent,
     HomeComponent,
+    CountsearchComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -44,7 +49,7 @@ const config = {
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
-    HttpClientModule,
+    HttpClientModule, BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
