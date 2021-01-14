@@ -31,8 +31,8 @@ export class CountComponent implements OnInit, OnDestroy {
   mySubscription: any;
   constructor(private db: AngularFirestore, private route: ActivatedRoute, private http: HttpClient, private router: Router,) { }
   
-
   ngOnInit(): void {
+    console.log(this.route.snapshot.queryParams.user)
     console.log(this.route.snapshot.params.dcId);
     if(!this.route.snapshot.params.dcId) {
       this.reggeltcount = "Error: Please specitfy user";

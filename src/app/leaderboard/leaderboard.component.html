@@ -1,5 +1,7 @@
 <div class="blank">
-    <button class="btn btn-outline-light" style="float: right; margin-right: 60px;" (click)="ngOnInit()">Reload</button>
+    <div class="button-box">
+        <button class="btn btn-outline-light btn-lg btn-block" (click)="ngOnInit()">Reload</button>
+    </div>
 
     <div *ngIf="!error.status" class="leaderboard">
         <div class="container">
