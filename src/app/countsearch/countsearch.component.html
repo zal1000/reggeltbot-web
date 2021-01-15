@@ -1,5 +1,5 @@
 <div class="padd"></div>
-<div class="search">
-    <input ngModel="name" placeholder="name">
-    <button (click)="getUsers()">Search</button>
-</div>
+<form [formGroup]="form" (ngSubmit)="getUsers()">
+    <input matInput formControlName="name" placeholder="zal1000" autocomplete="off">
+    <button type="submit">Submit</button>
+</form>

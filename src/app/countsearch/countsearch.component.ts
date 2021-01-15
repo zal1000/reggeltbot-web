@@ -2,7 +2,7 @@ import { Component, OnInit, Input  } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-countsearch',
@@ -10,25 +10,27 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./countsearch.component.scss']
 })
 export class CountsearchComponent implements OnInit {
-  name: string = "";
+  form!: FormGroup;
   buttons = [
     {
       tag: "Loading...",
       pp: environment.loadgif
     }
   ]
-  
-  constructor(private db: AngularFirestore,) { }
+  name: any;
 
-  
+  constructor(private db: AngularFirestore, private fb: FormBuilder) { }
+
 
   
   ngOnInit() {
-
+    this.form = this.fb.group({
+      name: [''],
+    })
   }
 
-  getUsers() {
-    console.log(this.name)
+  async getUsers() {
+    console.log(this.name.value)
     const btns: { tag: any; pp: any; }[] = [];
     const ref = this.db.firestore.collection('dcusers').where('username', '==', this.name);
     ref.get().then((docs: any) => {

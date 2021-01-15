@@ -18,11 +18,12 @@ import { ConsoleComponent } from './console/console.component';
 import { HomeComponent } from './home/home.component';
 import { CountComponent } from './count/count.component';
 import { CountsearchComponent } from './countsearch/countsearch.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms'
 
 const config = {
   apiKey: "AIzaSyAt2Z0NaWwdWYjY_aekfmXlrxVABYsymaM",
-  authDomain: "zal1000.firebaseapp.com",
+  authDomain: "auth.zal1000.com",
   databaseURL: "https://zal1000.firebaseio.com",
   projectId: "zal1000",
   storageBucket: "zal1000.appspot.com",
@@ -49,7 +50,11 @@ const config = {
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
-    HttpClientModule, BrowserAnimationsModule,
+    HttpClientModule, 
+    BrowserAnimationsModule,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
