@@ -1,5 +1,14 @@
 <div class="padd"></div>
-<form [formGroup]="form" (ngSubmit)="getUsers()">
-    <input matInput formControlName="name" placeholder="zal1000" autocomplete="off">
-    <button type="submit">Submit</button>
+<form #f="ngForm" (ngSubmit)="getUsers(f)" novalidate>
+    <input name="name" placeholder="Discord user name (zal1000)" ngModel required #first="ngModel">
+    <button>Submit</button>
 </form>
+<br>
+<div class="container">
+    <div class="row justify-content-md-center" *ngFor="let btn of buttons">
+        <div class="col">
+            <button *ngIf="btn.err">{{ btn.tag }}</button>
+            <button *ngIf="!btn.err" routerLink="{{ btn.id }}">{{ btn.tag }}</button>
+        </div>
+    </div>
+</div>

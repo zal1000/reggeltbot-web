@@ -2,7 +2,7 @@ import { Component, OnInit, Input  } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-countsearch',
@@ -11,40 +11,46 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, FormsModule }
 })
 export class CountsearchComponent implements OnInit {
   form!: FormGroup;
-  buttons = [
+  buttons =[
     {
-      tag: "Loading...",
-      pp: environment.loadgif
+      tag: "Please search for user",
+      pp: null,
+      id: null,
+      err: true,
     }
   ]
   name: any;
 
   constructor(private db: AngularFirestore, private fb: FormBuilder) { }
-
-
   
   ngOnInit() {
-    this.form = this.fb.group({
-      name: [''],
-    })
+    this.form = new FormGroup({
+      name: new FormControl()
+   })
   }
 
-  async getUsers() {
-    console.log(this.name.value)
-    const btns: { tag: any; pp: any; }[] = [];
-    const ref = this.db.firestore.collection('dcusers').where('username', '==', this.name);
+  getUsers(f: NgForm) {
+    console.log(f.value)
+    const name = f.value.name;
+    console.log(name)
+    const btns: { tag: any; pp: any; id: any; err: boolean; }[] = [];
+    const ref = this.db.firestore.collection('dcusers').where('username', '==', name);
     ref.get().then((docs: any) => {
         docs.forEach((doc: any) => {
           btns.push({
             tag: doc.data().tag,
             pp: doc.data().pp,
+            id: doc.id,
+            err: false,
           })
         });
     }).then(() => {
       if(btns.length === 0) {
         btns.push({
           tag: "Error: user not found",
-          pp: environment.error
+          pp: environment.error,
+          id: null,
+          err: true,
         })
         this.buttons = btns;
         console.log(btns)
@@ -53,6 +59,9 @@ export class CountsearchComponent implements OnInit {
         console.log(btns)
       }
 
+    }).catch(err => {
+      console.log(err)
     })
   }
+  
 }
