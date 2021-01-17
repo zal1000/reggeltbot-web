@@ -1,14 +1,21 @@
 <div class="padd"></div>
 <form #f="ngForm" (ngSubmit)="getUsers(f)" novalidate>
-    <input name="name" placeholder="Discord user name (zal1000)" ngModel required #first="ngModel">
-    <button>Submit</button>
+    <div class="container">
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">@</span>
+            <input type="text" name="name" class="form-control" placeholder="Discord user name" aria-label="Discord user name" aria-describedby="basic-addon1" ngModel required #first="ngModel">
+        </div>
+        <div class="wrapper">
+            <button class="btn btn-primary vertical-center m10">Submit</button>
+        </div>
+    </div>
 </form>
 <br>
 <div class="container">
     <div class="row justify-content-md-center" *ngFor="let btn of buttons">
-        <div class="col">
-            <button *ngIf="btn.err">{{ btn.tag }}</button>
-            <button *ngIf="!btn.err" routerLink="{{ btn.id }}">{{ btn.tag }}</button>
+        <div class="col wrapper">
+            <button class="btn btn-danger center" *ngIf="btn.err">{{ btn.tag }}</button>
+            <button class="btn btn-success center" *ngIf="!btn.err" routerLink="{{ btn.id }}">{{ btn.tag }}</button>
         </div>
     </div>
 </div>
