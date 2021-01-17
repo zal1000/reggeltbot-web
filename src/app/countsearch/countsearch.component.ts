@@ -22,6 +22,7 @@ export class CountsearchComponent implements OnInit {
   name: any;
 
   loading = false;
+  pure = true;
 
   constructor(private db: AngularFirestore, private fb: FormBuilder) { }
   
@@ -33,6 +34,7 @@ export class CountsearchComponent implements OnInit {
 
   getUsers(f: NgForm) {
     this.loading = true;
+    this.pure = false;
     console.log(f.value)
     const name = f.value.name;
     console.log(name)

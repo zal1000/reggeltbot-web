@@ -21,7 +21,8 @@
 <div *ngIf="!loading" class="container">
     <div class="row justify-content-md-center" *ngFor="let btn of buttons">
         <div class="col wrapper">
-            <button class="btn btn-danger center" *ngIf="btn.err">{{ btn.tag }}</button>
+            <button class="btn btn-info center" *ngIf="btn.err && pure">{{ btn.tag }}</button>
+            <button class="btn btn-danger center" *ngIf="btn.err && !pure">{{ btn.tag }}</button>
             <button class="btn btn-success center" *ngIf="!btn.err" routerLink="{{ btn.id }}">{{ btn.tag }}</button>
         </div>
     </div>
