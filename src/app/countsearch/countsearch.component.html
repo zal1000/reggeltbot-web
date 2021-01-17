@@ -11,7 +11,14 @@
     </div>
 </form>
 <br>
-<div class="container">
+<div>
+    <div *ngIf="loading" class="spinner">
+        <span class="spinner-inner-1"></span>
+        <span class="spinner-inner-2"></span>
+        <span class="spinner-inner-3"></span>
+    </div>
+</div>
+<div *ngIf="!loading" class="container">
     <div class="row justify-content-md-center" *ngFor="let btn of buttons">
         <div class="col wrapper">
             <button class="btn btn-danger center" *ngIf="btn.err">{{ btn.tag }}</button>

@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { ReactiveFormsModule, Form, FormBuilder } from '@angular/forms';
 import { templateJitUrl } from '@angular/compiler';
 import { environment } from 'src/environments/environment';
+import { CountsearchComponent } from '../countsearch/countsearch.component'
 
 @Component({
   selector: 'app-count',
