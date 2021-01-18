@@ -23,7 +23,7 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms'
 
 const config = {
   apiKey: "AIzaSyAt2Z0NaWwdWYjY_aekfmXlrxVABYsymaM",
-  authDomain: "auth.zal1000.com",
+  authDomain: "zal1000.firebaseapp.com",
   databaseURL: "https://zal1000.firebaseio.com",
   projectId: "zal1000",
   storageBucket: "zal1000.appspot.com",

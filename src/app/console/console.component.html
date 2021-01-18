@@ -1,4 +1,30 @@
 <br>
 <br>
-<p>console works!</p>
-<button appGoogleSignin>Google Signin</button>
+<br>
+<div *ngIf="loading">
+    <div class="spinner">
+        <span class="spinner-inner-1"></span>
+        <span class="spinner-inner-2"></span>
+        <span class="spinner-inner-3"></span>
+    </div>
+</div>
+<div *ngIf="!loading">
+    <form #f="ngForm" *ngIf="!loggedin" (ngSubmit)="login(f)" novalidate>
+        <div class="container">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">@</span>
+                <input type="email" name="email" class="form-control" placeholder="Email..." ngModel required #first="ngModel">
+            </div>
+            <input type="password" name="pass" class="form-control" placeholder="Password..." ngModel required>
+            <div class="wrapper">
+                <button class="btn btn-primary vertical-center m10" type="submit">Login</button>
+            </div>
+        </div>
+        <button type="button" (click)="googleLogin()"></button>
+    </form>
+    <div *ngIf="loggedin">
+        <button (click)="getUser()">GetUser</button>
+        <button (click)="logout()">logout</button>
+    </div>
+</div>
+

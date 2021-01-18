@@ -1,39 +1,57 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
+import * as firebase from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  
-  user!: Observable<firebase.default.User>;
+  userData: any;
+  loggedin: boolean = false;
 
-  constructor(private firebaseAuth: AngularFireAuth) { }
-
-  async signup(email: string, password: string) {
-    this.firebaseAuth
-      .createUserWithEmailAndPassword(email, password)
-      .then(value => {
-        return value;
-      })
-      .catch(err => {
-        throw new Error(err)
-      });
+  constructor(
+    public afs: AngularFirestore,
+    public afAuth: AngularFireAuth,
+  ) {
+    this.afAuth.authState.subscribe(user => {
+      if(user) {
+        this.userData = user;
+        this.loggedin = true;
+      } else {
+        this.userData = null;
+        this.loggedin = false
+      }
+    })
   }
 
-  async login(email: string, password: string) {
-    this.firebaseAuth
-      .signInWithEmailAndPassword(email, password)
-      .then(value => {
-        return value;
-      })
-      .catch(err => {
-        throw new Error(err)
-      });
+  user(): Observable<any> {
+    return this.userData;
   }
 
-  async logout() {
-    this.firebaseAuth.signOut();
+  signIn(email: string, pass: string) {
+    this.afAuth.signInWithEmailAndPassword(email, pass)
+    .then((res) => {
+    }).catch(err => {
+      console.warn(err)
+    })
   }
+
+  googleLogin() {
+    this.afAuth.signInWithPopup(new firebase.default.auth.GoogleAuthProvider())
+  }
+
+  signOut() {
+    this.afAuth.signOut()
+  }
+}
+
+export interface User {
+  uid: string;
+  email: string;
+  displayName: string;
+  photoURL: string;
+  emailVerified: boolean;
 }
