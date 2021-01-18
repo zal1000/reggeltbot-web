@@ -2,6 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import {
+  MatSnackBar,
+  MatSnackBarConfig,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-console',
@@ -12,10 +18,11 @@ export class ConsoleComponent implements OnInit {
   loggedin: boolean = false;
   loading: boolean = true;
 
-  constructor(public auth: AuthService, public afAuth: AngularFireAuth) { 
+  constructor(public auth: AuthService, public afAuth: AngularFireAuth,) { 
     this.afAuth.authState.subscribe(user => {
       if(user) {
         this.loggedin = true;
+        //this.openSnackBar(`Logged in as ${user.email}`)
         this.loading = false;
       } else {
         this.loggedin = false
@@ -26,6 +33,10 @@ export class ConsoleComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  openSnackBar(message: string) {
+    //his.snackBar.open(message);
   }
 
   login(f: NgForm) {

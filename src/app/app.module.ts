@@ -19,8 +19,8 @@ import { HomeComponent } from './home/home.component';
 import { CountComponent } from './count/count.component';
 import { CountsearchComponent } from './countsearch/countsearch.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms'
-
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 const config = {
   apiKey: "AIzaSyAt2Z0NaWwdWYjY_aekfmXlrxVABYsymaM",
   authDomain: "zal1000.firebaseapp.com",
