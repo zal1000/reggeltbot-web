@@ -1,6 +1,7 @@
 <br>
 <br>
 <br>
+<br>
 <div *ngIf="loading">
     <div class="spinner">
         <span class="spinner-inner-1"></span>
@@ -9,18 +10,26 @@
     </div>
 </div>
 <div *ngIf="!loading">
-    <form #f="ngForm" *ngIf="!loggedin" (ngSubmit)="login(f)" novalidate>
+    <form #f="ngForm" class="form" *ngIf="!loggedin" novalidate>
         <div class="container">
             <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">@</span>
-                <input type="email" name="email" class="form-control" placeholder="Email..." ngModel required #first="ngModel">
+                <span class="input-group-text" id="basic-addon1">Email</span>
+                <input type="email" name="email" class="form-control" placeholder="horvathzalan@zal1000.com" ngModel required #first="ngModel">
             </div>
-            <input type="password" name="pass" class="form-control" placeholder="Password..." ngModel required>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Password</span>
+                <input type="password" name="pass" class="form-control" placeholder="Password..." ngModel required>
+            </div>
             <div class="wrapper">
-                <button class="btn btn-primary vertical-center m10" type="submit">Login</button>
+                <br>
+                <button class="btn btn-primary login-signup m10" (click)="login(f)" style="margin-right: 10%;" type="submit">Login</button>
+                <button class="btn btn-secondary login-signup m10" (click)="register(f)" type="button">Register</button>
+                <br><br>
+                <button type="button" class="fab fa-google btn btn-danger vertical-center m10" (click)="googleLogin()"> Google login</button><br><br>
+                <button type="button" class="fab fa-facebook-f btn btn-primary vertical-center m10" (click)="facebookLogin()"> Facebook login</button>
+
             </div>
         </div>
-        <button type="button" (click)="googleLogin()"></button>
     </form>
     <div *ngIf="loggedin">
         <button (click)="getUser()">GetUser</button>

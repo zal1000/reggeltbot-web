@@ -32,6 +32,10 @@ export class ConsoleComponent implements OnInit {
     this.auth.signIn(f.value.email, f.value.pass)
   }
 
+  register(f: NgForm) {
+    this.auth.register(f.value.email, f.value.pass)
+  }
+
   getUser() {
     this.afAuth.user.subscribe(user => {
       console.log(user?.uid)
@@ -40,6 +44,10 @@ export class ConsoleComponent implements OnInit {
 
   googleLogin() {
     this.auth.googleLogin()
+  }
+
+  facebookLogin() {
+    this.auth.facebookLogin()
   }
 
   logout() {

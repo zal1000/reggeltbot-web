@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import * as firebase from 'firebase/app';
 
 @Injectable({
@@ -38,9 +38,26 @@ export class AuthService {
       console.warn(err)
     })
   }
+  register(email: string, pass: string) {
+    this.afAuth.createUserWithEmailAndPassword(email, pass).then((res)  => {
+
+    }).catch(err => {
+      console.warn(err)
+    })
+  }
 
   googleLogin() {
     this.afAuth.signInWithPopup(new firebase.default.auth.GoogleAuthProvider())
+  }
+
+  facebookLogin() {
+    this.afAuth.signInWithPopup(new firebase.default.auth.FacebookAuthProvider())
+    .then(() => {
+      return null;
+    })
+    .catch(err => {
+      throw new Error(err)
+    })
   }
 
   signOut() {
