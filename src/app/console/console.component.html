@@ -27,13 +27,15 @@
                 <br><br>
                 <button type="button" class="fab fa-google btn btn-danger vertical-center m10" (click)="googleLogin()"> Google login</button><br><br>
                 <button type="button" class="fab fa-facebook-f btn btn-primary vertical-center m10" (click)="facebookLogin()"> Facebook login</button>
-
             </div>
         </div>
     </form>
-    <div *ngIf="loggedin">
-        <button (click)="getUser()">GetUser</button>
-        <button (click)="logout()">logout</button>
+    <div class="container" *ngIf="loggedin">
+        <form #f="ngForm" class="form " *ngIf="!loading" (ngSubmit)="update(f)">
+              <button class="btn btn-primary" type="submit">Update</button>
+
+        </form>
+        <button class="btn btn-secondary" (click)="logout()">logout</button>
     </div>
 </div>
 
