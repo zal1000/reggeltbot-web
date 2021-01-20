@@ -7,6 +7,7 @@ import {
   MatSnackBarConfig,
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
+  SimpleSnackBar,
 } from '@angular/material/snack-bar';
 
 @Component({
@@ -18,11 +19,12 @@ export class ConsoleComponent implements OnInit {
   loggedin: boolean = false;
   loading: boolean = true;
 
-  constructor(public auth: AuthService, public afAuth: AngularFireAuth,) { 
+  constructor(public auth: AuthService, public afAuth: AngularFireAuth, private snackBar: MatSnackBar) { 
     this.afAuth.authState.subscribe(user => {
       if(user) {
         this.loggedin = true;
         this.loading = false;
+        this.snackBar.open(`Logged in as: ${user.email}`)
       } else {
         this.loggedin = false
         this.loading = false;

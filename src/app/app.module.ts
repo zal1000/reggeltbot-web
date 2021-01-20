@@ -21,6 +21,8 @@ import { CountsearchComponent } from './countsearch/countsearch.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatButtonModule } from '@angular/material/button'
+import { fromEventPattern } from 'rxjs';
 const config = {
   apiKey: "AIzaSyAt2Z0NaWwdWYjY_aekfmXlrxVABYsymaM",
   authDomain: "zal1000.firebaseapp.com",
@@ -55,6 +57,7 @@ const config = {
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
