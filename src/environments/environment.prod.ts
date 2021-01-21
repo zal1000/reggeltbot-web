@@ -6,14 +6,13 @@ export const environment = {
   apiurl: "https://api-zd72hz742a-uc.a.run.app",
   showConsole: false,
   firebaseconfig: {
-    apiKey: "AIzaSyAt2Z0NaWwdWYjY_aekfmXlrxVABYsymaM",
+    apiKey: "AIzaSyDpsXG8ZUofeaVVimEhdRhhbc8kJCjFsM0",
     authDomain: "zal1000.firebaseapp.com",
     databaseURL: "https://zal1000.firebaseio.com",
     projectId: "zal1000",
     storageBucket: "zal1000.appspot.com",
     messagingSenderId: "512279358183",
-    appId: "1:512279358183:web:15b9bc444ad56583541042",
-    measurementId: "G-V30XXF400W"
-  
+    appId: "1:512279358183:web:484cbc7165c35c80541042",
+    measurementId: "G-VFXSKE7PS7"  
   },
 };

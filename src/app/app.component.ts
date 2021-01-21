@@ -4,6 +4,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { AngularFireAnalytics} from '@angular/fire/analytics'
 
 
 
@@ -21,7 +22,7 @@ export class AppComponent implements OnInit {
   showConsole: boolean = environment.showConsole;
   prod: boolean = environment.production;
 
-  constructor(public afAuth: AngularFireAuth, private http: HttpClient) {
+  constructor(public afAuth: AngularFireAuth, private http: HttpClient, private anal: AngularFireAnalytics) {
     this.afAuth.authState.subscribe(user => {
       if(user) {
         this.loggedin = true;
@@ -34,10 +35,10 @@ export class AppComponent implements OnInit {
               console.log(response)
             },
             (error) => {
-              console.warn('Request failed with error')
+              console.warn('Request failed', error)
             },
             () => {
-              console.warn('Request completed')
+              console.debug('Request completed')
             })
           this.userProfilePicture = user.photoURL;
         }

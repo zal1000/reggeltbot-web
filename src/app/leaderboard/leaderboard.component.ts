@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { AngularFireAnalytics } from '@angular/fire/analytics'
 
 @Component({
   selector: 'app-leaderboard',
@@ -28,7 +29,7 @@ export class LeaderboardComponent implements OnInit {
 
   apiurl = environment.apiurl;
 
-  constructor(private db: AngularFirestore, private http: HttpClient, private router: Router,) { }
+  constructor(private db: AngularFirestore, private http: HttpClient, private router: Router, private anal: AngularFireAnalytics) { }
 
   ngOnInit(): void {
     this.getList().subscribe(
@@ -47,6 +48,7 @@ export class LeaderboardComponent implements OnInit {
   }
 
   reload() {
+    this.anal.logEvent('leaderboar-reload')
     this.getList().subscribe(
       (response) => {
         this.users = response;

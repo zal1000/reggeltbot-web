@@ -5,6 +5,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable, throwError } from 'rxjs';
 import * as firebase from 'firebase/app';
 import { MatSnackBar, } from '@angular/material/snack-bar';
+import { AngularFireAnalytics } from '@angular/fire/analytics'
 
 
 @Injectable({
@@ -17,10 +18,12 @@ export class AuthService {
   constructor(
     public afs: AngularFirestore,
     public afAuth: AngularFireAuth,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private anal: AngularFireAnalytics,
   ) {
     this.afAuth.authState.subscribe(user => {
       if(user) {
+        this.anal.setUserId(user.uid)
         this.userData = user;
         this.loggedin = true;
 
