@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   userProfilePicture: any = "https://firebasestorage.googleapis.com/v0/b/zal1000.net/o/demo%2Fpp%2Fdemo.png?alt=media&token=93fec366-cc41-45e0-9ad1-f6a399cc750c";
   loginmsg: string = "Logged out";
   showConsole: boolean = environment.showConsole;
+  prod: boolean = environment.production;
 
   constructor(public afAuth: AngularFireAuth, private http: HttpClient) {
     this.afAuth.authState.subscribe(user => {

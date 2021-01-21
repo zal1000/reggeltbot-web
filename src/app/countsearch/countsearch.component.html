@@ -2,8 +2,8 @@
 <form #f="ngForm" (ngSubmit)="getUsers(f)" novalidate>
     <div class="container">
         <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">@</span>
-            <input type="text" name="name" class="form-control" placeholder="Discord user name" aria-label="Discord user name" aria-describedby="basic-addon1" ngModel required #first="ngModel">
+            <span class="input-group-text" id="basic-addon1">Full Discord user name</span>
+            <input type="text" name="name" class="form-control" placeholder="Pl.: zal1000" aria-label="Discord user name" aria-describedby="basic-addon1" ngModel required #first="ngModel">
         </div>
         <div class="wrapper">
             <button class="btn btn-primary vertical-center m10">Submit</button>
