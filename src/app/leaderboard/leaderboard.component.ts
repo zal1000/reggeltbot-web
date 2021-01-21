@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { AngularFireAnalytics } from '@angular/fire/analytics'
+import { AngularFireMessaging } from '@angular/fire/messaging'
 
 @Component({
   selector: 'app-leaderboard',
@@ -29,7 +30,7 @@ export class LeaderboardComponent implements OnInit {
 
   apiurl = environment.apiurl;
 
-  constructor(private db: AngularFirestore, private http: HttpClient, private router: Router, private anal: AngularFireAnalytics) { }
+  constructor(private db: AngularFirestore, private http: HttpClient, private router: Router, private anal: AngularFireAnalytics, private msg: AngularFireMessaging) { }
 
   ngOnInit(): void {
     this.getList().subscribe(

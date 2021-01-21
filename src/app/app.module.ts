@@ -24,6 +24,7 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button'
 import { fromEventPattern } from 'rxjs';
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { fromEventPattern } from 'rxjs';
     ReactiveFormsModule,
     MatButtonModule,
     MatSnackBarModule,
+    AngularFireMessagingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { MatSnackBar, } from '@angular/material/snack-bar';
+import { MessagingService } from '../messaging.service';
 
 @Component({
   selector: 'app-console',
@@ -12,8 +13,9 @@ import { MatSnackBar, } from '@angular/material/snack-bar';
 export class ConsoleComponent implements OnInit {
   loggedin: boolean = false;
   loading: boolean = true;
+  message: any;
 
-  constructor(public auth: AuthService, public afAuth: AngularFireAuth, private snackBar: MatSnackBar) { 
+  constructor(public auth: AuthService, public afAuth: AngularFireAuth, private snackBar: MatSnackBar, private messagingService: MessagingService) { 
     this.afAuth.authState.subscribe(user => {
       if(user) {
         this.loggedin = true;
@@ -30,6 +32,9 @@ export class ConsoleComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.messagingService.requestPermission()
+    this.messagingService.receiveMessage()
+    this.message = this.messagingService.currentMessage
   }
 
   update(f: NgForm) {
