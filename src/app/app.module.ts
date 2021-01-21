@@ -58,6 +58,7 @@ const config = {
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

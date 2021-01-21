@@ -2,13 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
-import {
-  MatSnackBar,
-  MatSnackBarConfig,
-  MatSnackBarHorizontalPosition,
-  MatSnackBarVerticalPosition,
-  SimpleSnackBar,
-} from '@angular/material/snack-bar';
+import { MatSnackBar, } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-console',
@@ -24,7 +18,9 @@ export class ConsoleComponent implements OnInit {
       if(user) {
         this.loggedin = true;
         this.loading = false;
-        this.snackBar.open(`Logged in as: ${user.email}`)
+        this.snackBar.open(`Logged in as: ${user.email}`, "Okay", {
+          duration: 5000,
+        })
       } else {
         this.loggedin = false
         this.loading = false;

@@ -4,6 +4,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable, throwError } from 'rxjs';
 import * as firebase from 'firebase/app';
+import { MatSnackBar, } from '@angular/material/snack-bar';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +17,13 @@ export class AuthService {
   constructor(
     public afs: AngularFirestore,
     public afAuth: AngularFireAuth,
+    private snackBar: MatSnackBar
   ) {
     this.afAuth.authState.subscribe(user => {
       if(user) {
         this.userData = user;
         this.loggedin = true;
+
       } else {
         this.userData = null;
         this.loggedin = false
@@ -35,19 +39,21 @@ export class AuthService {
     this.afAuth.signInWithEmailAndPassword(email, pass)
     .then((res) => {
     }).catch(err => {
-      console.warn(err)
+      this.snackBar.open(`${err.message}`, "Okay")
     })
   }
   register(email: string, pass: string) {
     this.afAuth.createUserWithEmailAndPassword(email, pass).then((res)  => {
 
     }).catch(err => {
-      console.warn(err)
+      this.snackBar.open(`${err.message}`, "Okay")
     })
   }
 
   googleLogin() {
-    this.afAuth.signInWithPopup(new firebase.default.auth.GoogleAuthProvider())
+    this.afAuth.signInWithPopup(new firebase.default.auth.GoogleAuthProvider()).catch(err => {
+      this.snackBar.open(`${err.message}`, "Okay")
+    })
   }
 
   facebookLogin() {
