@@ -39,20 +39,20 @@ export class AuthService {
     this.afAuth.signInWithEmailAndPassword(email, pass)
     .then((res) => {
     }).catch(err => {
-      this.snackBar.open(`${err.message}`, "Okay")
+      this.errorHandler(err)
     })
   }
   register(email: string, pass: string) {
     this.afAuth.createUserWithEmailAndPassword(email, pass).then((res)  => {
 
     }).catch(err => {
-      this.snackBar.open(`${err.message}`, "Okay")
+      this.errorHandler(err)
     })
   }
 
   googleLogin() {
     this.afAuth.signInWithPopup(new firebase.default.auth.GoogleAuthProvider()).catch(err => {
-      this.snackBar.open(`${err.message}`, "Okay")
+      this.errorHandler(err)
     })
   }
 
@@ -62,12 +62,24 @@ export class AuthService {
       return null;
     })
     .catch(err => {
-      throw new Error(err)
+      this.errorHandler(err)
     })
   }
 
+
+
   signOut() {
-    this.afAuth.signOut()
+    this.afAuth.signOut().catch(err => {
+      this.errorHandler(err)
+    })
+  }
+
+  errorHandler(err: any) {
+    if(err.code === "auth/popup-closed-by-user") {
+      return
+    } else {
+      this.snackBar.open(`${err.message}`, "Dismiss")
+    }
   }
 }
 

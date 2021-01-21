@@ -25,14 +25,14 @@
                 <button class="btn btn-primary login-signup m10" (click)="login(f)" style="margin-right: 10%;" type="submit">Login</button>
                 <button class="btn btn-secondary login-signup m10" (click)="register(f)" type="button">Register</button>
                 <br><br>
-                <button type="button" class="fab fa-google btn btn-danger vertical-center m10" (click)="googleLogin()"> Google login</button><br><br>
-                <button type="button" class="fab fa-facebook-f btn btn-primary vertical-center m10" (click)="facebookLogin()"> Facebook login</button>
+                <button type="button" class="fab fa-google btn btn-danger vertical-center m10" (click)="googleLogin()"> Login with Google</button><br><br>
+                <button type="button" class="fab fa-facebook-f btn btn-primary vertical-center m10" (click)="facebookLogin()"> Login with Facebook</button>
             </div>
         </div>
     </form>
     <div class="container" *ngIf="loggedin">
         <form #f="ngForm" class="form " *ngIf="!loading" (ngSubmit)="update(f)">
-              <button mat-button type="submit">Update</button>
+            <!--<button mat-button type="submit">Update</button>-->
 
         </form>
         <button class="btn btn-secondary" (click)="logout()">logout</button>
