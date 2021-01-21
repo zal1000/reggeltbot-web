@@ -9,7 +9,17 @@ export const environment = {
   noimg: "https://firebasestorage.googleapis.com/v0/b/zal1000.appspot.com/o/LinkImages%2Fstonks.png?alt=media&token=92675101-924c-4540-b954-d808cb0dacbb",
   apiurl: "https://latest---api-zd72hz742a-uc.a.run.app",
   showConsole: true,
-
+  firebaseconfig: {
+    apiKey: "AIzaSyAt2Z0NaWwdWYjY_aekfmXlrxVABYsymaM",
+    authDomain: "zal1000.firebaseapp.com",
+    databaseURL: "https://zal1000.firebaseio.com",
+    projectId: "zal1000",
+    storageBucket: "zal1000.appspot.com",
+    messagingSenderId: "512279358183",
+    appId: "1:512279358183:web:15b9bc444ad56583541042",
+    measurementId: "G-V30XXF400W"
+  
+  },
 };
 
 /*

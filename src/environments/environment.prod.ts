@@ -5,4 +5,15 @@ export const environment = {
   noimg: "https://firebasestorage.googleapis.com/v0/b/zal1000.appspot.com/o/LinkImages%2Fdiscord-computer-icons-logo-computer-software-avatar-5dcd8a759521fd6bde97d48d4d0e161f.png?alt=media&token=8e03323f-f6ba-46bd-91d6-d4f9850c927e",
   apiurl: "https://api-zd72hz742a-uc.a.run.app",
   showConsole: false,
+  firebaseconfig: {
+    apiKey: "AIzaSyAt2Z0NaWwdWYjY_aekfmXlrxVABYsymaM",
+    authDomain: "zal1000.firebaseapp.com",
+    databaseURL: "https://zal1000.firebaseio.com",
+    projectId: "zal1000",
+    storageBucket: "zal1000.appspot.com",
+    messagingSenderId: "512279358183",
+    appId: "1:512279358183:web:15b9bc444ad56583541042",
+    measurementId: "G-V30XXF400W"
+  
+  },
 };

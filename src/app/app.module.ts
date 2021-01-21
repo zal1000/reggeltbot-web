@@ -12,6 +12,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics'
 
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { ConsoleComponent } from './console/console.component';
@@ -23,17 +24,6 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button'
 import { fromEventPattern } from 'rxjs';
-const config = {
-  apiKey: "AIzaSyAt2Z0NaWwdWYjY_aekfmXlrxVABYsymaM",
-  authDomain: "zal1000.firebaseapp.com",
-  databaseURL: "https://zal1000.firebaseio.com",
-  projectId: "zal1000",
-  storageBucket: "zal1000.appspot.com",
-  messagingSenderId: "512279358183",
-  appId: "1:512279358183:web:15b9bc444ad56583541042",
-  measurementId: "G-V30XXF400W"
-
-};
 
 @NgModule({
   declarations: [
@@ -48,10 +38,11 @@ const config = {
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    AngularFireModule.initializeApp(config),
+    AngularFireModule.initializeApp(environment.firebaseconfig),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
+    AngularFireAnalyticsModule,
     HttpClientModule, 
     BrowserAnimationsModule,
     BrowserModule,
