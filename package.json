@@ -12,8 +12,7 @@
     "serve:ssr": "node dist/my-app/server/main.js",
     "build:ssr": "ng build --prod && ng run my-app:server:production",
     "prerender": "ng run my-app:prerender",
-    "prebuild:ssr": "ngcc",
-    "postinstall": "ngcc"
+    "prebuild:ssr": "ngcc"
   },
   "private": true,
   "dependencies": {
