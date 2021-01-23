@@ -5,6 +5,10 @@ import { CountComponent } from './count/count.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { ConsoleComponent } from './console/console.component';
 import { CountsearchComponent  } from './countsearch/countsearch.component'
+import { componentFactoryName } from '@angular/compiler';
+import { PremiumComponent } from './premium/premium.component';
+import { SuccessComponent } from './success/success.component';
+import { FailureComponent } from './failure/failure.component';
 
 
 const routes: Routes = [
@@ -12,7 +16,10 @@ const routes: Routes = [
   { path: 'count/:dcId', component: CountComponent },
   { path: 'count', component: CountsearchComponent },
   { path: 'leaderboard', component: LeaderboardComponent },
-  { path: 'console', component: ConsoleComponent},
+  { path: 'console', component: ConsoleComponent },
+  { path: 's/premium', component: PremiumComponent },
+  { path: 's/premium/success', component: SuccessComponent },
+  { path: 's/premium/fali', component: FailureComponent }
 ];
 
 @NgModule({

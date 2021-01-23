@@ -22,6 +22,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button'
 import { fromEventPattern } from 'rxjs';
 import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import { StripeModule } from "stripe-angular"
+import { PremiumComponent } from './premium/premium.component';
+import { SuccessComponent } from './success/success.component';
+import { FailureComponent } from './failure/failure.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,9 @@ import { AngularFireMessagingModule } from '@angular/fire/messaging';
     HomeComponent,
     CountsearchComponent,
     CheckoutComponent,
+    PremiumComponent,
+    SuccessComponent,
+    FailureComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -50,6 +57,7 @@ import { AngularFireMessagingModule } from '@angular/fire/messaging';
     MatButtonModule,
     MatSnackBarModule,
     AngularFireMessagingModule,
+    StripeModule.forRoot(environment.stripekey),
   ],
   providers: [],
   bootstrap: [AppComponent]

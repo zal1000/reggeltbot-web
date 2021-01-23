@@ -34,6 +34,7 @@
     "@nestjs/ng-universal": "^4.2.0",
     "@nestjs/platform-express": "^7.0.0",
     "@nguniversal/express-engine": "^11.0.1",
+    "@stripe/stripe-js": "^1.11.0",
     "class-transformer": "^0.2.3",
     "class-validator": "^0.9.1",
     "express": "^4.15.2",
@@ -41,6 +42,7 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.6.0",
     "stripe": "^8.131.1",
+    "stripe-angular": "^1.5.3",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },

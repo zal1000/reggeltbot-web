@@ -1,0 +1,15 @@
+<br><br><br><br>
+<div class="container">
+    <div class="card">
+        <div class="photo">
+            <img src="https://firebasestorage.googleapis.com/v0/b/zal1000.appspot.com/o/images%2Freggeltbot-icon.png?alt=media&token=d335cae0-6031-4b8d-b63f-b614ba27c174">
+        </div>
+        <div class="description">
+            <h2>{{ product.title }}</h2>
+            <h4>{{ product.subTitle }}</h4>
+            <h1>{{ product.price | currency}}</h1>
+            <p>{{ product.description}}</p>
+            <button (click)="checkout()">Checkout</button>
+        </div>
+    </div>
+</div>

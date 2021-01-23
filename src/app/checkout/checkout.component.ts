@@ -2,10 +2,9 @@ import { Component, OnInit, Input, HostListener } from '@angular/core';import { 
 import { fromEventPattern } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthService } from '../auth.service'
-
+import { StripeScriptTag } from "stripe-angular"
 //declare var StripeCheckout: StripeCheckoutStatic;
 
-declare var Stripe: stripe.Stripe;
 
 @Component({
   selector: 'app-checkout',
@@ -14,9 +13,12 @@ declare var Stripe: stripe.Stripe;
 })
 export class CheckoutComponent implements OnInit {
   
-  constructor(private auth: AuthService, private functions: AngularFireFunctions) { }
+  constructor(private auth: AuthService, private functions: AngularFireFunctions, private stripetag: StripeScriptTag) {
+    if(!this.stripetag.StripeInstance) {
+      this.stripetag.setPublishableKey(environment.stripekey)
+    }
+  }
 
-  stripe!: stripe.Stripe;
   card: any;
   cardErrors: any;
 
