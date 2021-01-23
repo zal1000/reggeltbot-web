@@ -36,6 +36,10 @@ export class AuthService {
     })
   }
 
+  async getUser() {
+    return this.afAuth.authState.toPromise();
+  }
+
   user(): Observable<any> {
     return this.userData;
   }

@@ -18,8 +18,8 @@ export const environment = {
     messagingSenderId: "512279358183",
     appId: "1:512279358183:web:15b9bc444ad56583541042",
     measurementId: "G-V30XXF400W"
-  
   },
+  stripekey: "pk_test_JNslOhJrjMGLcJQj9Rbl7Fpn",
 };
 
 /*
