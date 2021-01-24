@@ -6,6 +6,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { AngularFireAnalytics } from '@angular/fire/analytics'
 import { AngularFireMessaging } from '@angular/fire/messaging'
+import { coerceStringArray } from '@angular/cdk/coercion';
 
 @Component({
   selector: 'app-leaderboard',
@@ -49,7 +50,11 @@ export class LeaderboardComponent implements OnInit {
   }
 
   reload() {
-    this.anal.logEvent('leaderboar-reload')
+    this.anal.logEvent('leaderboarreload').then(e => {
+      console.log(e)
+    }).catch(e => {
+      console.warn(e)
+    })
     this.getList().subscribe(
       (response) => {
         this.users = response;
