@@ -2,6 +2,8 @@
 <br>
 <br>
 <br>
+<p style="color: wheat;">asd</p>
+<br>
 <div *ngIf="loading">
     <div class="spinner">
         <span class="spinner-inner-1"></span>
@@ -35,8 +37,7 @@
             <!--<button mat-button type="submit">Update</button>-->
 
         </form>
-        <p style="color: white;">{{ message | async | json }}</p>
+        <button class="btn btn-warning" (click)="checkout()">Subscribe for premium</button>
         <button class="btn btn-secondary" (click)="logout()">logout</button>
     </div>
 </div>
-

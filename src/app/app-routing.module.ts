@@ -18,8 +18,8 @@ const routes: Routes = [
   { path: 'leaderboard', component: LeaderboardComponent },
   { path: 'console', component: ConsoleComponent },
   { path: 's/premium', component: PremiumComponent },
-  { path: 's/premium/success', component: SuccessComponent },
-  { path: 's/premium/fali', component: FailureComponent }
+  { path: 's/success', component: SuccessComponent },
+  { path: 's/fali', component: FailureComponent }
 ];
 
 @NgModule({

@@ -3,7 +3,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { MatSnackBar, } from '@angular/material/snack-bar';
-import { MessagingService } from '../messaging.service';
+import { environment } from 'src/environments/environment';
+import { loadStripe } from '@stripe/stripe-js';
 
 @Component({
   selector: 'app-console',
@@ -14,8 +15,12 @@ export class ConsoleComponent implements OnInit {
   loggedin: boolean = false;
   loading: boolean = true;
   message: any;
+  priceId = environment.stripeids.reggeltbotsub;
+  stripePromise = loadStripe(environment.stripekey);
+  quantity = 1;
 
-  constructor(public auth: AuthService, public afAuth: AngularFireAuth, private snackBar: MatSnackBar, private messagingService: MessagingService) { 
+
+  constructor(public auth: AuthService, public afAuth: AngularFireAuth, private snackBar: MatSnackBar,) { 
     this.afAuth.authState.subscribe(user => {
       if(user) {
         this.loggedin = true;
@@ -32,9 +37,23 @@ export class ConsoleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.messagingService.requestPermission()
-    this.messagingService.receiveMessage()
-    this.message = this.messagingService.currentMessage
+    console.log(window.location.host)
+  }
+
+  async checkout() {
+    const stripe = await this.stripePromise;
+    const { error } = await stripe!.redirectToCheckout({
+      mode: "subscription",
+      lineItems: [{price: this.priceId}],
+      successUrl: `${window.location.host}/success`,
+      cancelUrl: `${window.location.host}/fail1`,
+    });
+    if (error) {
+      this.snackBar.open(`${error.message}`, 'Okay', {
+        duration: 5000,
+      })
+      console.log(error);
+    }
   }
 
   update(f: NgForm) {

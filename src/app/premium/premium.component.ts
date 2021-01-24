@@ -19,6 +19,7 @@ export class PremiumComponent implements OnInit {
   };
   quantity = 1;
   stripePromise = loadStripe(environment.stripekey);
+
   constructor() { }
 
   ngOnInit(): void {
@@ -31,8 +32,8 @@ export class PremiumComponent implements OnInit {
     const { error } = await stripe!.redirectToCheckout({
       mode: "subscription",
       lineItems: [{price: this.priceId}],
-      successUrl: `${window.location.href}/success`,
-      cancelUrl: `${window.location.href}/fail1`,
+      successUrl: `${window.location.hostname}/success`,
+      cancelUrl: `${window.location.hostname}/fail1`,
     });
     // If `redirectToCheckout` fails due to a browser or network
     // error, display the localized error message to your customer
