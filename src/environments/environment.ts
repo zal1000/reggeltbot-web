@@ -20,7 +20,12 @@ export const environment = {
     measurementId: "G-V30XXF400W"
   },
   stripekey: "pk_test_JNslOhJrjMGLcJQj9Rbl7Fpn",
+  stripeids: {
+    reggeltbotsub: "price_1IC5z5I6tCame7CcGpWVH4dI"
+  }
 };
+
+
 
 /*
  * For easier debugging in development mode, you can import the following file

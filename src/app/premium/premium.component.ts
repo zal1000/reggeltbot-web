@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class PremiumComponent implements OnInit {
   title = "angular-stripe";
-  priceId = "price_1IC5z5I6tCame7CcGpWVH4dI";
+  priceId = environment.stripeids.reggeltbotsub;
   product = {
     title: "Classic Peace Lily",
     subTitle: "Popular House Plant",
