@@ -15,7 +15,6 @@ import { ConsoleComponent } from './console/console.component';
 import { HomeComponent } from './home/home.component';
 import { CountComponent } from './count/count.component';
 import { CountsearchComponent } from './countsearch/countsearch.component';
-import { CheckoutComponent } from './checkout/checkout.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -35,7 +34,6 @@ import { FailureComponent } from './failure/failure.component';
     ConsoleComponent,
     HomeComponent,
     CountsearchComponent,
-    CheckoutComponent,
     PremiumComponent,
     SuccessComponent,
     FailureComponent,
