@@ -10,8 +10,4 @@ COPY . .
 
 RUN npm run build:ssr
 
-ENV PORT=8080
-
-ENV HOST=0.0.0.0
-
 CMD ["npm", "run", "serve:ssr"]
