@@ -37,7 +37,7 @@ export class ConsoleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(window.location.host)
+    console.log(window.location.hostname)
   }
 
   async checkout() {
@@ -45,8 +45,8 @@ export class ConsoleComponent implements OnInit {
     const { error } = await stripe!.redirectToCheckout({
       mode: "subscription",
       lineItems: [{price: this.priceId}],
-      successUrl: `${window.location.host}/success`,
-      cancelUrl: `${window.location.host}/fail1`,
+      successUrl: `${window.location.hostname}/success`,
+      cancelUrl: `${window.location.hostname}/fail1`,
     });
     if (error) {
       this.snackBar.open(`${error.message}`, 'Okay', {
