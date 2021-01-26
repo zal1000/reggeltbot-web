@@ -29,8 +29,12 @@ export class ConsoleComponent implements OnInit {
   quantity = 1;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
   constructor(public auth: AuthService, public afAuth: AngularFireAuth, private snackBar: MatSnackBar,) { 
+=======
+  constructor(public auth: AuthService, public afAuth: AngularFireAuth,) { 
+>>>>>>> parent of 7b33390... asd
 =======
   constructor(public auth: AuthService, public afAuth: AngularFireAuth,) { 
 >>>>>>> parent of 7b33390... asd
@@ -40,9 +44,12 @@ export class ConsoleComponent implements OnInit {
         //this.openSnackBar(`Logged in as ${user.email}`)
         this.loading = false;
 <<<<<<< HEAD
+<<<<<<< HEAD
         this.snackBar.open(`Logged in as: ${user.email}`, "Okay", {
           duration: 5000,
         })
+=======
+>>>>>>> parent of 7b33390... asd
 =======
 >>>>>>> parent of 7b33390... asd
       } else {
