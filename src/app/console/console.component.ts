@@ -24,6 +24,7 @@ export class ConsoleComponent implements OnInit {
     this.afAuth.authState.subscribe(user => {
       if(user) {
         this.loggedin = true;
+        //this.openSnackBar(`Logged in as ${user.email}`)
         this.loading = false;
         this.snackBar.open(`Logged in as: ${user.email}`, "Okay", {
           duration: 5000,
@@ -56,8 +57,8 @@ export class ConsoleComponent implements OnInit {
     }
   }
 
-  update(f: NgForm) {
-    console.log(f.value)
+  openSnackBar(message: string) {
+    //his.snackBar.open(message);
   }
 
   login(f: NgForm) {
