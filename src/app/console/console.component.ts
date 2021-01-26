@@ -2,9 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
+<<<<<<< HEAD
 import { MatSnackBar, } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
 import { loadStripe } from '@stripe/stripe-js';
+=======
+import {
+  MatSnackBar,
+  MatSnackBarConfig,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
+>>>>>>> parent of 7b33390... asd
 
 @Component({
   selector: 'app-console',
@@ -19,16 +28,23 @@ export class ConsoleComponent implements OnInit {
   stripePromise = loadStripe(environment.stripekey);
   quantity = 1;
 
+<<<<<<< HEAD
 
   constructor(public auth: AuthService, public afAuth: AngularFireAuth, private snackBar: MatSnackBar,) { 
+=======
+  constructor(public auth: AuthService, public afAuth: AngularFireAuth,) { 
+>>>>>>> parent of 7b33390... asd
     this.afAuth.authState.subscribe(user => {
       if(user) {
         this.loggedin = true;
         //this.openSnackBar(`Logged in as ${user.email}`)
         this.loading = false;
+<<<<<<< HEAD
         this.snackBar.open(`Logged in as: ${user.email}`, "Okay", {
           duration: 5000,
         })
+=======
+>>>>>>> parent of 7b33390... asd
       } else {
         this.loggedin = false
         this.loading = false;

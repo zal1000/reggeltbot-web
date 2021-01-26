@@ -17,6 +17,7 @@ import { CountComponent } from './count/count.component';
 import { CountsearchComponent } from './countsearch/countsearch.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+<<<<<<< HEAD
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button'
 import { fromEventPattern } from 'rxjs';
@@ -25,6 +26,20 @@ import { StripeModule } from "stripe-angular"
 import { PremiumComponent } from './premium/premium.component';
 import { SuccessComponent } from './success/success.component';
 import { FailureComponent } from './failure/failure.component';
+=======
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+const config = {
+  apiKey: "AIzaSyAt2Z0NaWwdWYjY_aekfmXlrxVABYsymaM",
+  authDomain: "zal1000.firebaseapp.com",
+  databaseURL: "https://zal1000.firebaseio.com",
+  projectId: "zal1000",
+  storageBucket: "zal1000.appspot.com",
+  messagingSenderId: "512279358183",
+  appId: "1:512279358183:web:15b9bc444ad56583541042",
+  measurementId: "G-V30XXF400W"
+
+};
+>>>>>>> parent of 7b33390... asd
 
 @NgModule({
   declarations: [
@@ -52,10 +67,13 @@ import { FailureComponent } from './failure/failure.component';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+<<<<<<< HEAD
     MatButtonModule,
     MatSnackBarModule,
     AngularFireMessagingModule,
     StripeModule.forRoot(environment.stripekey),
+=======
+>>>>>>> parent of 7b33390... asd
   ],
   providers: [],
   bootstrap: [AppComponent]
