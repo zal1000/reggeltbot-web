@@ -17,9 +17,6 @@ import { CountComponent } from './count/count.component';
 import { CountsearchComponent } from './countsearch/countsearch.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button'
 import { fromEventPattern } from 'rxjs';
 import { AngularFireMessagingModule } from '@angular/fire/messaging';
@@ -27,9 +24,7 @@ import { StripeModule } from "stripe-angular"
 import { PremiumComponent } from './premium/premium.component';
 import { SuccessComponent } from './success/success.component';
 import { FailureComponent } from './failure/failure.component';
-=======
-=======
->>>>>>> parent of 7b33390... asd
+
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 const config = {
   apiKey: "AIzaSyAt2Z0NaWwdWYjY_aekfmXlrxVABYsymaM",
@@ -42,7 +37,6 @@ const config = {
   measurementId: "G-V30XXF400W"
 
 };
->>>>>>> parent of 7b33390... asd
 
 @NgModule({
   declarations: [
@@ -70,16 +64,10 @@ const config = {
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-<<<<<<< HEAD
-<<<<<<< HEAD
     MatButtonModule,
     MatSnackBarModule,
     AngularFireMessagingModule,
     StripeModule.forRoot(environment.stripekey),
-=======
->>>>>>> parent of 7b33390... asd
-=======
->>>>>>> parent of 7b33390... asd
   ],
   providers: [],
   bootstrap: [AppComponent]
