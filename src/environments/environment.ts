@@ -10,7 +10,7 @@ export const environment = {
   apiurl: "https://latest---api-zd72hz742a-uc.a.run.app",
   showConsole: true,
   firebaseconfig: {
-    apiKey: "AIzaSyDpsXG8ZUofeaVVimEhdRhhbc8kJCjFsM0",
+    apiKey: "AIzaSyDhjZEv-cPgDn9kDlb6fcN7V0eOceWCR5k",
     authDomain: "auth.zal1000.com",
     databaseURL: "https://zal1000.firebaseio.com",
     projectId: "zal1000",

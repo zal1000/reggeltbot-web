@@ -2,8 +2,6 @@
 <br>
 <br>
 <br>
-<p style="color: wheat;">asd</p>
-<br>
 <div *ngIf="loading">
     <div class="spinner">
         <span class="spinner-inner-1"></span>
@@ -33,7 +31,9 @@
         </div>
     </form>
     <div class="container" *ngIf="loggedin">
+        <!--
         <button class="btn btn-warning" (click)="checkout()">Subscribe for premium</button>
+        -->
         <button class="btn btn-secondary" (click)="logout()">logout</button>
     </div>
 </div>
