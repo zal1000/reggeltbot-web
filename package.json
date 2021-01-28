@@ -41,7 +41,7 @@
     "express": "^4.15.2",
     "firebase": "^7.0 || ^8.0",
     "reflect-metadata": "^0.1.13",
-    "request": "^2.88.0",
+    "request": "^2.79.0",
     "rxjs": "~6.6.0",
     "stripe": "^8.132.0",
     "stripe-angular": "^1.5.3",

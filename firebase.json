@@ -1,7 +1,7 @@
 {
   "hosting": {
-    "site": "zal-ng-my-app",
-    "public": "dist/my-app",
+    "site": "reggeltbot",
+    "public": "dist/my-app/browser",
     "ignore": [
       "firebase.json",
       "**/.*",

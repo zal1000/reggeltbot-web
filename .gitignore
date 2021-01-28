@@ -48,3 +48,4 @@ Thumbs.db
 asd.py
 __pycache__/asd.cpython-39.pyc
 run.py
+.firebase/**

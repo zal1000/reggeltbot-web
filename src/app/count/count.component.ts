@@ -1,5 +1,5 @@
 import { stringify } from '@angular/compiler/src/util';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -28,18 +28,19 @@ export class CountComponent implements OnInit, OnDestroy {
         "username": "Loading..."
     }
   ];
+  @Input()
+  dcid!: string;
   loadinggif = environment.loadgif;
   mySubscription: any;
   constructor(private db: AngularFirestore, private route: ActivatedRoute, private http: HttpClient, private router: Router,) { }
   
   ngOnInit(): void {
-    console.log(this.route.snapshot.queryParams.user)
-    console.log(this.route.snapshot.params.dcId);
-    if(!this.route.snapshot.params.dcId) {
+    console.log(this.dcid);
+    if(!this.dcid) {
       this.reggeltcount = "Error: Please specitfy user";
       this.dcpp = environment.error
     } else {
-      const ref = this.db.collection('dcusers').doc(this.route.snapshot.params.dcId);
+      const ref = this.db.collection('dcusers').doc(this.dcid);
       ref.get().toPromise().then((doc: any) => {
         if(!doc.exists) {
           this.reggeltcount = "Error: User not found"

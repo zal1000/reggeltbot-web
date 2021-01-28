@@ -13,7 +13,6 @@ import { FailureComponent } from './failure/failure.component';
 
 const routes: Routes = [
   { path: '', component:HomeComponent },
-  { path: 'count/:dcId', component: CountComponent },
   { path: 'count', component: CountsearchComponent },
   { path: 'leaderboard', component: LeaderboardComponent },
   { path: 'console', component: ConsoleComponent },
