@@ -1,14 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
-<<<<<<< HEAD
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { AngularFireAnalytics} from '@angular/fire/analytics'
-
-=======
->>>>>>> parent of 3cafd48... asd
 
 
 @Component({
@@ -22,15 +18,11 @@ export class AppComponent implements OnInit {
   loggedin: boolean = false;
   userProfilePicture: any = "https://firebasestorage.googleapis.com/v0/b/zal1000.net/o/demo%2Fpp%2Fdemo.png?alt=media&token=93fec366-cc41-45e0-9ad1-f6a399cc750c";
   loginmsg: string = "Logged out";
-<<<<<<< HEAD
   showConsole: boolean = environment.showConsole;
   prod: boolean = environment.production;
+  checkurl: any;
 
   constructor(public afAuth: AngularFireAuth, private http: HttpClient, private anal: AngularFireAnalytics) {
-=======
-
-  constructor(public afAuth: AngularFireAuth) {
->>>>>>> parent of 3cafd48... asd
     this.afAuth.authState.subscribe(user => {
       if(user) {
         this.loggedin = true;
@@ -38,19 +30,16 @@ export class AppComponent implements OnInit {
         if(!user.photoURL){
           this.userProfilePicture = "https://firebasestorage.googleapis.com/v0/b/zal1000.net/o/demo%2Fpp%2Fdemo.png?alt=media&token=93fec366-cc41-45e0-9ad1-f6a399cc750c";
         } else {
-<<<<<<< HEAD
           this.checkurl(user.photoURL).subscribe(
-            (response) => {              
+            (response: any) => {              
               console.log(response)
             },
-            (error) => {
+            (error: any) => {
               console.warn('Request failed', error)
             },
             () => {
               console.debug('Request completed')
             })
-=======
->>>>>>> parent of 3cafd48... asd
           this.userProfilePicture = user.photoURL;
         }
       } else {

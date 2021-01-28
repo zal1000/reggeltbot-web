@@ -27,37 +27,13 @@
                 <button class="btn btn-primary login-signup m10" (click)="login(f)" style="margin-right: 10%;" type="submit">Login</button>
                 <button class="btn btn-secondary login-signup m10" (click)="register(f)" type="button">Register</button>
                 <br><br>
-<<<<<<< HEAD
                 <button type="button" class="fab fa-google btn btn-danger vertical-center m10" (click)="googleLogin()"> Login with Google</button><br><br>
                 <button type="button" class="fab fa-facebook-f btn btn-primary vertical-center m10" (click)="facebookLogin()"> Login with Facebook</button>
             </div>
         </div>
     </form>
     <div class="container" *ngIf="loggedin">
-        <form #f="ngForm" class="form " *ngIf="!loading" (ngSubmit)="update(f)">
-<<<<<<< HEAD
-<<<<<<< HEAD
-            <!--<button mat-button type="submit">Update</button>-->
-=======
-              <button class="btn btn-primary" type="submit">Update</button>
->>>>>>> parent of 7b33390... asd
-=======
-              <button class="btn btn-primary" type="submit">Update</button>
->>>>>>> parent of 7b33390... asd
-
-        </form>
         <button class="btn btn-warning" (click)="checkout()">Subscribe for premium</button>
         <button class="btn btn-secondary" (click)="logout()">logout</button>
-=======
-                <button type="button" class="fab fa-google btn btn-danger vertical-center m10" (click)="googleLogin()"> Google login</button><br><br>
-                <button type="button" class="fab fa-facebook-f btn btn-primary vertical-center m10" (click)="facebookLogin()"> Facebook login</button>
-
-            </div>
-        </div>
-    </form>
-    <div *ngIf="loggedin">
-        <button (click)="getUser()">GetUser</button>
-        <button (click)="logout()">logout</button>
->>>>>>> parent of 3cafd48... asd
     </div>
 </div>
