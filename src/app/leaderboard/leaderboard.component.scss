@@ -4,18 +4,19 @@ body {
 }
 
 .username {
-    float: right;
     font-size: 20px;
     padding-right: 20px;
+    margin: 0;
 }
 
 .pp {
-    float: right;
     width: 50px;
 }
 
 .reggeltcount {
     font-size: large;
+    flex-grow: 1;
+    margin: 0;
 }
 
 .container {
@@ -34,13 +35,15 @@ body {
     padding-bottom: 80px;
 }
 
-.line {
-    padding-bottom: 1px;
-    background-color: #3E4246;
-    margin-bottom: 20px;
-}
 .col {
     padding: 20px;
+    display: flex;  
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+.row:not(:last-child) {
+    border-bottom: 1px #3E4246 solid ;
 }
 
 .loading {
