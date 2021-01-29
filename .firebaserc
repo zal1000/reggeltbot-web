@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "zal1000"
+  },
+  "targets": {
+    "zal1000": {
+      "hosting": {
+        "reggeltbot": [
+          "zal1000"
+        ]
+      }
+    }
   }
 }
