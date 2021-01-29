@@ -26,6 +26,7 @@ import { SuccessComponent } from './success/success.component';
 import { FailureComponent } from './failure/failure.component';
 
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { PrivacyComponent } from './privacy/privacy.component';
 const config = {
   apiKey: "AIzaSyAt2Z0NaWwdWYjY_aekfmXlrxVABYsymaM",
   authDomain: "zal1000.firebaseapp.com",
@@ -49,6 +50,7 @@ const config = {
     PremiumComponent,
     SuccessComponent,
     FailureComponent,
+    PrivacyComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

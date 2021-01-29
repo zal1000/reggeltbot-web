@@ -30,16 +30,6 @@ export class AppComponent implements OnInit {
         if(!user.photoURL){
           this.userProfilePicture = "https://firebasestorage.googleapis.com/v0/b/zal1000.net/o/demo%2Fpp%2Fdemo.png?alt=media&token=93fec366-cc41-45e0-9ad1-f6a399cc750c";
         } else {
-          this.checkurl(user.photoURL).subscribe(
-            (response: any) => {              
-              console.log(response)
-            },
-            (error: any) => {
-              console.warn('Request failed', error)
-            },
-            () => {
-              console.debug('Request completed')
-            })
           this.userProfilePicture = user.photoURL;
         }
       } else {

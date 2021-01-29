@@ -5,6 +5,7 @@ import { AuthService } from '../auth.service';
 import { MatSnackBar, } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
 import { loadStripe } from '@stripe/stripe-js';
+import { PayService } from '../pay.service';
 
 @Component({
   selector: 'app-console',
@@ -19,7 +20,12 @@ export class ConsoleComponent implements OnInit {
   stripePromise = loadStripe(environment.stripekey);
   quantity = 1;
 
-  constructor(public auth: AuthService, public afAuth: AngularFireAuth, private snackBar: MatSnackBar,) { 
+  constructor(
+    public auth: AuthService, 
+    public afAuth: AngularFireAuth, 
+    private snackBar: MatSnackBar,
+    private pay: PayService,
+    ) { 
     this.afAuth.authState.subscribe(user => {
       if(user) {
         this.loggedin = true;
@@ -41,19 +47,7 @@ export class ConsoleComponent implements OnInit {
   }
 
   async checkout() {
-    const stripe = await this.stripePromise;
-    const { error } = await stripe!.redirectToCheckout({
-      mode: "subscription",
-      lineItems: [{price: this.priceId}],
-      successUrl: `${window.location.hostname}/success`,
-      cancelUrl: `${window.location.hostname}/fail1`,
-    });
-    if (error) {
-      this.snackBar.open(`${error.message}`, 'Okay', {
-        duration: 5000,
-      })
-      console.log(error);
-    }
+    this.pay.premiumsub()
   }
 
   openSnackBar(message: string) {

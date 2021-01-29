@@ -9,6 +9,7 @@ import { componentFactoryName } from '@angular/compiler';
 import { PremiumComponent } from './premium/premium.component';
 import { SuccessComponent } from './success/success.component';
 import { FailureComponent } from './failure/failure.component';
+import { PrivacyComponent } from './privacy/privacy.component'; 
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'console', component: ConsoleComponent },
   { path: 's/premium', component: PremiumComponent },
   { path: 's/success', component: SuccessComponent },
-  { path: 's/fali', component: FailureComponent }
+  { path: 's/fali', component: FailureComponent },
+  { path: 'privacy', component: PrivacyComponent },
 ];
 
 @NgModule({
