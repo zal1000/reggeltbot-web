@@ -11,7 +11,7 @@ export const environment = {
   showConsole: true,
   firebaseconfig: {
     apiKey: "AIzaSyDhjZEv-cPgDn9kDlb6fcN7V0eOceWCR5k",
-    authDomain: "auth.zal1000.com",
+    authDomain: "zal1000.firebaseapp.com",
     databaseURL: "https://zal1000.firebaseio.com",
     projectId: "zal1000",
     storageBucket: "zal1000.appspot.com",

@@ -77,6 +77,10 @@ export class ConsoleComponent implements OnInit {
     this.auth.facebookLogin()
   }
 
+  githubLink() {
+    this.auth.githubLink();
+  }
+
   logout() {
     this.loading = true;
     this.afAuth.signOut().then(() => {

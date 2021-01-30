@@ -66,11 +66,34 @@ export class AuthService {
 
   facebookLogin() {
     this.afAuth.signInWithPopup(new firebase.default.auth.FacebookAuthProvider())
-    .then(() => {
-      return null;
-    })
     .catch(err => {
       this.errorHandler(err)
+    })
+  }
+
+  googleLink() {
+    firebase.default.auth().currentUser?.linkWithPopup(new firebase.default.auth.GoogleAuthProvider()).catch(err => {
+      this.errorHandler(err)
+    })
+  }
+
+  facebookLink() {
+    firebase.default.auth().currentUser?.linkWithPopup(new firebase.default.auth.FacebookAuthProvider()).catch(err => {
+      this.errorHandler(err)
+    })
+  }
+
+  async githubLink() {
+    let provider: any = new firebase.default.auth.GithubAuthProvider();
+    provider.addScope('public_repo');
+    provider.addScope('user')
+    firebase.default.auth().currentUser?.linkWithPopup(provider).then((userCredential: any) => {
+      // Get the GitHub username.
+      console.log(userCredential.additionalUserInfo.username);
+      // Get GitHub additional user profile.
+      console.log(userCredential.additionalUserInfo.profile);
+
+      console.log(userCredential)
     })
   }
 
@@ -84,7 +107,7 @@ export class AuthService {
 
   errorHandler(err: any) {
     if(err.code === "auth/popup-closed-by-user") {
-      return
+      console.warn(err)
     } else {
       this.snackBar.open(`${err.message}`, "Dismiss")
     }

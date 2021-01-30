@@ -7,7 +7,7 @@
   showConsole: false,
   firebaseconfig: {
     apiKey: "AIzaSyDpsXG8ZUofeaVVimEhdRhhbc8kJCjFsM0",
-    authDomain: "auth.zal1000.com",
+    authDomain: "zal1000.firebaseapp.com",
     databaseURL: "https://zal1000.firebaseio.com",
     projectId: "zal1000",
     storageBucket: "zal1000.appspot.com",
