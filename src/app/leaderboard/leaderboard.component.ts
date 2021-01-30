@@ -7,7 +7,6 @@ import { environment } from 'src/environments/environment';
 import { AngularFireAnalytics } from '@angular/fire/analytics'
 import { AngularFireMessaging } from '@angular/fire/messaging'
 import { coerceStringArray } from '@angular/cdk/coercion';
-import { threadId } from 'worker_threads';
 
 @Component({
   selector: 'app-leaderboard',
