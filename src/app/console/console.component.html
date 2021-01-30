@@ -22,17 +22,17 @@
             </div>
             <div class="wrapper">
                 <br>
-                <button class="btn btn-primary login-signup m10" (click)="login(f)" style="margin-right: 10%;" type="submit">Login</button>
-                <button class="btn btn-secondary login-signup m10" (click)="register(f)" type="button">Register</button>
+                <button mat-raised-button color="primary" class="login-signup m10" (click)="login(f)" style="margin-right: 10%;" type="submit">Login</button>
+                <button mat-raised-button class=" login-signup m10" (click)="register(f)" type="button">Register</button>
                 <br><br>
-                <button type="button" class="fab fa-google btn btn-danger vertical-center m10" (click)="googleLogin()"> Login with Google</button><br><br>
-                <button type="button" class="fab fa-facebook-f btn btn-primary vertical-center m10" (click)="facebookLogin()"> Login with Facebook</button>
+                <button type="button" mat-raised-button class="vertical-center m10" (click)="googleLogin()"><img height="20px" src="assets/svg/Google.svg"> Login with Google</button><br><br>
+                <button type="button" mat-raised-button class="vertical-center m10" fontSet="fab" fontIcon="fa-facebook-f" style="background-color: #4867AA;" (click)="facebookLogin()"><img height="20px" src="assets/svg/facebook-6.svg"> Login with Facebook</button>
             </div>
         </div>
     </form>
     <div class="container" *ngIf="loggedin">
         <!--<button class="btn btn-warning" (click)="checkout()">Subscribe for premium</button>-->
-        <button class="btn btn-secondary" (click)="logout()">logout</button>
+        <button mat-flat-button (click)="logout()">logout</button>
         <br><br>
         <form class="checkout-form" *ngIf="checkoutstate">
             
