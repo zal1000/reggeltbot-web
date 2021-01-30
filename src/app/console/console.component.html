@@ -32,7 +32,7 @@
     </form>
     <div class="container" *ngIf="loggedin">
         <!--<button class="btn btn-warning" (click)="checkout()">Subscribe for premium</button>-->
-        <button class="btn btn-secondary" (click)="logout()">logout</button>
+        <button mat-flat-button color="secondary" (click)="logout()">logout</button>
         <br><br>
         <form class="checkout-form" *ngIf="checkoutstate">
             

@@ -32,7 +32,7 @@
         <h1>{{ error.message }}</h1>
     </div>
 
-    <button *ngIf="!loading || error.status" mat-fab color="accent" class="reload" (click)="reload()">
+    <button *ngIf="!loading || error.status" mat-fab color="grey" class="reload" (click)="reload()">
         <mat-icon>update</mat-icon>
     </button>
 </div>
