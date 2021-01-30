@@ -13,7 +13,8 @@
     "build:ssr": "ng build --prod && ng run my-app:server:production",
     "prerender": "ng run my-app:prerender",
     "prebuild:ssr": "ngcc",
-    "deploy": "ng build --prod && firebase deploy"
+    "deploy": "ng build --prod && firebase deploy",
+    "build:prod": "ng build --prod"
   },
   "private": true,
   "dependencies": {
