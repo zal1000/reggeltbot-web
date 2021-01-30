@@ -14,10 +14,16 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="https://kit.fontawesome.com/26a3196f00.js" crossorigin="anonymous"></script>
   <script src="https://js.stripe.com/v3/"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body class="mat-typography">
   <script src="https://mpp8x8t3hc6r.statuspage.io/embed/script.js"></script>
   <app-root></app-root>
+  <script type="text/javascript">
+    const stripe = Stripe('pk_test_JNslOhJrjMGLcJQj9Rbl7Fpn');
+    const elements = stripe.elements();
+  </script>
   <noscript>Please enable JavaScript to continue using this application.</noscript>
 </body>
 </html>

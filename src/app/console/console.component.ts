@@ -19,6 +19,7 @@ export class ConsoleComponent implements OnInit {
   priceId = environment.stripeids.reggeltbotsub;
   stripePromise = loadStripe(environment.stripekey);
   quantity = 1;
+  checkoutstate: boolean = true;
 
   constructor(
     public auth: AuthService, 

@@ -1,6 +1,10 @@
 <div class="blank">
     <div class="button-box">
+        <!--
         <button class="btn btn-outline-light btn-lg btn-block" (click)="reload()">Reload</button>
+        <p style="color: white; float: right; font-size: xx-large; cursor: pointer;"><mat-icon (click)="reload()">update</mat-icon></p>
+        -->
+
     </div>
 
     <div *ngIf="!error.status" class="leaderboard">
@@ -24,6 +28,11 @@
     </div>
 
     <div *ngIf="error.status" class="container">
-        <img class="err-img" src="{{ error.image }}">
+        <img class="errimg" src="{{ error.image }}">
+        <h1>{{ error.message }}</h1>
     </div>
+
+    <button *ngIf="!loading || error.status" mat-fab color="accent" class="reload" (click)="reload()">
+        <mat-icon>update</mat-icon>
+    </button>
 </div>

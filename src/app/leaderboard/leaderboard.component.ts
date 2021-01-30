@@ -27,25 +27,34 @@ export class LeaderboardComponent implements OnInit {
     image: environment.error
   }
   notfoundimg = environment.noimg;
-  membercount = 25;
+  membercount:string = "25";
 
   apiurl = environment.apiurl;
 
   constructor(private db: AngularFirestore, private http: HttpClient, private router: Router, private anal: AngularFireAnalytics, private msg: AngularFireMessaging) { }
 
   ngOnInit(): void {
+    if(!location.search.slice(1).split("&")[0].split("=")[1]) {
+      this.membercount = "25";
+    } else {
+      this.membercount = location.search.slice(1).split("&")[0].split("=")[1];
+    }
     this.getList().subscribe(
       (response) => {
         this.users = response;
-        this.loading = false;
         
         console.log(response)
       },
       (error) => {                              //error() callback
         console.error('Request failed with error')
+        this.error.status = true;
       },
       () => {                                   //complete() callback
-        console.error('Request completed')      //This is actually not needed 
+        console.debug('Request completed')   
+        this.error.status = false;
+        this.loading = false;
+
+        //This is actually not needed 
       })
   }
 

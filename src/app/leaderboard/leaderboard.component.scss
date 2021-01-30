@@ -59,3 +59,16 @@ body {
 }
 /* loading */
 
+.errimg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    padding: 40px;
+}
+
+.reload {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+}
