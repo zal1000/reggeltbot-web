@@ -6,7 +6,7 @@
             <input type="text" name="name" class="form-control" placeholder="Pl.: zal1000" aria-label="Discord user name" aria-describedby="basic-addon1" ngModel required #first="ngModel">
         </div>
         <div class="wrapper">
-            <button mat-raised-button color="primary" class="vertical-center m10">Submit</button>
+            <button mat-raised-button color="primary" class="vertical-center m10">Get "reggelt" count</button>
         </div>
     </div>
 </form>
@@ -18,6 +18,13 @@
         <span class="spinner-inner-3"></span>
     </div>
 </div>
+
+<div *ngIf="!online" class="leaderboard">
+    <div class="offline-text">
+        You are offline. Please, connect to internet.
+    </div>
+</div>
+
 <div *ngIf="!loading" class="container">
     <div class="row" *ngFor="let btn of buttons">
         <div class="col">

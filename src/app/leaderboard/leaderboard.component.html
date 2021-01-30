@@ -7,6 +7,12 @@
 
     </div>
 
+    <div *ngIf="!online" class="leaderboard">
+        <div class="offline-text">
+            You are offline. Please, connect to internet.
+        </div>
+    </div>
+
     <div *ngIf="!error.status" class="leaderboard">
         <div class="container">
             <div *ngIf="loading" class="spinner">
@@ -27,7 +33,7 @@
         </div>
     </div>
 
-    <div *ngIf="error.status" class="container">
+    <div *ngIf="error.status && !online" class="container">
         <img class="errimg" src="{{ error.image }}">
         <h1>{{ error.message }}</h1>
     </div>
