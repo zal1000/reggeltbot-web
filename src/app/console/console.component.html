@@ -35,7 +35,7 @@
         <button mat-flat-button color="primary" (click)="githubLink()">Github link</button>
         <button mat-flat-button color="warn" (click)="githubunlink()">Github unlink</button>
         <br>
-        <button mat-flat-button color="primary" (click)="githubrefresh()">Github sync</button>
+        <button mat-flat-button color="primary" class="sync-btn" [disabled]="syncing" (click)="githubrefresh()">Github sync</button>
         <br><br>
         <button mat-flat-button color="secondary" (click)="logout()">logout</button>
         <br><br>

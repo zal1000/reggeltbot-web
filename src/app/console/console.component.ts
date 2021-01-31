@@ -25,6 +25,7 @@ export class ConsoleComponent implements OnInit {
   quantity = 1;
   checkoutstate: boolean = true;
   apiurl = environment.zalapi;
+  syncing: boolean = false;
 
   constructor(
     public auth: AuthService, 
@@ -94,7 +95,8 @@ export class ConsoleComponent implements OnInit {
   }
 
   githubrefresh() {
-    const bar = this.snackBar.open('Syncing...', 'Dismiss')
+    this.syncing = true;
+    const bar = this.snackBar.open('Syncing...')
     const ref = this.db.collection('users').doc(this.auth.userData.uid)
     const doc = ref.get();
     doc.subscribe((doc: any) => {
@@ -107,12 +109,16 @@ export class ConsoleComponent implements OnInit {
           (error) => {
             if(error.status === 200) {
               bar.dismiss()
+              this.syncing = false;
+
               this.snackBar.open(`Account synced successfully`, 'Dismiss', {
                 duration: 5000
               })
             } else {
               console.error(error)
               bar.dismiss()
+              this.syncing = false;
+
               this.snackBar.open(`Error syncing Github account: ${error.message}`, 'Dismiss', {
                 duration: 10000
               })

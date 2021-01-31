@@ -24,3 +24,8 @@
     text-align: center;
     position: relative;
 }
+
+.sync-btn:disabled {
+    color: #FFFFFF;
+    background-color:#C3C4C6;    
+}
