@@ -21,7 +21,8 @@ export const environment = {
   stripekey: "pk_test_JNslOhJrjMGLcJQj9Rbl7Fpn",
   stripeids: {
     reggeltbotsub: "price_1IC5z5I6tCame7CcGpWVH4dI"
-  }
+  },
+  zalapi: "localhost:8000",
 };
 
 

@@ -18,5 +18,6 @@
   stripekey: "pk_live_X0nb6Vivnm4A7fMBurYGdsUS",
   stripeids: {
     reggeltbotsub: "price_1IC5zFI6tCame7CcOyLE4c2L"
-  }
+  },
+  zalapi: "https://api.zal1000.net"
 };

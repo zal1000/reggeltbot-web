@@ -6,6 +6,8 @@ import { MatSnackBar, } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
 import { loadStripe } from '@stripe/stripe-js';
 import { PayService } from '../pay.service';
+import { AngularFireFunctions } from '@angular/fire/functions';
+import { AngularFirestore } from '@angular/fire/firestore'
 
 @Component({
   selector: 'app-console',
@@ -26,6 +28,8 @@ export class ConsoleComponent implements OnInit {
     public afAuth: AngularFireAuth, 
     private snackBar: MatSnackBar,
     private pay: PayService,
+    private functions: AngularFireFunctions,
+    private db: AngularFirestore,
     ) { 
     this.afAuth.authState.subscribe(user => {
       if(user) {
@@ -83,6 +87,28 @@ export class ConsoleComponent implements OnInit {
 
   githubunlink() {
     this.auth.githubUnLink()
+  }
+
+  githubrefresh() {
+    const bar = this.snackBar.open('Syncing...', 'Dismiss')
+    const ref = this.db.collection('users').doc(this.auth.userData.uid)
+    const doc = ref.get();
+    this.functions.useEmulator
+    const addmsg = this.functions.httpsCallable('checkgithubusers')
+    doc.subscribe((doc: any) => {
+      if(doc.exists){
+        addmsg({
+          gituname: doc.data().github.username
+        }).subscribe((res: any) => {
+          bar.dismiss();
+          this.snackBar.open('Accont synced', '', {
+            duration: 5000,
+          })
+        })
+      }
+
+    })
+
   }
 
   logout() {

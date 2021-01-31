@@ -33,7 +33,10 @@
     <div class="container" *ngIf="loggedin">
         <!--<button class="btn btn-warning" (click)="checkout()">Subscribe for premium</button>-->
         <button mat-flat-button color="primary" (click)="githubLink()">Github link</button>
-        <button mat-flat-button color="warn" (click)="githubunlink()">Giyhub unlink</button>
+        <button mat-flat-button color="warn" (click)="githubunlink()">Github unlink</button>
+        <br>
+        <button mat-flat-button color="primary" (click)="githubrefresh()">Github sync</button>
+        <br><br>
         <button mat-flat-button color="secondary" (click)="logout()">logout</button>
         <br><br>
         <form class="checkout-form" *ngIf="checkoutstate">
