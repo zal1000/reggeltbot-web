@@ -8,6 +8,8 @@ import { loadStripe } from '@stripe/stripe-js';
 import { PayService } from '../pay.service';
 import { AngularFireFunctions } from '@angular/fire/functions';
 import { AngularFirestore } from '@angular/fire/firestore'
+import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-console',
@@ -22,6 +24,7 @@ export class ConsoleComponent implements OnInit {
   stripePromise = loadStripe(environment.stripekey);
   quantity = 1;
   checkoutstate: boolean = true;
+  apiurl = environment.zalapi;
 
   constructor(
     public auth: AuthService, 
@@ -30,6 +33,7 @@ export class ConsoleComponent implements OnInit {
     private pay: PayService,
     private functions: AngularFireFunctions,
     private db: AngularFirestore,
+    private http: HttpClient,
     ) { 
     this.afAuth.authState.subscribe(user => {
       if(user) {
@@ -93,22 +97,44 @@ export class ConsoleComponent implements OnInit {
     const bar = this.snackBar.open('Syncing...', 'Dismiss')
     const ref = this.db.collection('users').doc(this.auth.userData.uid)
     const doc = ref.get();
-    this.functions.useEmulator
-    const addmsg = this.functions.httpsCallable('checkgithubusers')
     doc.subscribe((doc: any) => {
       if(doc.exists){
-        addmsg({
-          gituname: doc.data().github.username
-        }).subscribe((res: any) => {
-          bar.dismiss();
-          this.snackBar.open('Accont synced', '', {
-            duration: 5000,
+        console.log(doc.data().github.username)
+        this.callUpdate(doc.data().github.username, this.auth.userData.uid).subscribe(
+          (response) => {
+            console.log(response)
+          },
+          (error) => {
+            if(error.status === 200) {
+              bar.dismiss()
+              this.snackBar.open(`Account synced successfully`, 'Dismiss', {
+                duration: 5000
+              })
+            } else {
+              console.error(error)
+              bar.dismiss()
+              this.snackBar.open(`Error syncing Github account: ${error.message}`, 'Dismiss', {
+                duration: 10000
+              })
+            }
+
+
+          },
+          () => {   
+            bar.dismiss()
+            //complete() callback
+            console.debug('Request completed')
+  
+            //This is actually not needed 
           })
-        })
       }
 
     })
 
+  }
+
+  callUpdate(name: string, uid: string): Observable<any> {
+    return this.http.get(`${this.apiurl}/auth/github/sync?n=${name}&i=${uid}`);
   }
 
   logout() {

@@ -85,6 +85,7 @@ export class AuthService {
   }
 
   async githubLink() {
+    const linkingbar = this.snackBar.open('Linking account...', 'Dismiss')
     let provider: any = new firebase.default.auth.GithubAuthProvider();
     provider.addScope('user')
     firebase.default.auth().currentUser?.linkWithPopup(provider).then((userCredential: any) => {
@@ -100,25 +101,30 @@ export class AuthService {
           }
         })
         .then(doc => {
-          this.snackBar.open('Account succesfuly linked', 'Okay', {
+          linkingbar.dismiss()
+          this.snackBar.open('Account succesfuly linked', 'Dismiss', {
             duration: 3000,
           })
         })
         .catch(err => {
+          linkingbar.dismiss()
           console.warn(err)
           this.snackBar.open(`Error linking account: ${err.message}`, 'Dismiss')
         })
       })
-      const addmsg = this.functions.httpsCallable('checkgithubusers')
-      addmsg({
-        gituname: userCredential.additionalUserInfo.username
-      })
+    }).catch(err => {
+      linkingbar.dismiss()
+      console.warn(err)
+      this.snackBar.open(`Error linking account: ${err.message}`, 'Dismiss')
     })
 
   }
 
   async githubUnLink() {
     firebase.default.auth().currentUser?.unlink('github.com')
+    this.snackBar.open('Account succesfuly unlinked', 'Dismiss', {
+      duration: 5000,
+    })
   }
 
 
