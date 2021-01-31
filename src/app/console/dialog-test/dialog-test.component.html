@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Account settings</h2>
+<mat-dialog-content class="mat-typography">
+    <div class="padding"></div>
+    <div class="buttons">
+        <button mat-flat-button color="primary" *ngIf="gitlinkable" (click)="githubLink()">Github link</button>
+        <button mat-flat-button color="warn" *ngIf="!gitlinkable" (click)="githubunlink()">Github unlink</button>
+        <br><br>
+        <button mat-flat-button color="primary" class="sync-btn" [disabled]="syncing" (click)="githubrefresh()">Github sync</button>
+        <br><br>
+        <button mat-flat-button color="warn" (click)="logout()">logout</button>
+    </div>
+</mat-dialog-content>
+
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

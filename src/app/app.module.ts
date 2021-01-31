@@ -60,6 +60,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { AngularFireFunctionsModule } from '@angular/fire/functions';
+import { DialogTestComponent } from './console/dialog-test/dialog-test.component';
 
 const config = {
   apiKey: "AIzaSyAt2Z0NaWwdWYjY_aekfmXlrxVABYsymaM",
@@ -85,6 +86,7 @@ const config = {
     SuccessComponent,
     FailureComponent,
     PrivacyComponent,
+    DialogTestComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -109,6 +111,9 @@ const config = {
     MatIconModule,
     MatDialogModule,
     MatIconModule,
+  ],
+  entryComponents: [
+    DialogTestComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

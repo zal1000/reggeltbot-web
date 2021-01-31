@@ -30,7 +30,9 @@ export class AuthService {
         this.loggedin = true;
 
       } else {
-        this.userData = null;
+        this.userData = {
+          state: false,
+        };
         this.loggedin = false
       }
     })
@@ -150,4 +152,5 @@ export interface User {
   displayName: string;
   photoURL: string;
   emailVerified: boolean;
+  providerData: object;
 }

@@ -10,6 +10,9 @@ import { AngularFireFunctions } from '@angular/fire/functions';
 import { AngularFirestore } from '@angular/fire/firestore'
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { coerceStringArray } from '@angular/cdk/coercion';
+import {MatDialog} from '@angular/material/dialog';
+import { DialogTestComponent } from './dialog-test/dialog-test.component';
 
 @Component({
   selector: 'app-console',
@@ -26,6 +29,7 @@ export class ConsoleComponent implements OnInit {
   checkoutstate: boolean = true;
   apiurl = environment.zalapi;
   syncing: boolean = false;
+  gitlinkable: boolean = true;
 
   constructor(
     public auth: AuthService, 
@@ -35,6 +39,7 @@ export class ConsoleComponent implements OnInit {
     private functions: AngularFireFunctions,
     private db: AngularFirestore,
     private http: HttpClient,
+    public dialog: MatDialog,
     ) { 
     this.afAuth.authState.subscribe(user => {
       if(user) {
@@ -50,10 +55,30 @@ export class ConsoleComponent implements OnInit {
 
       }
     })
+
+    this.afAuth.authState.subscribe(user => {
+      //console.log(user?.providerData)
+      if(!user?.providerData.find((element: any) => element.providerId == "github.com")) {
+        this.gitlinkable = true;
+      } else {
+        this.gitlinkable = false;
+      }
+      
+    })
+
+
   }
 
   ngOnInit(): void {
     console.log(window.location.hostname)
+  }
+
+  accountDialog() {
+    const dialogRef = this.dialog.open(DialogTestComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   async checkout() {
@@ -87,11 +112,17 @@ export class ConsoleComponent implements OnInit {
   }
 
   githubLink() {
+    this.gitlinkable = false;
+
     this.auth.githubLink();
   }
 
   githubunlink() {
-    this.auth.githubUnLink()
+    this.auth.githubUnLink().then(user => {
+      this.gitlinkable = true;
+    }).catch(err => {
+      this.gitlinkable = false;
+    })
   }
 
   githubrefresh() {
@@ -99,6 +130,9 @@ export class ConsoleComponent implements OnInit {
     const bar = this.snackBar.open('Syncing...')
     const ref = this.db.collection('users').doc(this.auth.userData.uid)
     const doc = ref.get();
+    this.auth.userData.providerData.forEach((prov: any) => {
+      console.log(prov)
+    });
     doc.subscribe((doc: any) => {
       if(doc.exists){
         console.log(doc.data().github.username)
