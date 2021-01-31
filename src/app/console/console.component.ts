@@ -81,6 +81,10 @@ export class ConsoleComponent implements OnInit {
     this.auth.githubLink();
   }
 
+  githubunlink() {
+    this.auth.githubUnLink()
+  }
+
   logout() {
     this.loading = true;
     this.afAuth.signOut().then(() => {

@@ -6,6 +6,7 @@ import { Observable, throwError } from 'rxjs';
 import * as firebase from 'firebase/app';
 import { MatSnackBar, } from '@angular/material/snack-bar';
 import { AngularFireAnalytics } from '@angular/fire/analytics';
+import { AngularFireFunctions } from '@angular/fire/functions';
 
 
 @Injectable({
@@ -20,7 +21,7 @@ export class AuthService {
     public afAuth: AngularFireAuth,
     private snackBar: MatSnackBar,
     private anal: AngularFireAnalytics,
-
+    private functions: AngularFireFunctions,
   ) {
     this.afAuth.authState.subscribe(user => {
       if(user) {
@@ -85,16 +86,39 @@ export class AuthService {
 
   async githubLink() {
     let provider: any = new firebase.default.auth.GithubAuthProvider();
-    provider.addScope('public_repo');
     provider.addScope('user')
     firebase.default.auth().currentUser?.linkWithPopup(provider).then((userCredential: any) => {
-      // Get the GitHub username.
-      console.log(userCredential.additionalUserInfo.username);
-      // Get GitHub additional user profile.
-      console.log(userCredential.additionalUserInfo.profile);
-
-      console.log(userCredential)
+      this.afAuth.currentUser.then(user => {
+        console.log(userCredential.additionalUserInfo)
+        console.log(user?.uid)
+        this.afs
+        .collection('users')
+        .doc(user?.uid)
+        .update({
+          github: {
+            username: userCredential.additionalUserInfo.username,
+          }
+        })
+        .then(doc => {
+          this.snackBar.open('Account succesfuly linked', 'Okay', {
+            duration: 3000,
+          })
+        })
+        .catch(err => {
+          console.warn(err)
+          this.snackBar.open(`Error linking account: ${err.message}`, 'Dismiss')
+        })
+      })
+      const addmsg = this.functions.httpsCallable('checkgithubusers')
+      addmsg({
+        gituname: userCredential.additionalUserInfo.username
+      })
     })
+
+  }
+
+  async githubUnLink() {
+    firebase.default.auth().currentUser?.unlink('github.com')
   }
 
 
