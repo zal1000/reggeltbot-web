@@ -13,6 +13,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { coerceStringArray } from '@angular/cdk/coercion';
 import {MatDialog} from '@angular/material/dialog';
 import { DialogTestComponent } from './dialog-test/dialog-test.component';
+import { BotSettingsDialogComponent } from './bot-settings-dialog/bot-settings-dialog.component';
 
 @Component({
   selector: 'app-console',
@@ -79,6 +80,27 @@ export class ConsoleComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  settingdialog() {
+    const dialogRef = this.dialog.open(BotSettingsDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result === true) {
+        this.snackBar.open('Changes saved, but not applied yet', '', {
+          duration: 3000,
+        })
+      } else if(result === false) {
+        this.snackBar.open('Changes canceled', '', {
+          duration: 5000,
+        })
+      } else {
+        this.snackBar.open('Changes saved locally', '', {
+          duration: 3000,
+        })
+      }
+    });
+
   }
 
   async checkout() {

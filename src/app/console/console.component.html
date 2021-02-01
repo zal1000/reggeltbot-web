@@ -35,6 +35,18 @@
 
         <br><br>
         <button mat-flat-button color="primary" (click)="accountDialog()">Account settings</button>
+        <br><br><br>
+        <form>
+            <mat-form-field appearance="fill" style="padding: 20px; border-radius: 10px; background-color: white;">
+                <mat-label>Select server</mat-label>
+                <mat-select>
+                    <mat-option value="804546724173316146">Reggeltbot</mat-option>
+                </mat-select>
+              </mat-form-field>
+        </form>
+        <br><br><br>
+
+        <button mat-flat-button color="accent" (click)="settingdialog()">Bot settings</button>
         <form class="checkout-form" *ngIf="checkoutstate">
             
         </form>

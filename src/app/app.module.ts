@@ -23,6 +23,7 @@ import { StripeModule } from "stripe-angular"
 import { PremiumComponent } from './premium/premium.component';
 import { SuccessComponent } from './success/success.component';
 import { FailureComponent } from './failure/failure.component';
+import { MatFormFieldModule } from '@angular/material/form-field'
 
 import { PrivacyComponent } from './privacy/privacy.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
@@ -61,6 +62,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { DialogTestComponent } from './console/dialog-test/dialog-test.component';
+import { BotSettingsDialogComponent } from './console/bot-settings-dialog/bot-settings-dialog.component';
 
 const config = {
   apiKey: "AIzaSyAt2Z0NaWwdWYjY_aekfmXlrxVABYsymaM",
@@ -87,6 +89,7 @@ const config = {
     FailureComponent,
     PrivacyComponent,
     DialogTestComponent,
+    BotSettingsDialogComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -111,9 +114,12 @@ const config = {
     MatIconModule,
     MatDialogModule,
     MatIconModule,
+    MatSelectModule,
+    MatFormFieldModule,
   ],
   entryComponents: [
-    DialogTestComponent
+    DialogTestComponent,
+    BotSettingsDialogComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
