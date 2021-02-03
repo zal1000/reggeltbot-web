@@ -31,6 +31,13 @@ export class ConsoleComponent implements OnInit {
   apiurl = environment.zalapi;
   syncing: boolean = false;
   gitlinkable: boolean = true;
+  user: any;
+  guilds: object = [
+    {
+      name: 'Loading...',
+      id: 'loading',
+    }
+  ]
 
   constructor(
     public auth: AuthService, 
@@ -50,9 +57,12 @@ export class ConsoleComponent implements OnInit {
         this.snackBar.open(`Logged in as: ${user.email}`, "Okay", {
           duration: 5000,
         })
+        this.getGuilds()
+        this.user = user;
       } else {
         this.loggedin = false
         this.loading = false;
+        this.user = null;
 
       }
     })
@@ -64,14 +74,41 @@ export class ConsoleComponent implements OnInit {
       } else {
         this.gitlinkable = false;
       }
-      
     })
 
 
   }
 
-  ngOnInit(): void {
-    console.log(window.location.hostname)
+  ngOnInit() {
+  }
+
+  async getGuilds() {
+    console.log('asd')
+      this.afAuth.currentUser.then(async user => {
+      const guildlist: { name: any; id: any; }[] = [];
+      const userref = this.db.firestore.collection('users').doc(user?.uid);
+      await userref.get().then(async doc1 => {
+        console.log(doc1.data())
+        const dcref = this.db.firestore.collection('dcusers').doc(doc1?.data()?.dcid).collection('guilds').where('permissions.MANAGE_MESSAGES', '==', true);
+        await dcref.get().then(docs => {
+          console.log('asd3')
+          if(docs.empty) {
+            console.log('empty')
+          }
+          docs.forEach(doc => {
+            guildlist.push({
+              name: doc.data().name,
+              id: doc.id,
+            })
+            console.log(doc.data())
+          })
+        })
+      }).catch(err => {
+        this.snackBar.open(`Error reading from database! ${err.message}`, 'Dismiss')
+      })
+      this.guilds = guildlist;
+      console.log(guildlist);
+    })
   }
 
   accountDialog() {

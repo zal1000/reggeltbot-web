@@ -40,7 +40,9 @@
             <mat-form-field appearance="fill" style="padding: 20px; border-radius: 10px; background-color: white;">
                 <mat-label>Select server</mat-label>
                 <mat-select>
-                    <mat-option value="804546724173316146">Reggeltbot</mat-option>
+                    <div *ngFor="let guild of guilds">
+                        <mat-option  value="{{guild.id}}">{{guild.name}}</mat-option>
+                    </div>
                 </mat-select>
               </mat-form-field>
         </form>
