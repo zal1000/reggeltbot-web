@@ -11,7 +11,7 @@ import { AngularFirestore } from '@angular/fire/firestore'
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { coerceStringArray } from '@angular/cdk/coercion';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogTestComponent } from './dialog-test/dialog-test.component';
 import { BotSettingsDialogComponent } from './bot-settings-dialog/bot-settings-dialog.component';
 
@@ -37,7 +37,8 @@ export class ConsoleComponent implements OnInit {
       name: 'Loading...',
       id: 'loading',
     }
-  ]
+  ];
+  selectedGuild: any;
 
   constructor(
     public auth: AuthService, 
@@ -80,6 +81,7 @@ export class ConsoleComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
   async getGuilds() {
@@ -120,7 +122,9 @@ export class ConsoleComponent implements OnInit {
   }
 
   settingdialog() {
-    const dialogRef = this.dialog.open(BotSettingsDialogComponent);
+    const dialogRef = this.dialog.open(BotSettingsDialogComponent, {
+      data: {id: this.selectedGuild},
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       if(result === true) {

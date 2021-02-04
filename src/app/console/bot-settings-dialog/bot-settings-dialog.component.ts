@@ -1,5 +1,7 @@
-import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { InjectionToken } from '@angular/core';
+import { Component, Inject, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, NgForm } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA, } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-bot-settings-dialog',
@@ -8,31 +10,20 @@ import { FormControl, NgForm } from '@angular/forms';
 })
 export class BotSettingsDialogComponent implements OnInit, OnDestroy {
 
-  form = new FormControl({
-    ch: new FormControl(),
-  });
-
-  channels: object = [
-    {name: 'channel name', id: 'channel id'},
-    {name: 'channel name2', id: 'channel id2'},
-  ]
-
   channelset: any;
 
-  constructor() {
 
-  }
+  constructor( 
+    public dialogRef: MatDialogRef<BotSettingsDialogComponent>,
+    ) { }
 
-  ngOnInit(): void {
-    this.form.valueChanges.subscribe(x => {
-      const d = JSON.stringify(x);
-      console.log(d);
-    })
+    @Inject(MAT_DIALOG_DATA)
+
+  ngOnInit(): void {    
+    console.log(MAT_DIALOG_DATA)
   }
 
   ngOnDestroy() {
-    console.log(this.channelset)
-    localStorage.setItem('test', 'asd')
   }
 
 }

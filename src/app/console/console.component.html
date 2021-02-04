@@ -39,7 +39,7 @@
         <form>
             <mat-form-field appearance="fill" style="padding: 20px; border-radius: 10px; background-color: white;">
                 <mat-label>Select server</mat-label>
-                <mat-select>
+                <mat-select [(ngModel)]="selectedGuild">
                     <div *ngFor="let guild of guilds">
                         <mat-option  value="{{guild.id}}">{{guild.name}}</mat-option>
                     </div>
