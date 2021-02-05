@@ -19,10 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { fromEventPattern } from 'rxjs';
 import { AngularFireMessagingModule } from '@angular/fire/messaging';
-import { StripeModule } from "stripe-angular"
-import { PremiumComponent } from './premium/premium.component';
-import { SuccessComponent } from './success/success.component';
-import { FailureComponent } from './failure/failure.component';
+import { StripeModule } from "stripe-angular";
 import { MatFormFieldModule } from '@angular/material/form-field'
 
 import { PrivacyComponent } from './privacy/privacy.component';
@@ -63,6 +60,7 @@ import {MatTreeModule} from '@angular/material/tree';
 import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { DialogTestComponent } from './console/dialog-test/dialog-test.component';
 import { BotSettingsDialogComponent } from './console/bot-settings-dialog/bot-settings-dialog.component';
+import { PremiumComponent } from './console/premium/premium.component';
 
 const config = {
   apiKey: "AIzaSyAt2Z0NaWwdWYjY_aekfmXlrxVABYsymaM",
@@ -84,12 +82,10 @@ const config = {
     ConsoleComponent,
     HomeComponent,
     CountsearchComponent,
-    PremiumComponent,
-    SuccessComponent,
-    FailureComponent,
     PrivacyComponent,
     DialogTestComponent,
     BotSettingsDialogComponent,
+    PremiumComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -120,6 +116,7 @@ const config = {
   entryComponents: [
     DialogTestComponent,
     BotSettingsDialogComponent,
+    PremiumComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

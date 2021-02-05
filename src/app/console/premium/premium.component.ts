@@ -21,10 +21,10 @@ export class PremiumComponent implements OnInit {
 
   ngOnInit(): void {
     this.handler = StripeCheckout.configure({
-      key: 'pk_test_your_key',
+      key: environment.stripekey,
       image: '/your-avatar.png',
       locale: 'auto',
-      source: async (source) => {
+      source: async (source: any) => {
         this.loading = true;
         const user: any = await this.auth.getUser();
         await fetch(`${this.apiurl}/stripe/reggeltbot/premium?u=${user.uid}`, {
