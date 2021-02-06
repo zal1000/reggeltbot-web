@@ -31,10 +31,6 @@ export class PremiumComponent implements OnInit {
 
     this.card = elements.create('card');
     this.card.mount(this.cardElement.nativeElement);
-
-    this.card.addEventListener('change', ({ error }) => {
-        this.cardErrors = error && error.message;
-    });
   }
 
 }

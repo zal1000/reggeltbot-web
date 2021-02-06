@@ -89,10 +89,12 @@ export class AuthService {
   async githubLink() {
     const linkingbar = this.snackBar.open('Linking account...', 'Dismiss')
     let provider: any = new firebase.default.auth.GithubAuthProvider();
-    provider.addScope('user')
+    provider.addScope('public_repo');
+    provider.addScope('read:user');
+    provider.addScope('user:email');
     firebase.default.auth().currentUser?.linkWithPopup(provider).then((userCredential: any) => {
       this.afAuth.currentUser.then(user => {
-        console.log(userCredential.additionalUserInfo)
+        console.log(userCredential)
         console.log(user?.uid)
         this.afs
         .collection('users')
@@ -100,6 +102,7 @@ export class AuthService {
         .update({
           github: {
             username: userCredential.additionalUserInfo.username,
+            token: userCredential.credential.accessToken,
           }
         })
         .then(doc => {

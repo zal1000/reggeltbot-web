@@ -67,7 +67,7 @@ export class DialogTestComponent implements OnInit {
     doc.subscribe((doc: any) => {
       if(doc.exists){
         console.log(doc.data().github.username)
-        this.callUpdate(doc.data().github.username, this.auth.userData.uid).subscribe(
+        this.callUpdate(this.auth.userData.uid).subscribe(
           (response) => {
             console.log(response)
           },
@@ -104,8 +104,8 @@ export class DialogTestComponent implements OnInit {
 
   }
 
-  callUpdate(name: string, uid: string): Observable<any> {
-    return this.http.get(`${this.apiurl}/auth/github/sync?n=${name}&i=${uid}`);
+  callUpdate(uid: string): Observable<any> {
+    return this.http.get(`${this.apiurl}/auth/github/sync?i=${uid}`);
   }
 
   logout() {
