@@ -49,8 +49,13 @@
         <br><br><br>
 
         <button mat-flat-button color="accent" (click)="settingdialog()">Bot settings</button>
+        <br><br><br>
+        <button mat-flat-button color="primary" (click)="premiumDialog()">Premium</button>
         <form class="checkout-form" *ngIf="checkoutstate">
             
         </form>
+        <div *ngIf="changesInProgress" class="cont-apply">
+            <button mat-flat-button  class="btn-appyl">Apply changes</button>
+        </div>
     </div>
 </div>

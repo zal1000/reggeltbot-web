@@ -1,1 +1,10 @@
-<p>premium works!</p>
+<h2 mat-dialog-title>Checkout</h2>
+<mat-dialog-content class="mat-typography">
+    <div class="padding"></div>
+    <form (ngSubmit)="createStripeToken()" class="checkout"></form>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="false">Cancel <mat-icon>cancel</mat-icon></button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Submit <mat-icon>payments</mat-icon></button>
+</mat-dialog-actions>

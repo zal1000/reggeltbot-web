@@ -14,6 +14,7 @@ import { coerceStringArray } from '@angular/cdk/coercion';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogTestComponent } from './dialog-test/dialog-test.component';
 import { BotSettingsDialogComponent } from './bot-settings-dialog/bot-settings-dialog.component';
+import { PremiumComponent } from './premium/premium.component';
 
 @Component({
   selector: 'app-console',
@@ -39,6 +40,7 @@ export class ConsoleComponent implements OnInit {
     }
   ];
   selectedGuild: any;
+  changesInProgress: boolean = false;
 
   constructor(
     public auth: AuthService, 
@@ -127,10 +129,12 @@ export class ConsoleComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      
       if(result === true) {
         this.snackBar.open('Changes saved, but not applied yet', '', {
           duration: 3000,
-        })
+        });
+        this.changesInProgress = true;
       } else if(result === false) {
         this.snackBar.open('Changes canceled', '', {
           duration: 5000,
@@ -141,15 +145,30 @@ export class ConsoleComponent implements OnInit {
         })
       }
     });
+  }
 
+  premiumDialog() {
+    const dialogRef = this.dialog.open(PremiumComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result === true) {
+        this.snackBar.open('Processing...', '<mat-icon>cancel</mat-icon>');
+        this.changesInProgress = true;
+      } else if(result === false) {
+        this.snackBar.open('Canceled', '', {
+          duration: 5000,
+        })
+      } else {
+        this.snackBar.open('Canceled', '', {
+          duration: 3000,
+        })
+      }
+
+    });
   }
 
   async checkout() {
     this.pay.premiumsub()
-  }
-
-  openSnackBar(message: string) {
-    //his.snackBar.open(message);
   }
 
   login(f: NgForm) {

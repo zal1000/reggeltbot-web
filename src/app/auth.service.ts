@@ -6,7 +6,6 @@ import { Observable, throwError } from 'rxjs';
 import * as firebase from 'firebase/app';
 import { MatSnackBar, } from '@angular/material/snack-bar';
 import { AngularFireAnalytics } from '@angular/fire/analytics';
-import { AngularFireFunctions } from '@angular/fire/functions';
 
 
 @Injectable({
@@ -21,7 +20,6 @@ export class AuthService {
     public afAuth: AngularFireAuth,
     private snackBar: MatSnackBar,
     private anal: AngularFireAnalytics,
-    private functions: AngularFireFunctions,
   ) {
     this.afAuth.authState.subscribe(user => {
       if(user) {
@@ -89,7 +87,6 @@ export class AuthService {
   async githubLink() {
     const linkingbar = this.snackBar.open('Linking account...', 'Dismiss')
     let provider: any = new firebase.default.auth.GithubAuthProvider();
-    provider.addScope('public_repo');
     provider.addScope('read:user');
     provider.addScope('user:email');
     firebase.default.auth().currentUser?.linkWithPopup(provider).then((userCredential: any) => {
@@ -142,9 +139,10 @@ export class AuthService {
 
   errorHandler(err: any) {
     if(err.code === "auth/popup-closed-by-user") {
-      console.warn(err)
+      console.warn(err);
     } else {
-      this.snackBar.open(`${err.message}`, "Dismiss")
+      this.snackBar.open(`${err.message}`, "Dismiss");
+      console.warn(err);
     }
   }
 }

@@ -33,4 +33,8 @@ export class PremiumComponent implements OnInit {
     this.card.mount(this.cardElement.nativeElement);
   }
 
+  createStripeToken() {
+    
+  }
+
 }

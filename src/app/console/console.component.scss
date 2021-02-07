@@ -29,3 +29,18 @@
     color: #FFFFFF;
     background-color:#C3C4C6;    
 }
+
+.cont-apply {
+    height: 200px;
+    position: absolute;
+    bottom: 50px;
+    border: 3px solid green; 
+}
+
+.btn-appyl {
+    margin: 0;
+    position: fixed;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
