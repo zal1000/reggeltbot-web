@@ -1,8 +1,8 @@
 {
-  "name": "my-app",
-  "short_name": "my-app",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "name": "Reggeltbot webapp",
+  "short_name": "Reggeltbot",
+  "theme_color": "#FFCA5C",
+  "background_color": "#23272A",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
