@@ -16,7 +16,13 @@
         ]
       }
     ],
+    
+    "appAssociation": "AUTO",
     "rewrites": [
+      { 
+        "source": "/link/**", 
+        "dynamicLinks": true 
+      },
       {
         "source": "**",
         "destination": "/index.html"
