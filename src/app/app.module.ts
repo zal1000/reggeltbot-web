@@ -61,6 +61,7 @@ import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { DialogTestComponent } from './console/dialog-test/dialog-test.component';
 import { BotSettingsDialogComponent } from './console/bot-settings-dialog/bot-settings-dialog.component';
 import { PremiumComponent } from './console/premium/premium.component';
+import { AngularFireDatabaseModule } from '@angular/fire/database'
 
 const config = {
   apiKey: "AIzaSyAt2Z0NaWwdWYjY_aekfmXlrxVABYsymaM",
@@ -97,6 +98,7 @@ const config = {
     AngularFireStorageModule,
     AngularFireAnalyticsModule,
     AngularFireFunctionsModule,
+    AngularFireDatabaseModule,
     HttpClientModule, 
     BrowserAnimationsModule,
     BrowserModule,

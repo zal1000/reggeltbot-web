@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { AngularFireAnalytics} from '@angular/fire/analytics'
+import { AngularFireDatabase } from '@angular/fire/database'
 
 
 @Component({
@@ -21,8 +22,13 @@ export class AppComponent implements OnInit {
   showConsole: boolean = environment.showConsole;
   prod: boolean = environment.production;
   checkurl: any;
-
-  constructor(public afAuth: AngularFireAuth, private http: HttpClient, private anal: AngularFireAnalytics) {
+  botuptime: string = "Loading...";
+  constructor(
+    public afAuth: AngularFireAuth, 
+    private http: HttpClient, 
+    private anal: AngularFireAnalytics,
+    private rdb : AngularFireDatabase,
+    ) {
     this.afAuth.authState.subscribe(user => {
       if(user) {
         this.loggedin = true;
@@ -38,11 +44,21 @@ export class AppComponent implements OnInit {
         this.loggedin = false
         this.userProfilePicture = "https://firebasestorage.googleapis.com/v0/b/zal1000.net/o/demo%2Fpp%2Fdemo.png?alt=media&token=93fec366-cc41-45e0-9ad1-f6a399cc750c";
       }
-    })
+    });
+
+
   }
 
   ngOnInit() {
+    const ref = this.rdb.database.ref('bots/status');
+    ref.on('value', snapshot => {
+      this.asd(snapshot)
+    });
+  }
 
+  asd(data: any) {
+    console.log(data.val())
+    this.botuptime = data.val().reggeltbotUpRead
   }
 
   stonks() {
