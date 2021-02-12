@@ -19,5 +19,5 @@
   stripeids: {
     reggeltbotsub: "price_1IC5zFI6tCame7CcOyLE4c2L"
   },
-  zalapi: "https://latest---api-zd72hz742a-uc.a.run.app"
+  zalapi: "https://zal1000.ew.r.appspot.com"
 };
