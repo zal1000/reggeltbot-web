@@ -99,7 +99,9 @@ export class LeaderboardComponent implements OnInit {
 
   getList(): Observable<any> {
     this.loading = true;
-    return this.http.get(`${this.apiurl}/reggeltbot/leaderboard?m=${this.membercount}`);
+    console.log(environment.apiurl)
+    //return this.http.get(`${this.apiurl}/reggeltbot/leaderboard?m=${this.membercount}`);
+    return this.http.get(`${environment.apiurl}/reggeltbot/leaderboard?m=${this.membercount}`);
   }
 
   ngOnDestroy() {
