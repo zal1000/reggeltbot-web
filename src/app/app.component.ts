@@ -51,9 +51,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     const ref = this.rdb.database.ref('bots/status');
-    ref.on('value', snapshot => {
+    /*ref.on('value', snapshot => {
       this.asd(snapshot)
-    });
+    });*/
   }
 
   asd(data: any) {

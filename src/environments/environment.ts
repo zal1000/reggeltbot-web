@@ -7,7 +7,7 @@ export const environment = {
   loadgif: "https://ppllabs.com/wp-content/uploads/2018/10/load.gif",
   error: "https://firebasestorage.googleapis.com/v0/b/zal1000.appspot.com/o/LinkImages%2F1200px-Flat_cross_icon.svg.png?alt=media&token=066c44c3-c03c-4fee-b6c6-16ce1e8e5f73",
   noimg: "https://firebasestorage.googleapis.com/v0/b/zal1000.appspot.com/o/LinkImages%2Fstonks.png?alt=media&token=92675101-924c-4540-b954-d808cb0dacbb",
-  apiurl: "https://latest---api-zd72hz742a-uc.a.run.app",
+  apiurl: "https://zalapi.net",
   showConsole: true,
   firebaseconfig: {
     apiKey: "AIzaSyDhjZEv-cPgDn9kDlb6fcN7V0eOceWCR5k",
@@ -22,7 +22,7 @@ export const environment = {
   stripeids: {
     reggeltbotsub: "price_1IC5z5I6tCame7CcGpWVH4dI"
   },
-  zalapi: "http://localhost:8081",
+  zalapi: "http://localhost:8080",
 };
 
 

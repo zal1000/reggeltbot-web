@@ -42,6 +42,8 @@ export class ConsoleComponent implements OnInit {
   selectedGuild: any;
   changesInProgress: boolean = false;
 
+  prod: boolean = environment.production;
+
   constructor(
     public auth: AuthService, 
     public afAuth: AngularFireAuth, 

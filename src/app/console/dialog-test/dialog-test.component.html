@@ -5,7 +5,7 @@
         <button mat-flat-button color="primary" *ngIf="gitlinkable" (click)="githubLink()">Github link</button>
         <button mat-flat-button color="warn" *ngIf="!gitlinkable" (click)="githubunlink()">Github unlink</button>
         <br><br>
-        <button mat-flat-button color="primary" class="sync-btn" [disabled]="syncing" (click)="githubrefresh()">Github sync</button>
+        <button mat-flat-button color="primary" class="sync-btn" [disabled]="syncing || gitlinkable" (click)="githubrefresh()">Github sync</button>
         <br><br>
         <button mat-flat-button color="warn" (click)="logout()">logout</button>
     </div>
