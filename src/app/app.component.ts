@@ -17,7 +17,7 @@ import { AngularFireDatabase } from '@angular/fire/database'
 export class AppComponent implements OnInit {
   title = 'Reggeltbot';
   loggedin: boolean = false;
-  userProfilePicture: any = "https://firebasestorage.googleapis.com/v0/b/zal1000.net/o/demo%2Fpp%2Fdemo.png?alt=media&token=93fec366-cc41-45e0-9ad1-f6a399cc750c";
+  userProfilePicture: any = "assets/images/demo-pp-demo.png";
   loginmsg: string = "Logged out";
   showConsole: boolean = environment.showConsole;
   prod: boolean = environment.production;
@@ -34,15 +34,20 @@ export class AppComponent implements OnInit {
         this.loggedin = true;
         this.loginmsg = `Logged in as: ${user.email}`
         if(!user.photoURL){
-          this.userProfilePicture = "https://firebasestorage.googleapis.com/v0/b/zal1000.net/o/demo%2Fpp%2Fdemo.png?alt=media&token=93fec366-cc41-45e0-9ad1-f6a399cc750c";
+          this.userProfilePicture = "assets/images/demo-pp-demo.png";
         } else {
-          this.userProfilePicture = user.photoURL;
+          if(!user.photoURL){
+            this.userProfilePicture = "assets/images/demo-pp-demo.png";
+          } else {
+            this.userProfilePicture = user.photoURL;
+          }
+
         }
       } else {
         this.loginmsg = `Logged out`
 
         this.loggedin = false
-        this.userProfilePicture = "https://firebasestorage.googleapis.com/v0/b/zal1000.net/o/demo%2Fpp%2Fdemo.png?alt=media&token=93fec366-cc41-45e0-9ad1-f6a399cc750c";
+        this.userProfilePicture = "assets/images/demo-pp-demo.png";
       }
     });
 
