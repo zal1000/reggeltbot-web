@@ -36,21 +36,15 @@
         <br><br>
         <button mat-flat-button color="primary" (click)="accountDialog()">Account settings</button>
         <br><br><br>
-        <form>
-            <mat-form-field appearance="fill" style="padding: 20px; border-radius: 10px; background-color: white;">
-                <mat-label>Select server</mat-label>
-                <mat-select [(ngModel)]="selectedGuild">
-                    <div *ngFor="let guild of guilds">
-                        <mat-option  value="{{guild.id}}">{{guild.name}}</mat-option>
-                    </div>
-                </mat-select>
-              </mat-form-field>
-        </form>
+        <div *ngFor="let guild of guilds">
+            <button mat-flat-button routerLink="/console/{{guild.id}}">{{guild.name}}</button><br><br>
+        </div>
+
         <br><br><br>
 
-        <button mat-flat-button color="accent" (click)="settingdialog()">Bot settings</button>
+        <!--<button mat-flat-button color="accent" (click)="settingdialog()">Bot settings</button>-->
         <br><br><br>
-        <button mat-flat-button color="primary" *ngIf="!prod" (click)="premiumDialog()">Premium</button>
+        <!--<button mat-flat-button color="primary" *ngIf="!prod" (click)="premiumDialog()">Premium</button>-->
         <form class="checkout-form" *ngIf="checkoutstate">
             
         </form>

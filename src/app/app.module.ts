@@ -62,6 +62,7 @@ import { DialogTestComponent } from './console/dialog-test/dialog-test.component
 import { BotSettingsDialogComponent } from './console/bot-settings-dialog/bot-settings-dialog.component';
 import { PremiumComponent } from './console/premium/premium.component';
 import { AngularFireDatabaseModule } from '@angular/fire/database'
+import { BotSettingsComponent } from './console/bot-settings/bot-settings.component';
 
 const config = {
   apiKey: "AIzaSyAt2Z0NaWwdWYjY_aekfmXlrxVABYsymaM",
@@ -87,6 +88,7 @@ const config = {
     DialogTestComponent,
     BotSettingsDialogComponent,
     PremiumComponent,
+    BotSettingsComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -114,6 +116,7 @@ const config = {
     MatIconModule,
     MatSelectModule,
     MatFormFieldModule,
+    MatSliderModule,
   ],
   entryComponents: [
     DialogTestComponent,

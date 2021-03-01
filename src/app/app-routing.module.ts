@@ -7,6 +7,7 @@ import { ConsoleComponent } from './console/console.component';
 import { CountsearchComponent  } from './countsearch/countsearch.component'
 import { componentFactoryName } from '@angular/compiler';
 import { PrivacyComponent } from './privacy/privacy.component'; 
+import { BotSettingsComponent } from './console/bot-settings/bot-settings.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'leaderboard', component: LeaderboardComponent },
   { path: 'console', component: ConsoleComponent },
   { path: 'privacy', component: PrivacyComponent },
+  { path: 'console/:GuildId', component: BotSettingsComponent }
 ];
 
 @NgModule({

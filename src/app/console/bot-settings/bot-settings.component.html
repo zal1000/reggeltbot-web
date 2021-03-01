@@ -1,0 +1,13 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="container">
+    <h1>{{ name }}</h1>
+    <br><br>
+    <h2>Cooldown (current: {{ cd }}h)</h2>
+    <mat-slider (change)="updateSetting($event)" style="width: 50%;" min="0" max="24" step="1" thumbLabel value="{{ cd }}"></mat-slider>
+    <br><br><button *ngIf="changed" (click)="update()" mat-flat-button>Update</button>
+</div>
