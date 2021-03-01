@@ -33,7 +33,7 @@ export class ConsoleComponent implements OnInit {
   syncing: boolean = false;
   gitlinkable: boolean = true;
   user: any;
-  guilds: object = [
+  guilds: any = [
     {
       name: 'Loading...',
       id: 'loading',
@@ -89,7 +89,6 @@ export class ConsoleComponent implements OnInit {
   }
 
   async getGuilds() {
-    console.log('asd')
       this.afAuth.currentUser.then(async user => {
       const guildlist: { name: any; id: any; }[] = [];
       const userref = this.db.firestore.collection('users').doc(user?.uid);
@@ -97,7 +96,6 @@ export class ConsoleComponent implements OnInit {
         console.log(doc1.data())
         const dcref = this.db.firestore.collection('dcusers').doc(doc1?.data()?.dcid).collection('guilds').where('permissions.MANAGE_MESSAGES', '==', true);
         await dcref.get().then(docs => {
-          console.log('asd3')
           if(docs.empty) {
             console.log('empty')
           }
@@ -106,14 +104,12 @@ export class ConsoleComponent implements OnInit {
               name: doc.data().name,
               id: doc.id,
             })
-            console.log(doc.data())
           })
         })
       }).catch(err => {
         this.snackBar.open(`Error reading from database! ${err.message}`, 'Dismiss')
       })
       this.guilds = guildlist;
-      console.log(guildlist);
     })
   }
 
