@@ -36,20 +36,27 @@
         <br><br>
         <button mat-flat-button color="primary" (click)="accountDialog()">Account settings</button>
         <br><br><br>
-        <div *ngFor="let guild of guilds">
-            <button mat-flat-button routerLink="/console/{{guild.id}}">{{guild.name}}</button><br><br>
+        <div *ngIf="dclinked">
+            <div *ngFor="let guild of guilds">
+                <button mat-flat-button routerLink="/console/{{guild.id}}">{{guild.name}}</button><br><br>
+            </div>
+    
+            <br><br><br>
+    
+            <!--<button mat-flat-button color="accent" (click)="settingdialog()">Bot settings</button>-->
+            <br><br><br>
+            <!--<button mat-flat-button color="primary" *ngIf="!prod" (click)="premiumDialog()">Premium</button>-->
+            <form class="checkout-form" *ngIf="checkoutstate">
+                
+            </form>
+            <div *ngIf="changesInProgress" class="cont-apply">
+                <button mat-flat-button  class="btn-appyl">Apply changes</button>
+            </div>
         </div>
-
-        <br><br><br>
-
-        <!--<button mat-flat-button color="accent" (click)="settingdialog()">Bot settings</button>-->
-        <br><br><br>
-        <!--<button mat-flat-button color="primary" *ngIf="!prod" (click)="premiumDialog()">Premium</button>-->
-        <form class="checkout-form" *ngIf="checkoutstate">
-            
-        </form>
-        <div *ngIf="changesInProgress" class="cont-apply">
-            <button mat-flat-button  class="btn-appyl">Apply changes</button>
+        <div *ngIf="!dclinked">
+            <h1>Send the command below to the bot</h1>
+            <h1 style="color: aquamarine;">r!link {{user.email}} {{dclinkcode}}</h1>
+            <h1>The site will update automaticaly</h1>
         </div>
     </div>
 </div>

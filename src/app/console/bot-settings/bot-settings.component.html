@@ -9,5 +9,35 @@
     <br><br>
     <h2>Cooldown (current: {{ cd }}h)</h2>
     <mat-slider (change)="updateSetting($event)" style="width: 50%;" min="0" max="24" step="1" thumbLabel value="{{ cd }}"></mat-slider>
+    <br><br>
+    <div style="background-color: white; border-radius: 10px;">
+        <mat-form-field style="padding-top: 1.34375em;" appearance="fill">
+            <mat-label>Set full lang</mat-label>
+            <mat-select [(ngModel)]="lang" disableRipple>
+              <mat-option (click)="changedset()" value="1">Magyar (hu-HU)</mat-option>
+              <mat-option (click)="changedset()" value="2">Engilsh (en-US)</mat-option>
+              <mat-option (click)="changedset()" value="3">Deutsche (de-DE)</mat-option>
+            </mat-select>
+          </mat-form-field><br><br>
+          <mat-form-field style="padding-top: 1.34375em;" appearance="fill">
+            <mat-label>Set reggelt lang</mat-label>
+            <mat-select [(ngModel)]="reggeltlang" disableRipple>
+              <mat-option (click)="changedset()" value="1">Magyar (hu-HU)</mat-option>
+              <mat-option (click)="changedset()" value="2">Engilsh (en-US)</mat-option>
+              <mat-option (click)="changedset()" value="3">Deutsche (de-DE)</mat-option>
+            </mat-select>
+          </mat-form-field><br><br>
+          <mat-form-field style="padding-top: 1.34375em;" appearance="fill">
+            <mat-label>Set TTS lang</mat-label>
+            <mat-select [(ngModel)]="saylang" disableRipple>
+              <mat-option (click)="changedset()" value="1">Magyar (hu-HU)</mat-option>
+              <mat-option (click)="changedset()" value="2">Engilsh (en-US)</mat-option>
+              <mat-option (click)="changedset()" value="3">Deutsche (de-DE)</mat-option>
+            </mat-select>
+          </mat-form-field><br><br>
+          
+    </div>
+
+      
     <br><br><button *ngIf="changed" (click)="update()" mat-flat-button>Update</button>
 </div>

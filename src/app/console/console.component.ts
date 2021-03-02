@@ -41,6 +41,9 @@ export class ConsoleComponent implements OnInit {
   ];
   selectedGuild: any;
   changesInProgress: boolean = false;
+  dclinked: any;
+  dclinkcode: any;
+
 
   prod: boolean = environment.production;
 
@@ -70,6 +73,24 @@ export class ConsoleComponent implements OnInit {
         this.user = null;
 
       }
+    })
+
+    this.afAuth.authState.subscribe(async user => {
+      //console.log(user?.providerData)
+      if(!user) return;
+
+      const ref = db.collection('users').doc(user?.uid);
+      const doc: any = await ref.get().toPromise()
+      this.dclinked = doc.data().dclinked
+      this.dclinkcode = doc.data().dclink
+
+      ref.valueChanges().subscribe((doc: any) => {
+        this.dclinked = doc.dclinked
+        this.dclinkcode = doc.dclink
+        if(doc.dclinked) {
+          this.getGuilds()
+        }
+      })
     })
 
     this.afAuth.authState.subscribe(user => {
