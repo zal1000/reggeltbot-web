@@ -101,7 +101,7 @@ export class LeaderboardComponent implements OnInit {
     this.loading = true;
     console.log(environment.apiurl)
     //return this.http.get(`${this.apiurl}/reggeltbot/leaderboard?m=${this.membercount}`);
-    return this.http.get(`${environment.apiurl}/reggeltbot/leaderboard?m=${this.membercount}`);
+    return this.http.get(`${environment.apiurl}/leaderboard?m=${this.membercount}`);
   }
 
   ngOnDestroy() {

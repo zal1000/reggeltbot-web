@@ -29,7 +29,7 @@ export class ConsoleComponent implements OnInit {
   stripePromise = loadStripe(environment.stripekey);
   quantity = 1;
   checkoutstate: boolean = true;
-  apiurl = environment.zalapi;
+  apiurl = environment.apiurl;
   syncing: boolean = false;
   gitlinkable: boolean = true;
   user: any;
