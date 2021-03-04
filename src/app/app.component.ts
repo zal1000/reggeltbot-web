@@ -67,9 +67,15 @@ export class AppComponent implements OnInit {
   }
 
   stonks() {
+    /*
     let audio = new Audio();
     audio.src = "https://www.myinstants.com/media/sounds/different-variations-for-stonks-sound-effect.mp3";
     audio.load();
     audio.play();
+    */
+   //https://www.youtube.com/watch?v=dQw4w9WgXcQ
+   window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
+
+
   }
 }
