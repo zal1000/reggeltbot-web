@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, FormsModule, NgForm } from '@angular/forms';
 import { CountComponent } from '../count/count.component';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-countsearch',
@@ -28,24 +29,26 @@ export class CountsearchComponent implements OnInit {
   pure = true;
   online: boolean = false;
 
-  constructor(private db: AngularFirestore, private fb: FormBuilder) { }
+  constructor(private db: AngularFirestore, private fb: FormBuilder, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.online = window.navigator.onLine;
 
-    if (location.search.slice(1).split("&")[0].split("=")[1]) {
+    const ammount = this.route.snapshot.queryParamMap.get('m');
+
+    if (ammount) {
       this.empty = false;
       this.pure = false;
       this.buttons.push({
         tag: "Please search for user",
         pp: null,
-        id: location.search.slice(1).split("&")[0].split("=")[1],
+        id: ammount,
         err: false,
         loading: false,
       })
-      this.dcid = location.search.slice(1).split("&")[0].split("=")[1]
+      this.dcid = ammount;
     }
-    console.log(location.search.slice(1).split("&")[0].split("=")[1])
+    console.log(ammount)
     this.form = new FormGroup({
       name: new FormControl()
     })

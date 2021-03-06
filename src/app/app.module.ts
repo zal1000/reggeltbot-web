@@ -63,6 +63,7 @@ import { BotSettingsDialogComponent } from './console/bot-settings-dialog/bot-se
 import { PremiumComponent } from './console/premium/premium.component';
 import { AngularFireDatabaseModule } from '@angular/fire/database'
 import { BotSettingsComponent } from './console/bot-settings/bot-settings.component';
+import { RedirectComponent } from './console/redirect/redirect.component';
 
 const config = {
   apiKey: "AIzaSyAt2Z0NaWwdWYjY_aekfmXlrxVABYsymaM",
@@ -89,6 +90,7 @@ const config = {
     BotSettingsDialogComponent,
     PremiumComponent,
     BotSettingsComponent,
+    RedirectComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
