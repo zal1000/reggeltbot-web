@@ -8,6 +8,7 @@ import { MatSnackBar, } from '@angular/material/snack-bar';
 import { AngularFireAnalytics } from '@angular/fire/analytics';
 import { HttpClient } from '@angular/common/http'
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -135,7 +136,7 @@ export class AuthService {
 
   dclogin() {
 
-    this.http.get(`http://localhost:8081/dclogin?code=${this.router.snapshot.queryParamMap.get('code')}&from=${location.href}`).toPromise().then((res: any) => {
+    this.http.get(`${environment.apiurl}/dclogin?code=${this.router.snapshot.queryParamMap.get('code')}&from=${location.href}`).toPromise().then((res: any) => {
       console.log(res)
       firebase.default.auth().signInWithCustomToken(res.token).then(() => {
         window.location.search = ""
