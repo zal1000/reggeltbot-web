@@ -7,14 +7,13 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
+    "deploy": "ng build --prod && firebase deploy",
+    "build:prod": "ng build --prod",
     "dev:ssr": "ng run my-app:serve-ssr",
     "serve:ssr": "node dist/my-app/server/main.js",
     "build:ssr": "ng build --prod && ng run my-app:server:production",
     "prerender": "ng run my-app:prerender",
-    "prebuild:ssr": "ngcc",
-    "deploy": "ng build --prod && firebase deploy",
-    "build:prod": "ng build --prod"
+    "prebuild:ssr": "ngcc"
   },
   "private": true,
   "dependencies": {

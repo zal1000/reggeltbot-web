@@ -26,7 +26,8 @@
                 <button class="btn btn-secondary login-signup m10" (click)="register(f)" type="button">Register</button>
                 <br><br>
                 <button type="button" class="fab fa-google btn btn-danger vertical-center m10" (click)="googleLogin()"> Login with Google</button><br><br>
-                <button type="button" class="fab fa-facebook-f btn btn-primary vertical-center m10" (click)="facebookLogin()"> Login with Facebook</button>
+                <button type="button" class="fab fa-facebook-f btn btn-primary vertical-center m10" (click)="facebookLogin()"> Login with Facebook</button><br><br>
+                <button type="button" class="btn vertical-center m10" style="background-color: #7289DA;" (click)="discordlogin()"><img height="25px" src='/assets/images/dc-white.svg'> Login with Discord (BETA)</button>
             </div>
         </div>
     </form>
@@ -38,7 +39,7 @@
         <br><br><br>
         <div *ngIf="dclinked">
             <div *ngFor="let guild of guilds">
-                <button mat-flat-button routerLink="/console/{{guild.id}}">{{guild.name}}</button><br><br>
+                <button mat-flat-button class="guilds" routerLink="/console/{{guild.id}}">{{guild.name}}</button><br><br>
             </div>
     
             <br><br><br>
