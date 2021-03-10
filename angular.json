@@ -32,7 +32,6 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
-              "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -87,7 +86,6 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
-              "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css",
               "src/styles.scss"
             ],
             "scripts": []
