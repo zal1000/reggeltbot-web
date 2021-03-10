@@ -115,7 +115,7 @@ export class ConsoleComponent implements OnInit {
   }
 
   discordlogin() {
-    location.href = "https://discord.com/api/oauth2/authorize?client_id=737849483194269818&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fconsole&response_type=code&scope=identify%20email"
+    location.href = environment.dcauthurl
   }
 
   async getGuilds() {
