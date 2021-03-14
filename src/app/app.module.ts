@@ -18,7 +18,7 @@ import { CountsearchComponent } from './countsearch/countsearch.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { fromEventPattern } from 'rxjs';
-import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import { AngularFireMessaging, AngularFireMessagingModule } from '@angular/fire/messaging';
 import { StripeModule } from "stripe-angular";
 import { MatFormFieldModule } from '@angular/material/form-field'
 
@@ -64,6 +64,7 @@ import { PremiumComponent } from './console/premium/premium.component';
 import { AngularFireDatabaseModule } from '@angular/fire/database'
 import { BotSettingsComponent } from './console/bot-settings/bot-settings.component';
 import { RedirectComponent } from './console/redirect/redirect.component';
+import { VideocheckComponent } from './waik/videocheck/videocheck.component';
 
 const config = {
   apiKey: "AIzaSyAt2Z0NaWwdWYjY_aekfmXlrxVABYsymaM",
@@ -91,6 +92,7 @@ const config = {
     PremiumComponent,
     BotSettingsComponent,
     RedirectComponent,
+    VideocheckComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

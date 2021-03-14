@@ -9,6 +9,7 @@ import { componentFactoryName } from '@angular/compiler';
 import { PrivacyComponent } from './privacy/privacy.component'; 
 import { BotSettingsComponent } from './console/bot-settings/bot-settings.component';
 import { RedirectComponent } from './console/redirect/redirect.component';
+import { VideocheckComponent } from './waik/videocheck/videocheck.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'privacy', component: PrivacyComponent },
   { path: 'console/redirect', component: RedirectComponent },
   { path: 'console/:GuildId', component: BotSettingsComponent },
+  { path: 'waik/videocheck', component: VideocheckComponent },
 ];
 
 @NgModule({
