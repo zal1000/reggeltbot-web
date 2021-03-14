@@ -11,7 +11,5 @@ if (environment.production) {
 const stripe = Stripe(environment.stripekey);
 const elements = stripe.elements();
 
-document.addEventListener('DOMContentLoaded', () => {
-  platformBrowserDynamic().bootstrapModule(AppModule)
+platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
-});

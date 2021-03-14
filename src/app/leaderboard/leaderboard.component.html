@@ -7,35 +7,50 @@
 
     </div>
 
+    <!--
     <div *ngIf="!online" class="leaderboard">
         <div class="offline-text">
             You are offline. Please, connect to internet.
         </div>
     </div>
+    -->
 
     <div *ngIf="!error.status" class="leaderboard">
-        <div class="container">
+        <div class="container" style="background-color: #23272A;">
+            <mat-progress-spinner *ngIf="loading" style="margin:0 auto;" mode="indeterminate"></mat-progress-spinner>
+
             <div *ngIf="loading" class="spinner">
+                <!--
                 <span class="spinner-inner-1"></span>
                 <span class="spinner-inner-2"></span>
                 <span class="spinner-inner-3"></span>
+            -->
             </div>
         </div>
         <div *ngIf="!loading" class="container">
             <div class="row justify-content-md-center" *ngFor="let user of users">
                 <div class="col">
+
                     <img *ngIf="!user.pp" class="pp" src="{{ notfoundimg }}">
                     <img *ngIf="user.pp" class="rounded-circle pp" src="{{ user.pp }}">
                     <p class="username">{{ user.name }}</p>
                     <p class="reggeltcount">{{ user.reggeltcount }}</p>
+
                 </div>
             </div>
+            <!--
+            <div class="col">
+                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                For infinot scroll
+            </div>
+            -->
+
         </div>
     </div>
 
-    <div *ngIf="error.status && !online" class="container">
+    <div *ngIf="error.status" class="container">
         <img class="errimg" src="{{ error.image }}">
-        <h1>{{ error.message }}</h1>
+        <h1 class="errmsg">{{ error.message }}</h1>
     </div>
 
     <button *ngIf="!loading || error.status" mat-fab color="grey" class="reload" (click)="reload()">

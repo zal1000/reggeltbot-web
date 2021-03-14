@@ -6,6 +6,9 @@ import { Observable, throwError } from 'rxjs';
 import * as firebase from 'firebase/app';
 import { MatSnackBar, } from '@angular/material/snack-bar';
 import { AngularFireAnalytics } from '@angular/fire/analytics';
+import { HttpClient } from '@angular/common/http'
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -20,6 +23,8 @@ export class AuthService {
     public afAuth: AngularFireAuth,
     private snackBar: MatSnackBar,
     private anal: AngularFireAnalytics,
+    private http: HttpClient,
+    private router: ActivatedRoute,
   ) {
     this.afAuth.authState.subscribe(user => {
       if(user) {
@@ -129,7 +134,19 @@ export class AuthService {
     })
   }
 
+  dclogin() {
 
+    this.http.get(`${environment.apiurl}/dclogin?code=${this.router.snapshot.queryParamMap.get('code')}&from=${location.href}`).toPromise().then((res: any) => {
+      console.log(res)
+      firebase.default.auth().signInWithCustomToken(res.token).then(() => {
+        window.location.search = ""
+      })
+      //window.location.search = ""
+    })
+
+
+
+  }
 
   signOut() {
     this.afAuth.signOut().catch(err => {

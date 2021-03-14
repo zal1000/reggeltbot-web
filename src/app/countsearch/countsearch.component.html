@@ -28,10 +28,6 @@
 <div *ngIf="!loading" class="container">
     <div class="row" *ngFor="let btn of buttons">
         <div class="col">
-            <div class="wrapper">
-                <button class="btn btn-info center" *ngIf="btn.err && pure">{{ btn.tag }}</button>
-                <button class="btn btn-danger center" *ngIf="btn.err && !pure">{{ btn.tag }}</button>
-            </div>
             <app-count *ngIf="!btn.err && !btn.loading" [dcid]="btn.id"></app-count>
         </div>
     </div>

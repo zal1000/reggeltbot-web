@@ -19,5 +19,6 @@
   stripeids: {
     reggeltbotsub: "price_1IC5zFI6tCame7CcOyLE4c2L"
   },
-  zalapi: "https://zalapi.net"
+  zalapi: "https://zalapi.net",
+  dcauthurl: "https://discord.com/api/oauth2/authorize?client_id=737849483194269818&redirect_uri=https%3A%2F%2Freggeltbot.com%2Fconsole&response_type=code&scope=identify%20email"
 };

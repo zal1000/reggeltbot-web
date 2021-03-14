@@ -22,7 +22,7 @@ export class LeaderboardComponent implements OnInit {
   error = {
     status: false,
     code: 0,
-    message: "Error",
+    message: "Error loading leaderboard! Please try again later!",
     full: "Loading...",
     image: environment.error
   }
@@ -82,17 +82,17 @@ export class LeaderboardComponent implements OnInit {
           this.users = response;
           this.loading = false;
         },
-        (error) => {                              //error() callback
+        (error) => {
           console.error('Request failed with error', error)
           this.loading = false;
           this.error.status = true;
           this.error.code = error.code;
-          this.error.message = error.message;
+          const errmsg = error.message || "Error loading leaderboard! Please try again later!"
+          this.error.message = errmsg;
           this.error.full = error;
-
         },
-        () => {                                   //complete() callback
-          console.error('Request completed')      //This is actually not needed 
+        () => {
+          console.log('Request completed')
         })
     }
   }

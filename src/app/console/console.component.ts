@@ -15,6 +15,7 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogTestComponent } from './dialog-test/dialog-test.component';
 import { BotSettingsDialogComponent } from './bot-settings-dialog/bot-settings-dialog.component';
 import { PremiumComponent } from './premium/premium.component';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-console',
@@ -56,6 +57,7 @@ export class ConsoleComponent implements OnInit {
     private db: AngularFirestore,
     private http: HttpClient,
     public dialog: MatDialog,
+    private router: ActivatedRoute,
     ) { 
     this.afAuth.authState.subscribe(user => {
       if(user) {
@@ -64,6 +66,7 @@ export class ConsoleComponent implements OnInit {
         this.loading = false;
         this.snackBar.open(`Logged in as: ${user.email}`, "Okay", {
           duration: 5000,
+          panelClass: ['snack-login'],
         })
         this.getGuilds()
         this.user = user;
@@ -106,7 +109,13 @@ export class ConsoleComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(this.router.snapshot.queryParamMap.get('code')) {
+      this.auth.dclogin()
+    }
+  }
 
+  discordlogin() {
+    location.href = environment.dcauthurl
   }
 
   async getGuilds() {

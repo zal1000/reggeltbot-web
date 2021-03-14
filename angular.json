@@ -32,7 +32,6 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -87,7 +86,6 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -130,21 +128,7 @@
               "@nestjs/microservices/microservices-module",
               "@nestjs/websockets",
               "@nestjs/websockets/socket-module",
-              "cache-manager",
-              "firebase",
-              "@firebase/app",
-              "@firebase/analytics",
-              "@firebase/auth",
-              "@firebase/component",
-              "@firebase/database",
-              "@firebase/firestore",
-              "@firebase/functions",
-              "@firebase/installations",
-              "@firebase/messaging",
-              "@firebase/storage",
-              "@firebase/performance",
-              "@firebase/remote-config",
-              "@firebase/util"
+              "cache-manager"
             ]
           },
           "configurations": {
