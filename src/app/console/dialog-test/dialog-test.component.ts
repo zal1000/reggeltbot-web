@@ -16,10 +16,33 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./dialog-test.component.scss']
 })
 export class DialogTestComponent implements OnInit {
-  gitlinkable: boolean = true;
   apiurl = environment.zalapi;
   syncing: boolean = false;
-
+  linkedaccounts = {
+    google: false,
+    github: false,
+    facebook: false,
+    discord: false
+  };
+  accounts: Accounts = {
+    google: {
+      displayName: "Loading...",
+      email: "Loading...",
+      photoURL: environment.loadgif,
+    },
+    facebook: {
+      displayName: "Loading...",
+      email: "Loading...",
+      photoURL: environment.loadgif,
+    },
+    github: {
+      displayName: "Loading...",
+      email: "Loading...",
+      photoURL: environment.loadgif,
+    },
+    
+  }
+  user: any;
   constructor(
         public auth: AuthService, 
         public afAuth: AngularFireAuth, 
@@ -31,11 +54,34 @@ export class DialogTestComponent implements OnInit {
         public dialog: MatDialog,
   ) {
     this.afAuth.authState.subscribe(user => {
-    //console.log(user?.providerData)
-    if(!user?.providerData.find((element: any) => element.providerId == "github.com")) {
-      this.gitlinkable = true;
+      user = user;
+    console.log(user?.providerData)
+    if(user?.providerData.find((element: any) => element.providerId == "github.com")) {
+      const ref = user?.providerData.find((element: any) => element.providerId == "github.com")
+      this.accounts.github.displayName = ref?.displayName;
+      this.accounts.github.email = ref?.email;
+      this.linkedaccounts.github = true;
     } else {
-      this.gitlinkable = false;
+      this.linkedaccounts.github = false;
+    }
+
+    if(user?.providerData.find((element: any) => element.providerId == "google.com")) {
+      const ref = user?.providerData.find((element: any) => element.providerId == "google.com")
+      this.accounts.google.displayName = ref?.displayName;
+      this.accounts.google.email = ref?.email;
+      this.linkedaccounts.google = true;
+    } else {
+      this.linkedaccounts.google = false;
+    }
+
+    if(user?.providerData.find((element: any) => element.providerId == "facebook.com")) {
+      const ref = user?.providerData.find((element: any) => element.providerId == "facebook.com")
+      this.accounts.google.displayName = ref?.displayName;
+      this.accounts.google.email = ref?.email;
+      this.linkedaccounts.google = true;
+      this.linkedaccounts.facebook = true;
+    } else {
+      this.linkedaccounts.facebook = false;
     }
     
   }) }
@@ -44,16 +90,27 @@ export class DialogTestComponent implements OnInit {
   }
 
   githubLink() {
-    this.gitlinkable = false;
+    this.linkedaccounts.github = true;
     this.auth.githubLink();
   }
 
   githubunlink() {
     this.auth.githubUnLink().then(user => {
-      this.gitlinkable = true;
+      this.linkedaccounts.github = false;
     }).catch(err => {
-      this.gitlinkable = false;
+      this.linkedaccounts.github = true;
     })
+  }
+
+  facebookLink() {
+
+  }
+  googleLink() {
+
+  }
+
+  discordLink() {
+
   }
 
   githubrefresh() {
@@ -112,4 +169,22 @@ export class DialogTestComponent implements OnInit {
     this.afAuth.signOut()
   }
 
+}
+
+interface Accounts {
+  google: {
+    displayName: string | null | undefined,
+    photoURL: string | null | undefined,
+    email: string | null | undefined
+  },
+  facebook: {
+    displayName: string | null | undefined,
+    photoURL: string | null | undefined,
+    email: string | null | undefined
+  },
+  github: {
+    displayName: string | null | undefined,
+    photoURL: string | null | undefined,
+    email: string | null | undefined
+  }
 }

@@ -1,13 +1,40 @@
 <h2 mat-dialog-title>Account settings</h2>
 <mat-dialog-content class="mat-typography">
     <div class="padding"></div>
-    <div class="buttons">
-        <button mat-flat-button color="primary" *ngIf="gitlinkable" (click)="githubLink()">Github link</button>
-        <button mat-flat-button color="warn" *ngIf="!gitlinkable" (click)="githubunlink()">Github unlink</button>
-        <br><br>
-        <button mat-flat-button color="primary" class="sync-btn" [disabled]="syncing || gitlinkable" (click)="githubrefresh()">Github sync</button>
-        <br><br>
-        <button mat-flat-button color="warn" (click)="logout()">logout</button>
+    <div class="buttons" >
+      <div class="google">
+        <div align="left" *ngIf="!linkedaccounts.google">
+          <button type="button" class="fab fa-google btn btn-danger vertical-center m10" (click)="googleLink()"> Link google account</button><br><br>
+        </div>
+        <div align="right" *ngIf="linkedaccounts.google">
+          <h1><img src="assets/images/google-color.svg" height="25px"> Google account linked as {{accounts.google.displayName}} ({{ accounts.google.email }})</h1>
+        </div>
+      </div>
+      <div class="facebook">
+        <div align="left" *ngIf="!linkedaccounts.facebook">
+          <button type="button" class="fab fa-facebook-f btn btn-primary vertical-center m10" (click)="facebookLink()"> Link facebook account</button><br><br>
+        </div>
+        <div align="right" *ngIf="linkedaccounts.facebook">
+          <h1><img src="assets/images/facebook-color.svg" height="25px"> Facebook account linked as {{accounts.facebook.displayName}} ({{ accounts.facebook.email }})</h1>
+        </div>
+      </div>
+
+      <div class="github">
+        <div align="left" *ngIf="!linkedaccounts.github">
+          <button mat-flat-button color="primary" (click)="githubLink()">Github link</button>
+        </div>
+        <div align="right" *ngIf="linkedaccounts.github">
+          <h1><img src="assets/images/github-black.svg" height="25px"> Github account linked as {{accounts.github.displayName}} ({{ accounts.github.email }})</h1><br><br>
+          <button mat-flat-button color="warn" (click)="githubunlink()">Github unlink</button><br><br>
+          <button mat-flat-button color="primary" class="sync-btn" [disabled]="syncing || !linkedaccounts.github" (click)="githubrefresh()">Github sync</button>
+
+
+        </div>
+      </div>
+
+      <button type="button" *ngIf="!linkedaccounts.discord" class="fab fa-discord btn vertical-center m10" style="background-color: #7289DA; color: white;" (click)="discordLink()"> Link Discord account (BETA)</button><br><br>
+        
+        <button mat-flat-button color="warn" (click)="logout()" mat-dialog-close>logout</button>
     </div>
 </mat-dialog-content>
 
