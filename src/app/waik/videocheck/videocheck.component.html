@@ -1,1 +1,97 @@
-<p>videocheck works!</p>
+<br><br><br>
+
+<div class="container" style="background-color: #23272A;">
+    <mat-progress-spinner *ngIf="loading" style="margin:0 auto;" mode="indeterminate"></mat-progress-spinner>
+</div>
+
+<div *ngIf="!loading">
+    <div *ngIf="!user">
+        <div class="container">
+            <div class="wrapper">
+                <br>
+                <h1>You must log in to edit the status!</h1>
+                <br><br>
+                <button type="button" class="btn vertical-center m10" style="background-color: #7289DA;" (click)="discordlogin()"><img height="25px" src='/assets/images/dc-white.svg'> Login with Discord (BETA)</button>
+            </div>
+    
+        </div>
+    
+    </div>
+    
+    <div *ngIf="user">
+        <div class="container">
+            <div class="wrapper">
+                <br><br>
+                <button type="button" class="btn btn-primary vertical-center m10" (click)="add()">Add issue</button>
+            </div>
+    
+        </div>
+    
+    </div>
+    
+    <div class="leaderboard">
+        <div class="container">
+            <h1>New</h1>
+            <div class="row-1 justify-content-md-center" *ngFor="let issue of issues">
+                <div *ngIf="issue.status === 'new'">
+                    <div class="col {{ issue.status }}">
+        
+                        <img *ngIf="issue.authorimg" class="rounded-circle pp" src="{{ issue.authorimg }}">
+                        <p class="username">{{ issue.authorname }}</p>
+                        <p class="reggeltcount wordWrap">{{ issue.issue }} | (Time: {{ issue.time }}, Video: {{ issue.video }})</p>
+            
+                    </div>
+                    <div class="btn-group" style="width: 100%;" role="group" aria-label="Basic example">
+                        <button type="button" (click)="markasAcknowledged(issue.id)" class="btn btn-secondary">Mark as Acknowledged</button>
+                        <button type="button" (click)="markasResolved(issue.id)" class="btn btn-success">Mark as Resolved</button>
+                        <button type="button" (click)="markasMuted(issue.id)" class="btn btn-dark">Ignore</button>
+                    </div>
+                    <br><br>
+    
+                </div>
+    
+            </div><br><br><br>
+            <h1>Acknowledged</h1>
+            <div class="row-1 justify-content-md-center" *ngFor="let issue of issues">
+                <div *ngIf="issue.status === 'acknowledged'">
+                    <div class="col {{ issue.status }}">
+                
+                        <img *ngIf="issue.authorimg" class="rounded-circle pp" src="{{ issue.authorimg }}">
+                        <p class="username">{{ issue.authorname }}</p>
+                        <p class="reggeltcount wordWrap">{{ issue.issue }} | (Time: {{ issue.time }}, Video: {{ issue.video }})</p>
+    
+                    </div>
+                    <div class="btn-group" style="width: 100%;" role="group" aria-label="Basic example">
+                        <button type="button" (click)="markasNew(issue.id)" class="btn btn-danger">Mark as New</button>
+                        <button type="button" (click)="markasResolved(issue.id)" class="btn btn-success">Mark as Resolved</button>
+                        <button type="button" (click)="markasMuted(issue.id)" class="btn btn-dark">Ignore</button>
+                    </div>
+                    <br><br>
+    
+                </div>
+    
+            </div><br><br><br>        <h1>Resolved</h1>
+            <div class="row-1 justify-content-md-center" *ngFor="let issue of issues">
+                <div *ngIf="issue.status === 'resolved'">
+                    <div class="col {{ issue.status }}">
+                
+                        <img *ngIf="issue.authorimg" class="rounded-circle pp" src="{{ issue.authorimg }}">
+                        <p class="username">{{ issue.authorname }}</p>
+                        <p class="reggeltcount wordWrap">{{ issue.issue }} | (Time: {{ issue.time }}, Video: {{ issue.video }})</p>
+    
+                        
+    
+    
+                    </div>
+                    <div class="btn-group" style="width: 100%;" role="group" aria-label="Basic example">
+                        <button type="button" (click)="markasNew(issue.id)" class="btn btn-danger">Mark as New</button>
+                        <button type="button" (click)="markasAcknowledged(issue.id)" class="btn btn-secondary">Mark as Acknowledged</button>
+                        <button type="button" (click)="markasMuted(issue.id)" class="btn btn-dark">Ignore</button>
+                    </div>
+                    <br><br>
+                </div>
+    
+            </div><br><br><br>
+        </div>
+    </div>
+</div>

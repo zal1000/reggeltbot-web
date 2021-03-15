@@ -1,0 +1,127 @@
+
+body {
+    background-color: #2C2F33;
+}
+
+h1 {
+    color: white;
+}
+
+.username {
+    font-size: 20px;
+    padding-right: 20px;
+    margin: 0;
+}
+
+.errmsg {
+    text-align: center;
+    color: white;
+    padding-bottom: 20px;
+}
+
+.pp {
+    width: 50px;
+}
+
+.reggeltcount {
+    font-size: large;
+    flex-grow: 1;
+    margin: 0;
+    white-space: pre-line;
+}
+
+.container {
+    background-color: #2C2F33;
+    margin-top: 70px;
+}
+
+.leaderboard {
+    background-color: #23272A;
+    color: #FFFFFF;
+}
+
+.blank {
+    padding-top: 80px;
+    background-color: #23272A;
+    padding-bottom: 80px;
+}
+
+.col {
+    padding: 20px;
+    display: flex;  
+    align-items: center;
+    flex-direction: row-reverse;
+    width: 100%;
+
+}
+
+.row:not(:last-child) {
+    border-bottom: 1px #3E4246 solid ;
+}
+
+.loading {
+    padding: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+
+.button-box {
+    margin: 40px;
+}
+/* loading */
+
+.errimg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    padding: 40px;
+}
+
+.reload {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+}
+
+.offline-text {
+    text-align: center;
+    color: red;
+    font-size: 20px;
+    margin: 8px;
+}
+
+.new {
+    background-color: #D50000;
+}
+
+.acknowledged {
+    background-color: #6D6D6D;
+}
+
+.resolved {
+    background-color: #0F9D58;
+}
+
+.btn-danger {
+    background-color: #D50000;
+}
+
+.btn-secondary {
+    background-color: #6D6D6D;
+}
+
+.btn-success {
+    background-color: #0F9D58;
+}
+
+.vertical-center {
+    width: 100%;
+    margin: 0;
+    position: relative;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
