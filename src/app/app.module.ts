@@ -65,6 +65,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database'
 import { BotSettingsComponent } from './console/bot-settings/bot-settings.component';
 import { RedirectComponent } from './console/redirect/redirect.component';
 import { VideocheckComponent } from './waik/videocheck/videocheck.component';
+import { AddComponent } from './waik/videcheck/add/add.component';
 
 const config = {
   apiKey: "AIzaSyAt2Z0NaWwdWYjY_aekfmXlrxVABYsymaM",
@@ -93,6 +94,7 @@ const config = {
     BotSettingsComponent,
     RedirectComponent,
     VideocheckComponent,
+    AddComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -128,6 +130,7 @@ const config = {
     DialogTestComponent,
     BotSettingsDialogComponent,
     PremiumComponent,
+    AddComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
