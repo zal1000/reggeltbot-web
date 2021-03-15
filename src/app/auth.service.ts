@@ -135,17 +135,17 @@ export class AuthService {
   }
 
   dclogin() {
-
-    this.http.get(`${environment.apiurl}/dclogin?code=${this.router.snapshot.queryParamMap.get('code')}&from=${location.href}`).toPromise().then((res: any) => {
+    this.http.get(`${environment.apiurl}/dclogin?code=${this.router.snapshot.queryParamMap.get('code')}&from=${location.href.split("?", 1)[0]}`).toPromise().then((res: any) => {
       console.log(res)
       firebase.default.auth().signInWithCustomToken(res.token).then(() => {
         window.location.search = ""
       })
       //window.location.search = ""
+    }).catch(e => {
+      this.snackBar.open(`${e.message}`, 'Dismiss')
+      window.location.search = ""
+
     })
-
-
-
   }
 
   signOut() {
