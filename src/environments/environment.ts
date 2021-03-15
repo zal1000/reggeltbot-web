@@ -23,7 +23,8 @@ export const environment = {
     reggeltbotsub: "price_1IC5z5I6tCame7CcGpWVH4dI"
   },
   zalapi: "http://localhost:8080",
-  dcauthurl: "https://discord.com/api/oauth2/authorize?client_id=737849483194269818&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fconsole&response_type=code&scope=identify%20email"
+  dcauthurl: "https://discord.com/api/oauth2/authorize?client_id=737849483194269818&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fconsole&response_type=code&scope=identify%20email",
+  dcauthurlvid: "https://discord.com/api/oauth2/authorize?client_id=737849483194269818&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fwaik%2Fvideocheck&response_type=code&scope=identify%20email"
 };
 
 
