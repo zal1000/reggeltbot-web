@@ -32,6 +32,12 @@ export class ConsoleComponent implements OnInit {
   checkoutstate: boolean = true;
   apiurl = environment.apiurl;
   syncing: boolean = false;
+  linkedaccounts = {
+    google: false,
+    github: false,
+    facebook: false,
+    discord: false
+  };
   gitlinkable: boolean = true;
   user: any;
   guilds: any = [
@@ -58,18 +64,34 @@ export class ConsoleComponent implements OnInit {
     private http: HttpClient,
     public dialog: MatDialog,
     private router: ActivatedRoute,
-    ) { 
-    this.afAuth.authState.subscribe(user => {
+    ) {
+    this.afAuth.authState.subscribe(async user => {
       if(user) {
         this.loggedin = true;
         //this.openSnackBar(`Logged in as ${user.email}`)
-        this.loading = false;
         this.snackBar.open(`Logged in as: ${user.email}`, "Okay", {
           duration: 5000,
           panelClass: ['snack-login'],
         })
         this.getGuilds()
         this.user = user;
+        
+        const ref = this.db.collection('users').doc(this.user?.uid);
+        const doc: any = await ref.get().toPromise()
+        this.dclinked = doc.data().dclinked
+        this.dclinkcode = doc.data().dclink
+
+        ref.valueChanges().subscribe((doc: any) => {
+          this.loading = false;
+
+          console.log('change val', doc)
+          this.dclinked = doc.dclinked
+          this.dclinkcode = doc.dclink
+          if(doc.dclinked) {
+            this.getGuilds()
+          }
+        })
+
       } else {
         this.loggedin = false
         this.loading = false;
@@ -78,44 +100,35 @@ export class ConsoleComponent implements OnInit {
       }
     })
 
-    this.afAuth.authState.subscribe(async user => {
-      //console.log(user?.providerData)
-      if(!user) return;
-
-      const ref = db.collection('users').doc(user?.uid);
-      const doc: any = await ref.get().toPromise()
-      this.dclinked = doc.data().dclinked
-      this.dclinkcode = doc.data().dclink
-
-      ref.valueChanges().subscribe((doc: any) => {
-        this.dclinked = doc.dclinked
-        this.dclinkcode = doc.dclink
-        if(doc.dclinked) {
-          this.getGuilds()
-        }
-      })
-    })
-
     this.afAuth.authState.subscribe(user => {
       //console.log(user?.providerData)
       if(!user?.providerData.find((element: any) => element.providerId == "github.com")) {
-        this.gitlinkable = true;
+        this.linkedaccounts.github = false;
       } else {
-        this.gitlinkable = false;
+        this.linkedaccounts.github = true;
       }
     })
 
-
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    /*
+    const dialogRef = this.dialog.open(DialogTestComponent, {
+      width: "1000px"
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+    */
     if(this.router.snapshot.queryParamMap.get('code')) {
+      this.loading = true;
       this.auth.dclogin()
     }
   }
 
   discordlogin() {
-    location.href = environment.dcauthurl
+    location.href = environment.dcauthurl;
   }
 
   async getGuilds() {
