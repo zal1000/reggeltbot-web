@@ -1,32 +1,39 @@
-import { identifierModuleUrl } from '@angular/compiler';
-import { Component, OnInit, resolveForwardRef, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore } from '@angular/fire/firestore'
-import { MatDialog } from '@angular/material/dialog';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
 import { environment } from 'src/environments/environment';
-import { AddComponent } from '../videcheck/add/add.component';
+import { AddComponent } from '../../videcheck/add/add.component';
+
 @Component({
-  selector: 'app-videocheck',
-  templateUrl: './videocheck.component.html',
-  styleUrls: ['./videocheck.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  selector: 'app-issues-list-n',
+  templateUrl: './issues-list-n.component.html',
+  styleUrls: ['./issues-list-n.component.scss']
 })
-export class VideocheckComponent implements OnInit {
-  white = 'white';
+export class IssuesListNComponent implements OnInit {
   user: any;
   loading: boolean = true;
-  videos = [
+  issues = [
     {
       id: 'loading...',
-      name: 'Loading...'
+      author: 'Loading...',
+      status: 'new',
+      authorimg: environment.loadgif,
+      authorname: 'Loading...',
+      issue: 'Loading...',
+      time: 'Loading...',
+
     }
   ]
-  fetched = false;
 
-  constructor(
+  @Input()
+  vidid!: string;
+  
+  fetched = false;
+  constructor(    
     private db: AngularFirestore,
     private snackbar: MatSnackBar,
     public auth: AuthService, 
@@ -34,20 +41,10 @@ export class VideocheckComponent implements OnInit {
     private afAuth: AngularFireAuth,
     public dialog: MatDialog,
     ) {
-      const ref = this.db.collection('waik').doc('norbi').collection('videos', ref => ref.where('active', '==', true));
-      ref.snapshotChanges().subscribe(async doc => {
+      const ref = this.db.collection('waik').doc('norbi').collection('videocheck', ref => ref.where('videoid', '==', this.vidid || null).where('status', '!=', 'ignored'));
+      ref.snapshotChanges().subscribe(async (doc: any) => {
         //console.log(doc);
-        ref.get().toPromise().then(docs => {
-          let array: { id: string; name: any; }[] = [];
-          docs.forEach(snap => {
-            array.push({
-              id: snap.id,
-              name: snap.data().name,
-            });
-          })
-          console.log(array)
-          this.videos = array;
-        })
+        await this.fetch()
       })
 
       this.afAuth.authState.subscribe(user => {
@@ -58,22 +55,61 @@ export class VideocheckComponent implements OnInit {
         }
 
       })
-
-
     }
 
-  async ngOnInit(): Promise<void> {
-
-    if(this.router.snapshot.queryParamMap.get('code')) {
-      this.auth.dclogin()
-    }
-
-
-
-    //this.fetch();
+  ngOnInit(): void {
   }
 
   async fetch() {
+
+    this.loading = true;
+    const ref = this.db.collection('waik').doc('norbi').collection('videocheck', ref => ref.where('videoid', '==', this.vidid || null));
+    
+    const docs = await ref.get().toPromise();
+    //if() {
+      let issues: { id: string; author: any; status: any; authorimg: any; authorname: any; issue: any; time: any; }[] = []
+
+      if(docs.empty) {
+        console.log("empty")
+        issues.push({
+          id: "empty",
+          author: "empty",
+          status: "new",
+          authorimg: environment.error,
+          authorname: "No videos",
+          issue: "No videos",
+          time: "00:00",
+        })
+        this.issues = issues;
+
+        this.fetched = true;
+        this.loading = false;
+      } else {
+        docs.forEach(async doc => {
+          const dcref = this.db.doc(`dcusers/${doc.data().author}`)
+          const dcdoc =  dcref.get();
+          const docdata: any = doc.data();
+          const dcdocdata: any = (await dcdoc.toPromise()).data();
+          //console.log((await dcdoc.toPromise()).data())
+            issues.push({
+              id: doc.id,
+              author: docdata.author,
+              status: docdata.status,
+              authorimg: dcdocdata.pp,
+              authorname: dcdocdata.tag,
+              issue: docdata.issue,
+              time: docdata.time,      
+            })
+  
+            this.issues = issues;
+        })
+
+        this.fetched = true;
+        this.loading = false;
+      }
+
+
+    //}
 
 
   }
@@ -84,7 +120,7 @@ export class VideocheckComponent implements OnInit {
     ref.update({
       status: 'new'
     }).then(() => {
-      //this.fetch()
+      this.fetch()
       this.snackbar.open('Marked as New', 'Dismiss', {
         duration: 3000,
       })
@@ -100,7 +136,7 @@ export class VideocheckComponent implements OnInit {
     ref.update({
       status: 'acknowledged'
     }).then(() => {
-      //this.fetch()
+      this.fetch()
       this.snackbar.open('Marked as acknowledged', 'Dismiss', {
         duration: 3000,
       })
@@ -117,7 +153,7 @@ export class VideocheckComponent implements OnInit {
     ref.update({
       status: 'resolved'
     }).then(() => {
-      //this.fetch()
+      this.fetch()
       this.snackbar.open('Marked as resolved', 'Dismiss', {
         duration: 3000,
       })
@@ -135,7 +171,7 @@ export class VideocheckComponent implements OnInit {
     ref.update({
       status: 'ignored'
     }).then(() => {
-      //this.fetch()
+      this.fetch()
       this.snackbar.open('Ignored', 'Dismiss', {
         duration: 3000,
       })
@@ -154,6 +190,7 @@ export class VideocheckComponent implements OnInit {
     const dialogRef = this.dialog.open(AddComponent, {
       width: "800px",
       maxHeight: "600px",
+      data: { id: this.vidid },
     });
 
     dialogRef.afterClosed().subscribe(async result => {
@@ -170,12 +207,13 @@ export class VideocheckComponent implements OnInit {
 
       console.log(doc.data())
       this.db.collection('waik').doc('norbi').collection('videocheck').add({
-        issue: result[1],
-        time: result[2],
-        video: result[0],
+        issue: result[0],
+        time: result[1],
         status: 'new',
-        author: docany.dcid || null
+        author: docany.dcid || null,
+        videoid: this.vidid,
       }).then(r => {
+        this.fetch()
         this.snackbar.open(`Issue added (${r.id})`, 'Dismiss', {
           duration: 5000,
         })
@@ -186,4 +224,5 @@ export class VideocheckComponent implements OnInit {
       })
     });
   }
+
 }

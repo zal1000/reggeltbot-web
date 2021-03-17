@@ -1,10 +1,6 @@
 <h2 mat-dialog-title>Add issue</h2>
 <mat-dialog-content class="mat-typography">
         <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">Video</span>
-            <input [(ngModel)]="video" type="text" name="pass" class="form-control" placeholder="Video" ngModel required>
-        </div>
-        <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Time</span>
             <input [(ngModel)]="time" type="text" name="time" class="form-control" placeholder="Time" ngModel required>
         </div>
@@ -16,5 +12,5 @@
 
 <mat-dialog-actions align="end">
     <button [mat-dialog-close]="false" mat-button mat-dialog-close>Close</button>
-    <button [mat-dialog-close]="[video, issue, time]" mat-button mat-dialog-close>Submit</button>
+    <button [mat-dialog-close]="[issue, time]" mat-button mat-dialog-close>Submit</button>
 </mat-dialog-actions>

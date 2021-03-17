@@ -66,6 +66,9 @@ import { BotSettingsComponent } from './console/bot-settings/bot-settings.compon
 import { RedirectComponent } from './console/redirect/redirect.component';
 import { VideocheckComponent } from './waik/videocheck/videocheck.component';
 import { AddComponent } from './waik/videcheck/add/add.component';
+import { IssuesListNComponent } from './waik/videocheck/issues-list-n/issues-list-n.component';
+import { VideosComponent } from './waik/videocheck/videos/videos.component';
+import { AddvidComponent } from './waik/videocheck/videos/addvid/addvid.component';
 
 const config = {
   apiKey: "AIzaSyAt2Z0NaWwdWYjY_aekfmXlrxVABYsymaM",
@@ -95,6 +98,9 @@ const config = {
     RedirectComponent,
     VideocheckComponent,
     AddComponent,
+    IssuesListNComponent,
+    VideosComponent,
+    AddvidComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -125,12 +131,15 @@ const config = {
     MatSliderModule,
     MatProgressSpinnerModule,
     MatProgressBarModule,
+    MatTabsModule,
+    MatTabsModule,
   ],
   entryComponents: [
     DialogTestComponent,
     BotSettingsDialogComponent,
     PremiumComponent,
     AddComponent,
+    AddvidComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

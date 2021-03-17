@@ -1,0 +1,59 @@
+<div class="container">
+    <div *ngIf="!user">
+        <div class="container">
+            <div class="wrapper">
+                <br>
+                <h1>You must log in to add a video!</h1>
+                <br><br>
+                <button type="button" class="btn vertical-center m10" style="background-color: #7289DA;" (click)="discordlogin()"><img height="25px" src='/assets/images/dc-white.svg'> Login with Discord (BETA)</button>
+            </div>
+    
+        </div>
+    
+    </div>
+    
+    <div *ngIf="user">
+        <div class="container">
+            <div class="wrapper">
+                <br><br>
+                <button type="button" class="btn btn-primary vertical-center m10" (click)="add()">Add video</button>
+            </div>
+    
+        </div>
+    
+    </div>
+
+    <div class="row-1 justify-content-md-center">
+        <h1>Active</h1>
+
+        <div *ngFor="let video of videos">
+            <div *ngIf="video.status">
+                <div class="col">
+    
+                    <img *ngIf="video.image" class="rounded-circle pp" src="{{ video.authorimg }}">
+                    <p class="reggeltcount wordWrap">{{ video.name }}</p>
+            
+                </div>
+                <div class="btn-group" style="width: 100%;" role="group" aria-label="Basic example">
+                    <button type="button" (click)="markAsInactive(video.id)" class="btn btn-danger">Mark as Inctive</button>
+                </div>
+            </div>
+        </div>            <br><br><br><br>
+        <h1>Inactive</h1>
+
+        <div *ngFor="let video of videos">
+            <div *ngIf="!video.status">
+                <div class="col">
+    
+                    <img *ngIf="video.image" class="rounded-circle pp" src="{{ video.authorimg }}">
+                    <p class="reggeltcount wordWrap">{{ video.name }}</p>
+            
+                </div>
+                <div class="btn-group" style="width: 100%;" role="group" aria-label="Basic example">
+                    <button type="button" (click)="markAsActive(video.id)" class="btn btn-success">Mark as Active</button>
+                </div>
+            </div>
+        </div>            <br><br><br><br>
+
+    </div>
+</div>
