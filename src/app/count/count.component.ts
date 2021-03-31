@@ -49,7 +49,7 @@ export class CountComponent implements OnInit, OnDestroy {
           this.loading = false;
         } else {
           console.log(doc.data())
-          this.reggeltcount = `${doc.data().reggeltcount}`
+          this.reggeltcount = `${doc.data().reggeltcount1 || 0}`
           if(!doc.data().pp) {
             this.dcpp = environment.loadgif;
           } else {
