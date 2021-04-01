@@ -113,6 +113,7 @@ const config = {
     AngularFireAnalyticsModule,
     AngularFireFunctionsModule,
     AngularFireDatabaseModule,
+    AngularFireMessagingModule,
     HttpClientModule, 
     BrowserAnimationsModule,
     BrowserModule,
