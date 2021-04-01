@@ -2,6 +2,7 @@ import { identifierModuleUrl } from '@angular/compiler';
 import { Component, OnInit, resolveForwardRef, ViewEncapsulation } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore'
+import { AngularFireMessaging } from '@angular/fire/messaging';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
@@ -33,7 +34,9 @@ export class VideocheckComponent implements OnInit {
     private router: ActivatedRoute,
     private afAuth: AngularFireAuth,
     public dialog: MatDialog,
+    public message: AngularFireMessaging,
     ) {
+
       const ref = this.db.collection('waik').doc('norbi').collection('videos', ref => ref.where('active', '==', true));
       ref.snapshotChanges().subscribe(async doc => {
         //console.log(doc);
