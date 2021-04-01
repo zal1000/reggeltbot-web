@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -13,7 +13,7 @@ import { AddComponent } from '../../videcheck/add/add.component';
   templateUrl: './issues-list-n.component.html',
   styleUrls: ['./issues-list-n.component.scss']
 })
-export class IssuesListNComponent implements OnInit {
+export class IssuesListNComponent implements OnInit, OnDestroy {
   user: any;
   loading: boolean = true;
   issues = [
@@ -29,6 +29,8 @@ export class IssuesListNComponent implements OnInit {
     }
   ]
 
+  listener: any;
+
   @Input()
   vidid!: string;
   
@@ -41,23 +43,29 @@ export class IssuesListNComponent implements OnInit {
     private afAuth: AngularFireAuth,
     public dialog: MatDialog,
     ) {
-      const ref = this.db.collection('waik').doc('norbi').collection('videocheck', ref => ref.where('videoid', '==', this.vidid || null).where('status', '!=', 'ignored'));
-      ref.snapshotChanges().subscribe(async (doc: any) => {
-        //console.log(doc);
-        await this.fetch()
-      })
-
-      this.afAuth.authState.subscribe(user => {
-        if(user) {
-          this.user = user;
-        } else {
-          this.user = null;
-        }
-
-      })
     }
 
   ngOnInit(): void {
+
+    const ref = this.db.collection('waik').doc('norbi').collection('videocheck', ref => ref.where('videoid', '==', this.vidid || null).where('status', '!=', 'ignored'));
+    this.listener = ref.snapshotChanges().subscribe(async (doc: any) => {
+      console.log(doc);
+      await this.fetch()
+    })
+
+    this.afAuth.authState.subscribe(user => {
+      if(user) {
+        this.user = user;
+      } else {
+        this.user = null;
+      }
+
+    })
+
+  }
+
+  ngOnDestroy(): void {
+    this.listener.unsubscribe();
   }
 
   async fetch() {
@@ -76,8 +84,8 @@ export class IssuesListNComponent implements OnInit {
           author: "empty",
           status: "new",
           authorimg: environment.error,
-          authorname: "No videos",
-          issue: "No videos",
+          authorname: "No issues",
+          issue: "No issues",
           time: "00:00",
         })
         this.issues = issues;
@@ -201,14 +209,14 @@ export class IssuesListNComponent implements OnInit {
       const userref = this.db.collection('users').doc(this.user.uid);
 
       const doc = await userref.get().toPromise();
-      
+
       const docany : any = doc.data();
 
 
       console.log(doc.data())
       this.db.collection('waik').doc('norbi').collection('videocheck').add({
-        issue: result[0],
-        time: result[1],
+        issue: result[1],
+        time: result[0],
         status: 'new',
         author: docany.dcid || null,
         videoid: this.vidid,
