@@ -4,13 +4,13 @@
 <br>
 <br>
 
-<div class="container">
-    <h1>{{ name }}</h1>
+<div class="container" style="background-color: white; border-radius: 10px;">
+    <h1 style="padding-top: 15px;">{{ name }}</h1>
     <br><br>
     <h2>Cooldown (current: {{ cd }}h)</h2>
     <mat-slider (change)="updateSetting($event)" style="width: 50%;" min="0" max="24" step="1" thumbLabel value="{{ cd }}"></mat-slider>
     <br><br>
-    <div style="background-color: white; border-radius: 10px;">
+    <div>
         <mat-form-field style="padding-top: 1.34375em;" appearance="fill">
             <mat-label>Set full lang</mat-label>
             <mat-select [(ngModel)]="lang" disableRipple>
