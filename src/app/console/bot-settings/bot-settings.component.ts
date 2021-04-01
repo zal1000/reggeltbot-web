@@ -77,6 +77,9 @@ export class BotSettingsComponent implements OnInit {
     const doc = await ref.get().toPromise()
     const docdata: any = doc.data();
 
+    const doc2: any = await this.db.doc(`users/${this.uid}`).get().toPromise();
+    this.authToken = doc2.data().token;
+
     this.cd = docdata.cd
     this.name = docdata.name
   }
